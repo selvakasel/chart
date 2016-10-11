@@ -1,0 +1,1367 @@
+﻿@model HealthCareInMvc4.Areas.Store.Models.ChartViewModel  
+
+<style type="text/css">
+    .form-control
+    {
+        border-radius: 0px !important;
+    }
+    #panel
+    {
+        position: fixed;
+        height: 90vh;
+        background: transparent;
+        right: 0;
+        top: 8%;
+        z-index:1;
+    }
+    
+    #panel-content
+    {
+        position: relative;
+        top: 80px;
+        width: 175px;
+        height: 70vh;
+        background: #7f7f7f;
+        float: right;
+        display: none;
+    }
+    
+    #panel-tab
+    {
+        position: relative;
+        width: 50px;
+        height: 90vh;
+        background-color: transparent;
+        float: left;
+    }
+    body
+    {
+        min-height: 100vh !important;
+    }
+    #myTab
+    {
+        border-radius: 23px 0px 0px 23px;
+        position: relative;
+        top: 150px;
+        background: #808080;
+        height: 50px;
+        color: White;
+    }
+    
+    #myTab p
+    {
+        padding: 12px !important;
+    }
+</style>
+<style type="text/css">
+    #cssmenu
+    {
+        position: relative;
+        margin: 0;
+        font-family: 'Roboto Condensed';
+        line-height: 1;
+        width: 250px;
+    }
+    .align-right
+    {
+        float: right;
+    }
+    #cssmenu ul
+    {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: block;
+    }
+    #cssmenu ul li
+    {
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+    #cssmenu ul li a
+    {
+        text-decoration: none;
+        cursor: pointer;
+    }
+    #cssmenu > ul > li > a
+    {
+        color: #dddddd;
+        text-transform: uppercase;
+        display: block;
+        padding: 20px; /* border-top: 1px solid #000000;
+        border-left: 1px solid #000000;
+        border-right: 1px solid #000000;*/
+        background: #7f7f7f;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        letter-spacing: 1px;
+        font-size: 16px;
+        font-weight: 300;
+        -webkit-transition: all 0.25s ease-in;
+        -moz-transition: all 0.25s ease-in;
+        -ms-transition: all 0.25s ease-in;
+        -o-transition: all 0.25s ease-in;
+        transition: all 0.25s ease-in;
+        position: relative;
+    }
+    #cssmenu > ul > li:first-child > a
+    {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border-bottom: 1px solid white;
+    }
+    #cssmenu > ul > li:last-child > a
+    {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-bottom: 1px solid white;
+    }
+    #cssmenu > ul > li:hover > a, #cssmenu > ul > li.open > a, #cssmenu > ul > li.active > a
+    {
+        background: #7f7f7f;
+        color: #ffffff;
+        border-bottom: 1px solid white;
+    }
+    #cssmenu ul > li.has-sub > a::after
+    {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 13px solid #000000;
+        border-botom: 13px solid transparent;
+        border-left: 125px solid transparent;
+        border-right: 125px solid transparent;
+        left: 0;
+        bottom: -13px;
+        bottom: 0px;
+        z-index: 1;
+        opacity: 0;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -ms-transition: all .2s ease;
+        -o-transition: all .2s ease;
+        transition: all .2s ease;
+    }
+    #cssmenu ul > li.has-sub > a::before
+    {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 13px solid #151515;
+        border-botom: 13px solid transparent;
+        border-left: 125px solid transparent;
+        border-right: 125px solid transparent;
+        left: 0;
+        bottom: -12px;
+        bottom: -1px;
+        z-index: 3;
+        opacity: 0;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -ms-transition: all .2s ease;
+        -o-transition: all .2s ease;
+        transition: all .2s ease;
+    }
+    #cssmenu ul > li.has-sub::after
+    {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: 7px solid transparent;
+        border-top-color: #dddddd;
+        z-index: 2;
+        right: 20px;
+        top: 24.5px;
+        pointer-events: none;
+    }
+    #cssmenu ul > li:hover::after, #cssmenu ul > li.active::after, #cssmenu ul > li.open::after
+    {
+        border-top-color: #ffffff;
+    }
+    #cssmenu ul > li.has-sub.open > a::after
+    {
+        opacity: 1;
+        bottom: -13px;
+    }
+    #cssmenu ul > li.has-sub.open > a::before
+    {
+        opacity: 1;
+        bottom: -12px;
+    }
+    #cssmenu ul ul
+    {
+        display: none;
+    }
+    #cssmenu ul ul li
+    {
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+    #cssmenu ul ul li a
+    {
+        background: #f1f1f1;
+        display: block;
+        position: relative;
+        font-size: 15px;
+        padding: 14px 20px;
+        border-bottom: 1px solid #dddddd;
+        color: #777777;
+        font-weight: 300;
+        -webkit-transition: all 0.25s ease-in;
+        -moz-transition: all 0.25s ease-in;
+        -ms-transition: all 0.25s ease-in;
+        -o-transition: all 0.25s ease-in;
+        transition: all 0.25s ease-in;
+    }
+    #cssmenu ul ul li:first-child > a
+    {
+        padding-top: 18px;
+    }
+    #cssmenu ul ul ul li
+    {
+        border: 0;
+    }
+    #cssmenu ul ul li:hover > a, #cssmenu ul ul li.open > a, #cssmenu ul ul li.active > a
+    {
+        background: #e4e4e4;
+        color: #666666;
+    }
+    #cssmenu ul ul > li.has-sub > a::after
+    {
+        border-top: 13px solid #dddddd;
+    }
+    #cssmenu ul ul > li.has-sub > a::before
+    {
+        border-top: 13px solid #e4e4e4;
+    }
+    #cssmenu ul ul ul li a
+    {
+        padding-left: 30px;
+    }
+    #cssmenu ul ul > li.has-sub::after
+    {
+        top: 18.5px;
+        border-width: 6px;
+        border-top-color: #777777;
+    }
+    #cssmenu ul ul > li:hover::after, #cssmenu ul ul > li.active::after, #cssmenu ul ul > li.open::after
+    {
+        border-top-color: #666666;
+    }
+    .panel-heading
+    {
+        background-color: #555555 !important;
+    }
+    .panel
+    {
+        border-top: 0 none !important;
+        border-left: 1px solid #555555 !important;
+        border-bottom: 1px solid #555555 !important;
+        border-right: 1px solid #555555 !important;
+    }
+    .panel-title
+    {
+        color:White !important;
+    }
+    thead, th
+    {
+        background-color: #555555 !important;
+    }
+    
+    /*#salestab
+{
+   height:200px !important;
+   overflow:scroll;
+}*/
+</style>
+
+
+
+<div class="" id="gppray">
+
+ <div class="row">
+
+   <div class="col-sm-5" id="salestab">
+   <table class="table table-bordered">
+<thead>
+      <tr>
+
+        <th align="center">Sub-Store Name</th>
+        <th align="center">Sales Value</th>
+        
+      </tr>
+    </thead>
+                      
+    <tbody>
+    @foreach (var itm in Model.SalesOrderProduct)
+    {
+       
+      <tr>
+      <td align="center">@itm.BaseEntityName</td>
+      <td >@itm.BillAmount</td>
+      </tr>
+    }
+    </tbody>
+                      
+  </table>
+   </div>
+
+
+   <div class="col-sm-7" id="salestab1">
+   
+     <table class="table table-bordered">
+<thead>
+      <tr>
+      <th align="center">Product Name</th>
+        <th align="center">Sub-Store Name</th>
+        <th align="center">Sales Value</th>
+        <th align="center">Sales Date</th>
+        
+      </tr>
+    </thead>
+                      
+    <tbody>
+    @foreach (var itm in Model.SalesOrderDayWise)
+    {
+       
+      <tr>
+      <td >@itm.Bankid</td>
+      <td >@itm.Clientname</td>
+       <td >@itm.BillAmount</td>
+        <td >@itm.Age</td>
+      </tr>
+    }
+    </tbody>
+                      
+  </table>
+   
+   </div>
+
+
+  
+   </div>
+
+ <div class="row">
+  
+    <div class="col-sm-5" id="Storewisesal1">
+   <div class="panel panel-primary">
+                    <div class="panel panel-heading">
+                        <h3 class="panel-title">
+                           Store Wise Sales
+                          
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div  id="Storewisesal">
+                        </div>
+                    </div>
+                   
+
+                </div>
+   </div>
+   
+    <div class="col-sm-7" id="datewisesal1">
+  <div class="panel panel-primary">
+  <div class="panel panel-heading">
+                        <h3 class="panel-title">
+                           Day Wise Sales
+                           </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div  id="datewisesal">
+                        </div>
+                    </div>
+          </div>
+  
+  
+  </div>
+
+   </div>
+
+ <div class="row">
+   
+     <div class="col-sm-5" id="monthwisesal1">
+   <div class="panel panel-primary">
+                    <div class="panel panel-heading">
+                        <h3 class="panel-title">
+                           Year Wise Sales
+                          
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div  id="monthwisesal">
+                        </div>
+                    </div>
+                   
+
+                </div>
+   
+   </div>
+      <div class="col-sm-7">
+                <div class="panel panel-primary">
+                    <div class="panel panel-heading">
+                        <h3 class="panel-title">
+                            Top 10 Sold Product                           
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div @*style="width: 190px; height: 180px;"*@ id="TosoldProduct">
+                        </div>
+                    </div>
+                 
+
+                </div>
+            </div>
+   
+   
+   </div>
+
+<div class="row">
+  
+    <div class="col-sm-5">
+   <div class="panel panel-primary">
+                    <div class="panel panel-heading">
+                        <h3 class="panel-title">
+                          Store Wise Sales
+                          
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div  id="sales">
+                        </div>
+                    </div>
+                   
+
+                </div>
+   </div>
+   
+    <div class="col-sm-7">
+  <div class="panel panel-primary">
+  <div class="panel panel-heading">
+                        <h3 class="panel-title">
+                           Over All Income
+                           </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div  id="income">
+                        </div>
+                    </div>
+          </div>
+  
+  
+  </div>
+
+   </div>
+
+</div>
+
+
+<div id="panel">
+    <div id="panel-content">
+        <br />
+        <br />
+       @* <input type="text" class="form-control" id="txtfromdate" placeholder="Select Fromdate" />
+        <input type="text" class="form-control" id="txttodate" placeholder="Select Todate" />
+        @Html.DropDownList("MainStoreName", (IEnumerable<SelectListItem>)ViewBag.list, "--Select--", new { id = "mainstorename" })
+        @Html.DropDownList("SubStoreName", (IEnumerable<SelectListItem>)ViewBag.sublist, "--Select--", new { id = "substoreName" })
+       @* <input type="text" class="form-control" id="txtmainstore" placeholder="Select Mainstore">
+        <input type="text" class="form-control" id="txtsubstore" placeholder="Select Substore">
+        <button type="submit" id="ray" class="btn btn-success btn-xs" style="width: 100%;">
+            Submit</button>*@
+        <br />
+             
+        <div id='cssmenu'>
+
+<ul>
+   
+   
+   <li class="has-sub"><a href='#'><span>Purchase</span></a>
+   <ul>
+               
+               <li><a href='#' id="approval"><span>Approval History</span></a></li>
+                <li><a href='#' id="current"><span>Current Stock</span></a></li>
+               <li ><a href='#' id="Venwise">Vendor wise</a></li>
+               <li class='last'><a href='#' id="timewise"><span>Time Wise Purchase</span></a></li>
+            
+         </ul>
+         
+   </li>
+       <li class='active has-sub'><a href='#'><span >Sales</span></a>
+       <ul>
+       <li class=""><a href='#' id="gpprayeee2"><span>Patient Category Wise</span></a>
+       
+       
+       
+       </li>
+       <li class=""><a href='#'  id="gpprayeee"><span>Store Wise</span></a>
+      </li>
+    </ul>
+   </li>
+   <li class='active has-sub'><a href='#'><span >Lab</span></a>
+   <ul>
+    <li class=""><a href='#' id="Result"><span>Result</span></a></li>
+    <li class=""><a href='#' id="due"><span>Due</span></a></li>
+    <li class="" ><a href='#' id="patient">Patient</a></li>
+               </ul>
+   </li>
+</ul>
+</div>
+    </div>
+    <div id="panel-tab">
+        <div id="myTab">
+            <p>
+                Click</p>
+        </div>
+    </div>
+</div>
+
+
+<div>
+<br />
+<div id="SalesCategory">
+</div>
+<div id="PatientCategory">
+</div>
+<div id="initial"></div>
+<div id="vendorewise"></div>
+<div id="purchasestatus"></div>
+<div id="Approvalhistoroy"></div>
+<div id="Currentstock"></div>
+<div id="TimewisePurchase"></div>
+<div id="labresult12"></div>
+<div id="labdue12"></div>
+<div id="labpatient12"></div>
+
+</div>
+
+
+<script type="text/javascript">
+
+    $('#Result').on('click', function () {
+        
+        $("#gppray").hide();
+        $("#vendorewise").hide();
+        $("#purchasestatus").hide();
+        $("#Approvalhistoroy").hide();
+        $("#Currentstock").hide();
+        $("#TimewisePurchase").hide();
+        $("#PatientCategory").hide();
+        $("#SalesCategory").hide();
+        $("#labdue12").hide();
+        $("#labpatient12").hide();
+        $("#labresult12").show();
+        $.get("../Store/Dashboard/Result", { cache: false, headers: { "Accept-Encoding": "gzip"} }, function (n) {
+
+            $("#labresult12").html(n);
+            // $.unblockUI();
+
+        });
+
+    });
+
+    $('#due').on('click', function () {
+
+        $("#gppray").hide();
+        $("#vendorewise").hide();
+        $("#purchasestatus").hide();
+        $("#Approvalhistoroy").hide();
+        $("#Currentstock").hide();
+        $("#TimewisePurchase").hide();
+        $("#PatientCategory").hide();
+        $("#SalesCategory").hide();
+        $("#labdue12").show();
+        $("#labpatient12").hide();
+        $("#labresult12").hide();
+        $.get("../Store/Dashboard/Due", { cache: false, headers: { "Accept-Encoding": "gzip"} }, function (n) {
+
+            $("#labdue12").html(n);
+            // $.unblockUI();
+
+        });
+
+    });
+
+    $('#patient').on('click', function () {
+
+        $("#gppray").hide();
+        $("#vendorewise").hide();
+        $("#purchasestatus").hide();
+        $("#Approvalhistoroy").hide();
+        $("#Currentstock").hide();
+        $("#TimewisePurchase").hide();
+        $("#PatientCategory").hide();
+        $("#SalesCategory").hide();
+        $("#labdue12").hide();
+        $("#labpatient12").show();
+        $("#labresult12").hide();
+        $.get("../Store/Dashboard/Patient", { cache: false, headers: { "Accept-Encoding": "gzip"} }, function (n) {
+
+            $("#labpatient12").html(n);
+            // $.unblockUI();
+
+        });
+
+    });  
+
+
+    $('#Venwise').on('click', function () {
+
+        $("#gppray").hide();
+        $("#vendorewise").show();
+        $("#purchasestatus").hide();
+        $("#Approvalhistoroy").hide();
+        $("#Currentstock").hide();
+        $("#TimewisePurchase").hide();
+        $("#PatientCategory").hide();
+        $("#SalesCategory").hide();
+        $("#labdue12").hide();
+        $("#labpatient12").hide();
+        $("#labresult12").hide();
+        $.get("../Store/Dashboard/vendorewise", { cache: false, headers: { "Accept-Encoding": "gzip"} }, function (n) {
+
+            $("#vendorewise").html(n);
+            // $.unblockUI();
+
+        });
+
+    });  
+
+
+    $('#approval').on('click', function () {
+
+        $("#gppray").hide();
+        $("#vendorewise").hide();
+        $("#purchasestatus").hide();
+        $("#Approvalhistoroy").show();
+        $("#Currentstock").hide();
+        $("#TimewisePurchase").hide();
+        $("#PatientCategory").hide();
+        $("#SalesCategory").hide();
+        $("#labdue12").hide();
+        $("#labpatient12").hide();
+        $("#labresult12").hide();
+        $.get("../Store/Dashboard/Approvalhistoroy", { cache: false, headers: { "Accept-Encoding": "gzip"} }, function (n) {
+
+            $("#Approvalhistoroy").html(n);
+            // $.unblockUI();
+
+        });
+
+    });
+
+
+    $('#current').on('click', function () {
+
+        $("#gppray").hide();
+        $("#vendorewise").hide();
+        $("#purchasestatus").hide();
+        $("#Approvalhistoroy").hide();
+        $("#Currentstock").show();
+        $("#TimewisePurchase").hide();
+        $("#PatientCategory").hide();
+        $("#SalesCategory").hide();
+        $("#labdue12").hide();
+        $("#labpatient12").hide();
+        $("#labresult12").hide();
+        $.get("../Store/Dashboard/Currentstock", { cache: false, headers: { "Accept-Encoding": "gzip"} }, function (n) {
+
+            $("#Currentstock").html(n);
+            // $.unblockUI();
+
+        });
+
+    });
+
+
+    $('#timewise').on('click', function () {
+
+        $("#gppray").hide();
+        $("#vendorewise").hide();
+        $("#purchasestatus").hide();
+        $("#Approvalhistoroy").hide();
+        $("#Currentstock").hide();
+        $("#TimewisePurchase").show();
+        $("#PatientCategory").hide();
+        $("#SalesCategory").hide();
+        $("#labdue12").hide();
+        $("#labpatient12").hide();
+        $("#labresult12").hide();
+        $.get("../Store/Dashboard/TimewisePurchase", { cache: false, headers: { "Accept-Encoding": "gzip"} }, function (n) {
+
+            $("#TimewisePurchase").html(n);
+            // $.unblockUI();
+
+        });
+
+    });
+
+
+
+    $('#gpprayeee').on('click', function () {
+
+        $("#gppray").hide();
+        $("#vendorewise").hide();
+        $("#purchasestatus").hide();
+        $("#Approvalhistoroy").hide();
+        $("#Currentstock").hide();
+        $("#TimewisePurchase").hide();
+        $("#PatientCategory").hide();
+        $("#SalesCategory").show();
+        $("#labdue12").hide();
+        $("#labpatient12").hide();
+        $("#labresult12").hide();  
+        $.get("../Store/Dashboard/SalesCategory", { cache: false, headers: { "Accept-Encoding": "gzip"} }, function (n) {
+
+            $("#SalesCategory").html(n);
+           // $.unblockUI();
+
+        });
+
+    });
+
+
+    $('#gpprayeee2').on('click', function () {
+        $("#gppray").hide();
+        $("#vendorewise").hide();
+        $("#purchasestatus").hide();
+        $("#Approvalhistoroy").hide();
+        $("#Currentstock").hide();
+        $("#TimewisePurchase").hide();
+        $("#PatientCategory").show();
+        $("#SalesCategory").hide();
+        $("#labdue12").hide();
+        $("#labpatient12").hide();
+        $("#labresult12").hide();
+        $.get("../Store/Dashboard/PatientCategory", { cache: false, headers: { "Accept-Encoding": "gzip"} }, function (n) {
+            $("#PatientCategory").html(n);
+            
+          //  $.unblockUI();
+
+        });
+
+    });
+
+
+
+    $("#panel-tab").click(function (event) {
+        event.stopPropagation();
+        $("#panel-content").animate({ width: 'toggle' }, 500);
+    });
+
+    $("#txtfromdate").pickadate({
+        format: "dd/mm/yyyy",
+        // min: true,
+        selectMonths: true,
+        selectYears: true,
+        editable: 'ray'
+
+    });
+    $("#txttodate").pickadate({
+        format: "dd/mm/yyyy",
+        //  min: true,
+        selectMonths: true,
+        selectYears: true,
+        editable: 'ray'
+
+    });
+
+
+
+    $('#cssmenu li.has-sub>a').on('click', function () {
+        $(this).removeAttr('href');
+        var element = $(this).parent('li');
+        if (element.hasClass('open')) {
+            element.removeClass('open');
+            element.find('li').removeClass('open');
+            element.find('ul').slideUp();
+
+        }
+        else {
+            element.addClass('open');
+            element.children('ul').slideDown();
+            element.siblings('li').children('ul').slideUp();
+            element.siblings('li').removeClass('open');
+            element.siblings('li').find('li').removeClass('open');
+            element.siblings('li').find('ul').slideUp();
+        }
+    });
+
+
+   
+        
+</script>
+<script type="text/javascript">
+    $.ajax({
+        url: "../Dashboard/substore2",
+        data: {},
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+            // alert(result)
+
+            var res = [];
+
+            debugger
+            var rest = { "name": "", "y": "" };
+            for (i = 0; i < result.length; i++) {
+                rest.name = result[i].BillingState;
+                //  alert(rest.name);
+                rest.y = result[i].BillAmount;
+                //   alert(rest.y);
+                res.push(rest);
+                rest = { "name": "", "y": "" };
+            }
+            vibrant.setOptions({
+                colors: ['rgb(15, 115, 255)', 'rgb(255, 82, 27)', 'rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+            });
+
+            $('#Storewisesal').vibrant({
+                chart: {
+
+                    type: 'pie',
+                    height: 340
+                    //                    zoomType:"x"
+                },
+                title: {
+                    text: ''
+                },
+                yAxis: {
+                    showEmpty: false
+                },
+                legend: {
+                    itemStyle: {
+                        fontWeight: 'bold',
+                        fontSize: '08px'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: false
+                        },
+                        showInLegend: true
+                    }
+                },
+                series: [{
+                    name: "Value",
+                    colorByPoint: true,
+                    data: res
+                }]
+            });
+
+        }
+    });
+
+
+
+</script>
+<script type="text/javascript">
+    $.ajax({
+        url: "../Dashboard/substore2",
+        data: {},
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+            // alert(result)
+
+            var res = [];
+
+            debugger
+            var rest = { "name": "", "y": "" };
+            for (i = 0; i < result.length; i++) {
+                rest.name = result[i].BillingState;
+                //  alert(rest.name);
+                rest.y = result[i].BillAmount;
+                //   alert(rest.y);
+                res.push(rest);
+                rest = { "name": "", "y": "" };
+            }
+            vibrant.setOptions({
+                colors: ['rgb(15, 115, 255)', 'rgb(255, 82, 27)', 'rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+            });
+
+            $('#div1').vibrant({
+                chart: {
+
+                    type: 'pie',
+                    height: 340
+                    //                    zoomType:"x"
+                },
+                title: {
+                    text: ''
+                },
+                yAxis: {
+                    showEmpty: false
+                },
+                legend: {
+                    itemStyle: {
+                        fontWeight: 'bold',
+                        fontSize: '08px'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: false
+                        },
+                        showInLegend: true
+                    }
+                },
+                series: [{
+                    name: "Value",
+                    colorByPoint: true,
+                    data: res
+                }]
+            });
+
+        }
+    });
+
+
+
+</script>
+<script type="text/javascript">
+    $.ajax({
+        url: "../Dashboard/daysubstore",
+        data: {},
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+            // alert(result[0].Clientname);
+
+            var res = [];
+            var day = [];
+            debugger
+            var rest = { "name": "" };
+            var da = { "y": "" };
+            for (i = 0; i < result.length; i++) {
+
+                da.y = result[i].BillAmount;
+
+                var aa = result[i].Clientname;
+                var cc = aa.split("-");
+                var dd = cc[2] + "-" + cc[1] + "-" + cc[0];
+
+                res.push(dd);
+                day.push(da);
+
+                var rest = { "name": "" };
+                var da = { "y": "" };
+            }
+
+            //            alert(JSON.stringify(res));
+            //            alert(JSON.stringify(day));
+
+            //            var a = res[1];
+            //            alert(a);
+
+            vibrant.setOptions({
+                colors: ['rgb(15, 115, 255)', 'rgb(255, 82, 27)', 'rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+            });
+
+            $('#datewisesal').vibrant({
+                chart: {
+
+                    //  type: 'pie',
+                    height: 350
+                    //                    zoomType:"x"
+                },
+                title: {
+                    text: 'Day Wise Sales',
+                    x: -20 //center
+                },
+                subtitle: {
+                    text: '',
+                    x: -20
+                },
+                xAxis: {
+                    categories: res
+                },
+                yAxis: {
+                    title: {
+                        text: 'sales Value'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    valueSuffix: ''
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                series: [{
+                    name: 'value',
+                    data: day
+                }]
+            });
+
+
+
+
+        }
+    });
+
+
+
+</script>
+<script type="text/javascript">
+
+    $.ajax({
+        url: "../Dashboard/yearsubstore",
+        data: {},
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+            // alert(result)
+
+            var res = [];
+
+            debugger
+            //  var rest = { "name": "", "y": "" };
+            for (i = 0; i < result.length; i++) {
+                //  alert();
+                var yearsalval = result[i].BillAmount;
+               // alert(yearsalval);
+                var yearpurval = result[i].InvoiceBalance;
+                //alert(yearpurval);
+                //   rest.y = result[i].BillAmount;
+                //   alert(rest.y);
+                //  res.push(rest);
+                //rest = { "name": "", "y": "" };
+            }
+            vibrant.setOptions({
+                colors: ['rgb(15, 115, 255)', 'rgb(255, 82, 27)', 'rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+            });
+
+            $('#monthwisesal').vibrant({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: 0,
+                    plotShadow: true
+                },
+                title: {
+                    text: 'Total<br>sales-purchase<br>2015',
+                    align: 'center',
+                    verticalAlign: 'middle',
+                    y: 40
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        dataLabels: {
+                            enabled: true,
+                            distance: -50,
+                            style: {
+                                fontWeight: 'bold',
+                                color: 'white',
+                                textShadow: '0px 1px 2px black'
+                            }
+                        },
+                        startAngle: -90,
+                        endAngle: 90,
+                        center: ['50%', '75%']
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Total sale',
+                    innerSize: '50%',
+                    data: [
+                ['Sales val', yearsalval],
+                ['Purchase val', yearpurval],
+                {
+                    name: 'Proprietary or Undetectable',
+                    y: 0.2,
+                    dataLabels: {
+                        enabled: false
+                    }
+                }
+            ]
+                }]
+            });
+        }
+    });
+
+</script>
+<script type="text/javascript">
+
+    $.ajax({
+        url: "../Dashboard/initialSales",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+            var SubStoreName = [];
+            var InvoiceSubTotal = [];
+
+
+            for (i = 0; i < result.length; i++) {
+
+                SubStoreName.push([result[i].SubStoreName]);
+                InvoiceSubTotal.push([result[i].InvoiceSubTotal]);
+
+            }
+
+
+
+         
+
+            vibrant.setOptions({
+                colors: ['rgb(241, 150, 149)', 'rgb(241, 150, 149)', 'rgb(241, 150, 149)', 'rgb(241, 150, 149)', 'rgb(241, 150, 149)', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+            });
+
+
+
+            $('#sales').vibrant({
+                chart: {
+                    type: 'column',
+                    options3d: {
+                        enabled: true,
+                        alpha: 10,
+                        beta: 25
+
+                    }
+
+                },
+                title: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: SubStoreName,
+                    labels: {
+                        rotation: -70,
+                        style: {
+                            font: '08px Helvetica'
+                        }
+                    }
+
+                },
+                yAxis: {
+
+                    title: {
+                        text: '',
+                        align: 'high'
+                    }
+
+                },
+
+                plotOptions: {
+                    column: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                legend: {
+
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -80,
+                    y: 2,
+                    floating: true,
+                    backgroundColor: ((vibrant.theme && vibrant.theme.legendBackgroundColor) || '#FFFFFF'),
+                    shadow: false,
+                    enabled: false
+                },
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: "Value",
+                    data: InvoiceSubTotal
+                }]
+            });
+
+        }
+
+    });
+
+</script>
+<script type="text/javascript">
+    $.ajax({
+        url: "../Dashboard/initialIncome",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var IPsales = [];
+            var Opsales = [];
+            var Doctorsales = [];
+            var Genralsales = [];
+
+
+            for (i = 0; i < result.length; i++) {
+
+                IPsales.push([result[i].IPsales]);
+                Opsales.push([result[i].Opsales]);
+                Doctorsales.push([result[i].Doctorsales]);
+                Genralsales.push([result[i].Genralsales]);
+
+            }
+
+            var a1 = parseInt(IPsales);
+            var a2 = parseInt(Opsales);
+            var a3 = parseInt(Doctorsales);
+            var a4 = parseInt(Genralsales);
+
+
+          
+
+            vibrant.setOptions({
+                colors: ['#006B24', '#006B24', '#006B24', '#006B24', '#006B24', '#006B24', '#006B24']
+            });
+
+
+
+            $('#income').vibrant({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    type: 'category',
+                    labels: {
+                        rotation: -45,
+                        style: {
+                            fontSize: '08px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: ''
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    pointFormat: '<b>{point.y:.1f}</b>'
+                },
+                series: [{
+                    name: 'Values',
+                    data: [
+                ['IPsales', a1],
+                ['Opsales', a2],
+                ['Doctorsales', a3],
+                ['Genralsales', a4]
+
+            ],
+                    dataLabels: {
+                        enabled: true,
+                        rotation: -90,
+                        color: '#FFFFFF',
+                        align: 'right',
+                        format: '{point.y:.1f}', // one decimal
+                        y: 10, // 10 pixels down from the top
+                        style: {
+                            fontSize: '08px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                }]
+            });
+
+        }
+
+    });
+
+
+</script>
+<script type="text/javascript">
+    $.ajax({
+        url: "../Dashboard/initialTosalesProduct",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+            var res = [];
+
+            debugger
+            var rest = { "name": "", "y": "" };
+            for (i = 0; i < result.length; i++) {
+                rest.name = result[i].NAME;
+                rest.y = result[i].TotalCOunt;
+                res.push(rest);
+                rest = { "name": "", "y": "" };
+            }
+            $("#myModal2").modal('hide');
+
+            vibrant.setOptions({
+                colors: ['rgb(15, 115, 255)', 'rgb(255, 82, 27)', 'rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+            });
+
+            $('#TosoldProduct').vibrant({
+                chart: {
+
+                    type: 'pie'
+                },
+                title: {
+                    text: ''
+                },
+                yAxis: {
+                    showEmpty: false
+                },
+                legend: {
+                    itemStyle: {
+                        fontWeight: 'bold',
+                        fontSize: '08px'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: false
+                        },
+                        showInLegend: true
+                    }
+                },
+                series: [{
+                    name: "Value",
+                    colorByPoint: true,
+                    data: res
+                }]
+            });
+
+        }
+    });
+
+</script>
+
+
+
+
+

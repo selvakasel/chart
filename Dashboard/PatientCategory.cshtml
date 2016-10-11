@@ -1,0 +1,1426 @@
+﻿@model HealthCareInMvc4.Areas.Store.Models.ChartViewModel
+
+<style type="text/css">
+    .form-control
+    {
+        border-radius: 0px !important;
+    }
+    #panel
+    {
+        position: fixed;
+        height:0 !important;
+        background: transparent;
+        right: 0;
+        top: 8%;
+        z-index:1;
+    }
+    
+    #panel-content
+    {
+        position: relative;
+        top: 80px;
+        width: 175px;
+        height: 70vh;
+        background: #7f7f7f;
+        float: right;
+        display: none;
+    }
+    
+    #panel-tab
+    {
+        position: relative;
+        width: 50px !important;
+        height: 0 !important;
+        background-color: transparent;
+        float: left;
+        top:73px !important;
+    }
+    body
+    {
+        min-height: 100vh !important;
+    }
+    #myTab
+    {
+        border-radius: 23px 0px 0px 23px;
+        position: relative;
+        top: 150px;
+        background: #808080;
+        height: 50px;
+        color: White;
+    }
+    
+    #myTab p
+    {
+        padding: 12px !important;
+    }
+    .panel-title {
+   padding-top: 10px;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+</style>
+<style type="text/css">
+    #cssmenu
+    {
+        position: relative;
+        margin: 0;
+        font-family: 'Roboto Condensed';
+        line-height: 1;
+        width: 250px;
+    }
+    .align-right
+    {
+        float: right;
+    }
+    #cssmenu ul
+    {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: block;
+    }
+    #cssmenu ul li
+    {
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+    #cssmenu ul li a
+    {
+        text-decoration: none;
+        cursor: pointer;
+    }
+    #cssmenu > ul > li > a
+    {
+        color: #dddddd;
+        text-transform: uppercase;
+        display: block;
+        padding: 20px; /* border-top: 1px solid #000000;
+        border-left: 1px solid #000000;
+        border-right: 1px solid #000000;*/
+        background: #7f7f7f;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        letter-spacing: 1px;
+        font-size: 16px;
+        font-weight: 300;
+        -webkit-transition: all 0.25s ease-in;
+        -moz-transition: all 0.25s ease-in;
+        -ms-transition: all 0.25s ease-in;
+        -o-transition: all 0.25s ease-in;
+        transition: all 0.25s ease-in;
+        position: relative;
+    }
+    #cssmenu > ul > li:first-child > a
+    {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border-bottom: 1px solid white;
+    }
+    #cssmenu > ul > li:last-child > a
+    {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-bottom: 1px solid white;
+    }
+    #cssmenu > ul > li:hover > a, #cssmenu > ul > li.open > a, #cssmenu > ul > li.active > a
+    {
+        background: #7f7f7f;
+        color: #ffffff;
+    }
+    #cssmenu ul > li.has-sub > a::after
+    {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 13px solid #000000;
+        border-botom: 13px solid transparent;
+        border-left: 125px solid transparent;
+        border-right: 125px solid transparent;
+        left: 0;
+        bottom: -13px;
+        bottom: 0px;
+        z-index: 1;
+        opacity: 0;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -ms-transition: all .2s ease;
+        -o-transition: all .2s ease;
+        transition: all .2s ease;
+    }
+    #cssmenu ul > li.has-sub > a::before
+    {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 13px solid #151515;
+        border-botom: 13px solid transparent;
+        border-left: 125px solid transparent;
+        border-right: 125px solid transparent;
+        left: 0;
+        bottom: -12px;
+        bottom: -1px;
+        z-index: 3;
+        opacity: 0;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -ms-transition: all .2s ease;
+        -o-transition: all .2s ease;
+        transition: all .2s ease;
+    }
+    #cssmenu ul > li.has-sub::after
+    {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: 7px solid transparent;
+        border-top-color: #dddddd;
+        z-index: 2;
+        right: 20px;
+        top: 24.5px;
+        pointer-events: none;
+    }
+    #cssmenu ul > li:hover::after, #cssmenu ul > li.active::after, #cssmenu ul > li.open::after
+    {
+        border-top-color: #ffffff;
+    }
+    #cssmenu ul > li.has-sub.open > a::after
+    {
+        opacity: 1;
+        bottom: -13px;
+    }
+    #cssmenu ul > li.has-sub.open > a::before
+    {
+        opacity: 1;
+        bottom: -12px;
+    }
+    #cssmenu ul ul
+    {
+        display: none;
+    }
+    #cssmenu ul ul li
+    {
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+    #cssmenu ul ul li a
+    {
+        background: #f1f1f1;
+        display: block;
+        position: relative;
+        font-size: 15px;
+        padding: 14px 20px;
+        border-bottom: 1px solid #dddddd;
+        color: #777777;
+        font-weight: 300;
+        -webkit-transition: all 0.25s ease-in;
+        -moz-transition: all 0.25s ease-in;
+        -ms-transition: all 0.25s ease-in;
+        -o-transition: all 0.25s ease-in;
+        transition: all 0.25s ease-in;
+    }
+    #cssmenu ul ul li:first-child > a
+    {
+        padding-top: 18px;
+    }
+    #cssmenu ul ul ul li
+    {
+        border: 0;
+    }
+    #cssmenu ul ul li:hover > a, #cssmenu ul ul li.open > a, #cssmenu ul ul li.active > a
+    {
+        background: #e4e4e4;
+        color: #666666;
+    }
+    #cssmenu ul ul > li.has-sub > a::after
+    {
+        border-top: 13px solid #dddddd;
+    }
+    #cssmenu ul ul > li.has-sub > a::before
+    {
+        border-top: 13px solid #e4e4e4;
+    }
+    #cssmenu ul ul ul li a
+    {
+        padding-left: 30px;
+    }
+    #cssmenu ul ul > li.has-sub::after
+    {
+        top: 18.5px;
+        border-width: 6px;
+        border-top-color: #777777;
+    }
+    #cssmenu ul ul > li:hover::after, #cssmenu ul ul > li.active::after, #cssmenu ul ul > li.open::after
+    {
+        border-top-color: #666666;
+    }
+    .panel-heading
+    {
+        background-color: #555555 !important;
+    }
+    .panel
+    {
+        border-top: 0 none !important;
+        border-left: 1px solid #555555 !important;
+        border-bottom: 1px solid #555555 !important;
+        border-right: 1px solid #555555 !important;
+    }
+    thead, th
+    {
+        background-color: #555555 !important;
+    }
+    
+    /*#salestab
+{
+   height:200px !important;
+   overflow:scroll;
+}*/
+</style>
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModal"
+    ria-hidden="true" style="width: 530px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title" id="myModalfmdt">
+                    Purchase Details
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id='myDialogContainer2'>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>
+                            From Date
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="frmtdate1" class="form-control" />
+                    </div>
+                    <div class="col-sm-6">
+                        <label>
+                            To Date
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="todate1" class="form-control" /></div>
+                </div>
+                <label id="vali2" style="color: Red;">
+                    * Fields are required</label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnsav1" class="btn btn-primary">
+                    Submit
+                </button>
+                <button type="button" id="cancel2" class="btn btn-danger">
+                    Cancel
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="">
+    <div class="row">
+        <div class="col-sm-5" id="paitents">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                             Catagory
+                        </th>
+                        <th align="center">
+                            Sales
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var itm1 in Model.paitents1)
+                    {
+                        <tr>
+                            <td>
+                                Op Rates
+                            </td>
+                            <td>@itm1.Amount
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Ip Rates
+                            </td>
+                            <td>@itm1.AmountPaid
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                DO Rates
+                            </td>
+                            <td>@itm1.BillAmount
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                General Rates
+                            </td>
+                            <td>@itm1.Balance
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-7">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th align="center">
+                            Date
+                        </th>
+                        <th align="center">
+                            Catagory
+                        </th>
+                        <th align="center">
+                            Sales
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var itm in Model.paitents2)
+                    {
+       
+                        <tr>
+                            <td>
+                                @itm.Clientname
+                            </td>
+                            <td>Ip sales
+                            </td>
+                            <td>@itm.Amount
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                               @itm.Date
+                            </td>
+                            <td>Op sales
+                            </td>
+                            <td>@itm.AmountPaid
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                               @itm.Custom2
+                            </td>
+                            <td>Do sales
+                            </td>
+                            <td>@itm.BillAmount
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                               @itm.Custom2
+                            </td>
+                            <td>General
+                            </td>
+                            <td>@itm.Balance
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="panel panel-primary">
+                <div class="panel panel-heading">
+                    <h4 class="panel-title">
+                        Sales Catagory
+                        <button type="button" id="but1" style="float:right;margin-top: -8px;"
+                            value="1">
+                            <span class="fa fa-calendar myicon"></span>
+                        </button>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div id="Paitent1">
+                    </div>
+                </div>
+                 <div class="foote">
+                        <a href="#" style="padding-left: 170px; font-size: 10px;" onclick="Patientwisetest()">more info</a>
+                        </div>
+            </div>
+        </div>
+        <div class="col-sm-7">
+            <div class="panel panel-primary">
+                <div class="panel panel-heading">
+                    <h4 class="panel-title" >
+                        Day Wise Sales Catagory
+                        <button type="button" id="but2" style="float:right;margin-top: -8px;"
+                            value="2">
+                            <span class="fa fa-calendar myicon"></span>
+                        </button>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div id="Paitent2">
+                    </div>
+                </div>
+                  <div class="foote">
+                        <a href="#" style="padding-left: 170px; font-size: 10px;" onclick="testwise()">more info</a>
+                        </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="panel panel-primary">
+                <div class="panel panel-heading">
+                    <h4 class="panel-title">
+                        Sales Details
+                        <button type="button" id="but3" style="float:right;margin-top: -8px;"
+                            value="3">
+                            <span class="fa fa-calendar myicon"></span>
+                        </button>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div id="Paitent3">
+                    </div>
+                </div>
+                  <div class="foote">
+                        <a href="#" style="padding-left: 170px; font-size: 10px;" onclick="reapeded()">more info</a>
+                        </div>
+            </div>
+        </div>
+        <div class="col-sm-7">
+            <div class="panel panel-primary">
+                <div class="panel panel-heading">
+                    <h4 class="panel-title" >
+                        Day Wise Sales Details
+                        <button type="button" id="but4" style="float:right;margin-top: -8px;"
+                            value="4">
+                            <span class="fa fa-calendar myicon"></span>
+                        </button>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div id="Paitent4">
+                    </div>
+                </div>
+                  <div class="foote">
+                        <a href="#" style="padding-left: 170px; font-size: 10px;" onclick="timewise()">more info</a>
+                        </div>
+            </div>
+        </div>
+    </div>
+   
+</div>
+
+<script type="text/javascript">
+    function Patientwisetest() {
+        window.open("../HmsWebPages/InventoryRpt/salesPatientwisesales.aspx?ReportName=" + "ipPatient1.rpt");
+    }
+    function testwise() {
+        window.open("../HmsWebPages/InventoryRpt/salesPatientdaywise.aspx?ReportName=" + "ipPatient2.rpt");
+    }
+    function reapeded() {
+        window.open("../HmsWebPages/InventoryRpt/salesPatientsalesdetail.aspx?ReportName=" + "ipPatient3.rpt");
+    }
+
+    function timewise() {
+        window.open("../HmsWebPages/InventoryRpt/salesPatientdatywisesalesdetails.aspx?ReportName=" + "ipPatient4.rpt");
+    }
+
+</script>
+
+
+<script type="text/javascript">  
+
+
+    var m = 0;
+    $("#but1,#but2,#but3,#but4").click(function () {
+
+        $("#myModal2").modal('show');
+        $("#myModal2").modal({ backdrop: false });
+
+        $("#frmtdate1").pickadate({
+            format: "dd/mm/yyyy",
+            // min: true,
+            selectMonths: true,
+            selectYears: true,
+            editable: 'ray'
+
+        });
+        $("#todate1").pickadate({
+            format: "dd/mm/yyyy",
+            //  min: true,
+            selectMonths: true,
+            selectYears: true,
+            editable: 'ray'
+
+        });
+        m = $(this).val();
+
+
+    });
+    var fromdate;
+    var todate;
+    $("#btnsav1").click(function () {
+        $("#vali2").hide();
+        fromdate = $("#frmtdate1").val();
+        todate = $("#todate1").val();
+
+        if (fromdate == '') {
+            $("#vali2").show();
+            $("#frmtdate1").focus();
+            return false;
+        }
+        if (todate == '') {
+            $("#vali2").show();
+            $("#todate1").focus();
+            return false;
+        }
+
+        if (parseInt(m) == 1) {
+            paitiant1();
+            fromdate = $("#frmtdate1").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 2) {
+            paitiant2();
+            fromdate = $("#frmtdate1").val('');
+            todate = $("#todate1").val('');
+        } else if (parseInt(m) == 3) {
+            paitiant3();
+            
+            fromdate = $("#frmtdate1").val('');
+            todate = $("#todate1").val('');
+
+        } else if (parseInt(m) == 4) {
+            paitiant4();
+            fromdate = $("#frmtdate1").val('');
+            todate = $("#todate1").val('');
+
+        }
+        m = 0;
+        $("#myModal2").modal('hide');
+    });
+
+    $("#cancel2").click(function () {
+        $("#myModal2").modal('hide');
+    });
+</script>
+
+<script type="text/javascript">
+
+    function paitiant1() {
+        var day = [];
+        var ress = [];
+
+
+        $.ajax({
+            url: "../Dashboard/Paitentcatagory",
+            type: 'POST',
+            data: { Fromdate: fromdate, Todate: todate },
+
+            success: function (result) {
+
+                $.each(result, function (ui, item) {
+                    ress.push(item.Amount);
+                    ress.push(item.AmountPaid);
+                    ress.push(item.BillAmount);
+                    ress.push(item.Balance);
+
+                });
+
+
+                vibrant.setOptions({
+                    colors: ['#8AE6B8', '#D175FF', '#47A3FF', '#FF9655', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+                $('#Paitent1').vibrant({
+
+                    chart: {
+                        type: 'bar'
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: ['Patiants'],
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'values ',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' Sales'
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'top',
+                        x: -40,
+                        y: 80,
+                        floating: true,
+                        borderWidth: 1,
+                        //backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                        shadow: true
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Ip',
+                        data: [ress[1]]
+                       
+                    }, {
+                        name: 'Op',
+                        data: [ress[0]]
+                    }, {
+                        name: 'Doctor',
+                        data: [ress[2]]
+                    }, {
+                        name: 'General',
+                        data: [ress[3]]
+                    }]
+
+                });
+            }
+        });
+    }
+
+    function paitiant2() {
+        var ress1 = [];
+        var ress2 = [];
+        var ress3 = [];
+        var ress4 = [];
+        var ress5 = [];
+
+        $.ajax({
+            url: "../Dashboard/Paitentcatagory1",
+            type: 'POST',
+            data: { Fromdate: fromdate, Todate: todate },
+
+            success: function (result) {
+                $.each(result, function (ui, item) {
+                    ress1.push(item.Amount);
+                    ress2.push(item.AmountPaid);
+                    ress3.push(item.BillAmount);
+                    ress4.push(item.Balance);
+                    ress1.push(item.Barcode1);
+                    ress2.push(item.ClientID);
+                    ress3.push(item.ClientId1);
+                    ress4.push(item.CustomerID);
+                    ress5.push(item.Clientname);
+                    ress5.push(item.Date);
+
+                    ress1.push(item.Ip2);
+                    ress2.push(item.Op2);
+                    ress3.push(item.Do2);
+                    ress4.push(item.General2);
+                    ress1.push(item.Ip2);
+                    ress2.push(item.Op2);
+                    ress3.push(item.Do2);
+                    ress4.push(item.General3);
+                    ress5.push(item.Custom1);
+                    ress5.push(item.Custom2);
+
+                });
+
+                
+                vibrant.setOptions({
+                    colors: ['rgb(15, 115, 255)', 'rgb(255, 82, 27)', 'rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+
+                $('#Paitent2').vibrant({
+
+                    title: {
+                        text: '',
+                        x: -20 //center
+                    },
+                    subtitle: {
+                        text: '',
+                        x: -20
+                    },
+                    xAxis: {
+                        categories: ress5
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Sales'
+                        },
+                        plotLines: [{
+                            value: 0,
+                            width: 1,
+                            color: '#808080'
+                        }]
+                    },
+                    tooltip: {
+                        valueSuffix: ''
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle',
+                        borderWidth: 0
+                    },
+                    series: [{
+                        name: 'Ip',
+                        data: ress1
+                    }, {
+                        name: 'Op',
+                        data: ress2
+                    }, {
+                        name: 'Doctor',
+                        data: ress3
+                    }, {
+                        name: 'General',
+                        data: ress4
+                    }]
+                });
+
+            }
+        });
+    }
+    function paitiant3() {
+
+
+        var ress1 = [];
+        var ress2 = [];
+        var ress3 = [];
+        var ress4 = [];
+        var ress5 = [];
+        var ress6 = [];
+        var ress7 = [];
+        var ress8 = [];
+
+
+
+        $.ajax({
+            url: "../Dashboard/Paitentcatagory1",
+            type: 'POST',
+            data: { Fromdate: fromdate, Todate: todate },
+
+            success: function (result) {
+                $.each(result, function (ui, item) {
+                    ress1.push(item.Amount);
+                    ress2.push(item.AmountPaid);
+                    ress3.push(item.BillAmount);
+                    ress4.push(item.Balance);
+                    ress1.push(item.Barcode1);
+                    ress2.push(item.ClientID);
+                    ress3.push(item.ClientId1);
+                    ress4.push(item.CustomerID);
+                    ress5.push(item.Clientname);
+                    ress5.push(item.Date);
+
+                    ress1.push(item.Ip2);
+                    ress2.push(item.Op2);
+                    ress3.push(item.Do2);
+                    ress4.push(item.General2);
+                    ress1.push(item.Ip2);
+                    ress2.push(item.Op2);
+                    ress3.push(item.Do2);
+                    ress4.push(item.General3);
+                    ress5.push(item.Custom1);
+                    ress5.push(item.Custom2);
+                });
+
+
+                vibrant.setOptions({
+                    colors: ['#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+
+                $('#Paitent3').vibrant({
+
+
+                    chart: {
+                        type: 'bar'
+                    },
+                    title: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: ress5
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: ''
+                        }
+                    },
+                    legend: {
+                        reversed: true
+                    },
+                    plotOptions: {
+                        series: {
+                            stacking: 'normal'
+                        }
+                    },
+                    series: [{
+                        name: 'Ip',
+                        data: ress1
+                    }, {
+                        name: 'Op',
+                        data: ress2
+                    }, {
+                        name: 'Doctor',
+                        data: ress3
+                    }, {
+                        name: 'General',
+                        data: ress4
+                    }]
+                });
+
+            }
+        });
+    }
+    function paitiant4() {
+        var ress1 = [];
+        var ress2 = [];
+        var ress3 = [];
+        var ress4 = [];
+        var ress5 = [];
+
+
+        $.ajax({
+            url: "../Dashboard/Paitentcatagory1",
+            type: 'POST',
+            data: { Fromdate: fromdate, Todate: todate },
+
+            success: function (result) {
+
+                
+
+
+                $.each(result, function (ui, item) {
+                    ress1.push(item.Amount);
+                    ress2.push(item.AmountPaid);
+                    ress3.push(item.BillAmount);
+                    ress4.push(item.Balance);
+                    ress1.push(item.Barcode1);
+                    ress2.push(item.ClientID);
+                    ress3.push(item.ClientId1);
+                    ress4.push(item.CustomerID);
+                    ress5.push(item.Clientname);
+                    ress5.push(item.Date);
+
+                    ress1.push(item.Ip2);
+                    ress2.push(item.Op2);
+                    ress3.push(item.Do2);
+                    ress4.push(item.General2);
+                    ress1.push(item.Ip2);
+                    ress2.push(item.Op2);
+                    ress3.push(item.Do2);
+                    ress4.push(item.General3);
+                    ress5.push(item.Custom1);
+                    ress5.push(item.Custom2);
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+                $('#Paitent4').vibrant({
+
+                    title: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: ress5
+                    },
+                    labels: {
+                        items: [{
+                            html: 'Total Patient',
+                            style: {
+                                left: '50px',
+                                top: '18px'
+                                //color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                            }
+                        }]
+                    },
+                    series: [{
+                        type: 'column',
+                        name: 'Ip',
+                        data: ress1
+                    }, {
+                        type: 'column',
+                        name: 'Op',
+                        data: ress2
+                    }, {
+                        type: 'column',
+                        name: 'Doctor',
+                        data: ress3
+                    }, {
+                        type: 'spline',
+                        name: 'General',
+                        data: ress4,
+                        marker: {
+                            lineWidth: 2,
+                            //lineColor: Highcharts.getOptions().colors[3],
+                            fillColor: 'white'
+                        }
+                    }, {
+                        type: 'pie',
+                        name: 'Total Sales',
+                        data: [{
+                            name: 'Ip',
+                            y: p1
+                            // color: Highcharts.getOptions().colors[0] // Jane's color
+                        }, {
+                            name: 'Op',
+                            y: p2
+                            //color: Highcharts.getOptions().colors[1] // John's color
+                        }, {
+                            name: 'Doctor',
+                            y: p3
+                            //color: Highcharts.getOptions().colors[2] // Joe's color
+                        }],
+                        center: [100, 80],
+                        size: 100,
+                        showInLegend: false,
+                        dataLabels: {
+                            enabled: false
+                        }
+                    }]
+
+
+                });
+            }
+        });
+    }
+
+
+   
+
+
+   
+</script>
+
+<script type="text/javascript">
+
+  
+        var day = [];
+        var ress = [];
+
+
+        $.ajax({
+            url: "../Dashboard/Paitentcatag1",
+            type: 'POST',
+            datatype:'json',
+            success: function (result) {
+
+                $.each(result, function (ui, item) {
+                    ress.push(item.Amount);
+                    ress.push(item.AmountPaid);
+                    ress.push(item.BillAmount);
+                    ress.push(item.Balance);
+
+                });
+
+
+                vibrant.setOptions({
+                    colors: ['#8AE6B8', '#D175FF', '#47A3FF', '#FF9655', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+                $('#Paitent1').vibrant({
+
+                    chart: {
+                        type: 'bar'
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: ['Patiants'],
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'values ',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' Sales'
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'top',
+                        x: -40,
+                        y: 80,
+                        floating: true,
+                        borderWidth: 1,
+                        //backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                        shadow: true
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                  
+                        name: 'Ip',
+                        data: [ress[1]]
+                    },{
+                        name: 'Op',
+                        data: [ress[0]]
+                    },  {
+                        name: 'Doctor',
+                        data: [ress[2]]
+                    }, {
+                        name: 'General',
+                        data: [ress[3]]
+                    }]
+
+                });
+            }
+        });
+   
+        var aress1 = [];
+        var aress2 = [];
+        var aress3 = [];
+        var aress4 = [];
+        var aress5 = [];
+      
+
+        $.ajax({
+            url: "../Dashboard/Paitentcatag2",
+            type: 'POST',
+            datatype: 'json',
+            success: function (result) {
+                $.each(result, function (ui, item) {
+                    aress1.push(item.Amount);
+                    aress2.push(item.AmountPaid);
+                    aress3.push(item.BillAmount);
+                    aress4.push(item.Balance);
+                    aress1.push(item.Barcode1);
+                    aress2.push(item.ClientID);
+                    aress3.push(item.ClientId1);
+                    aress4.push(item.CustomerID);
+                    // ress5.push(item.Clientname);
+                    aress5.push(item.Date);
+
+                    aress1.push(item.Ip2);
+                    aress2.push(item.Op2);
+                    aress3.push(item.Do2);
+                    aress4.push(item.General2);
+                    aress1.push(item.Ip2);
+                    aress2.push(item.Op2);
+                    aress3.push(item.Do2);
+                    aress4.push(item.General3);
+                    aress5.push(item.Custom1);
+                    aress5.push(item.Custom2);
+                    aress5.push(item.Custom4);
+
+                });
+
+                
+
+                vibrant.setOptions({
+                    colors: ['rgb(15, 115, 255)', 'rgb(255, 82, 27)', 'rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+
+                $('#Paitent2').vibrant({
+
+                    title: {
+                        text: '',
+                        x: -20 //center
+                    },
+                    subtitle: {
+                        text: '',
+                        x: -20
+                    },
+                    xAxis: {
+                        categories: aress5
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Sales'
+                        },
+                        plotLines: [{
+                            value: 0,
+                            width: 1,
+                            color: '#808080'
+                        }]
+                    },
+                    tooltip: {
+                        valueSuffix: ''
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle',
+                        borderWidth: 0
+                    },
+                    series: [{
+                        name: 'Ip',
+                        data: aress1
+                    }, {
+                        name: 'Op',
+                        data: aress2
+                    }, {
+                        name: 'Doctor',
+                        data: aress3
+                    }, {
+                        name: 'General',
+                        data: aress4
+                    }]
+                });
+
+            }
+        });
+   
+
+
+        var bress1 = [];
+        var bress2 = [];
+        var bress3 = [];
+        var bress4 = [];
+        var bress5 = [];
+
+
+
+
+        $.ajax({
+            url: "../Dashboard/Paitentcatag2",
+            type: 'POST',
+            datatype: 'json',
+            success: function (result) {
+                $.each(result, function (ui, item) {
+                    bress1.push(item.Amount);
+                    bress2.push(item.AmountPaid);
+                    bress3.push(item.BillAmount);
+                    bress4.push(item.Balance);
+                    bress1.push(item.Barcode1);
+                    bress2.push(item.ClientID);
+                    bress3.push(item.ClientId1);
+                    bress4.push(item.CustomerID);
+                    bress5.push(item.Custom4);
+                    bress5.push(item.Date);
+
+                    bress1.push(item.Ip2);
+                    bress2.push(item.Op2);
+                    bress3.push(item.Do2);
+                    bress4.push(item.General2);
+                    bress1.push(item.Ip2);
+                    bress2.push(item.Op2);
+                    bress3.push(item.Do2);
+                    bress4.push(item.General3);
+                    bress5.push(item.Custom1);
+                    bress5.push(item.Custom2);
+                });
+
+                
+                vibrant.setOptions({
+                    colors: ['#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+
+                $('#Paitent3').vibrant({
+
+
+                    chart: {
+                        type: 'bar'
+                    },
+                    title: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: bress5
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: ''
+                        }
+                    },
+                    legend: {
+                        reversed: true
+                    },
+                    plotOptions: {
+                        series: {
+                            stacking: 'normal'
+                        }
+                    },
+                    series: [{
+                        name: 'Ip',
+                        data: bress1
+                    }, {
+                        name: 'Op',
+                        data: bress2
+                    }, {
+                        name: 'Doctor',
+                        data: bress3
+                    }, {
+                        name: 'General',
+                        data: bress4
+                    }]
+                });
+
+            }
+        });
+   
+        var ress1 = [];
+        var ress2 = [];
+        var ress3 = [];
+        var ress4 = [];
+        var ress5 = [];
+
+
+        $.ajax({
+            url: "../Dashboard/Paitentcatag2",
+            type: 'POST',
+            datatype: 'json',
+            success: function (result) {
+
+                $.each(result, function (ui, item) {
+                    ress1.push(item.Amount);
+                    ress2.push(item.AmountPaid);
+                    ress3.push(item.BillAmount);
+                    ress4.push(item.Balance);
+                    ress1.push(item.Barcode1);
+                    ress2.push(item.ClientID);
+                    ress3.push(item.ClientId1);
+                    ress4.push(item.CustomerID);
+                    ress5.push(item.Custom4);
+                    ress5.push(item.Date);
+
+                    ress1.push(item.Ip2);
+                    ress2.push(item.Op2);
+                    ress3.push(item.Do2);
+                    ress4.push(item.General2);
+                    ress1.push(item.Ip2);
+                    ress2.push(item.Op2);
+                    ress3.push(item.Do2);
+                    ress4.push(item.General3);
+                    ress5.push(item.Custom1);
+                    ress5.push(item.Custom2);
+                });
+
+                
+                vibrant.setOptions({
+                    colors: ['rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+                $('#Paitent4').vibrant({
+
+                    title: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: ress5
+                    },
+                    labels: {
+                        items: [{
+                            html: 'Total Patient',
+                            style: {
+                                left: '50px',
+                                top: '18px'
+                                //color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                            }
+                        }]
+                    },
+                    series: [{
+                        type: 'column',
+                        name: 'Ip',
+                        data: ress1
+                    }, {
+                        type: 'column',
+                        name: 'Op',
+                        data: ress2
+                    }, {
+                        type: 'column',
+                        name: 'Doctor',
+                        data: ress3
+                    }, {
+                        type: 'spline',
+                        name: 'General',
+                        data: ress4,
+                        marker: {
+                            lineWidth: 2,
+                            //lineColor: Highcharts.getOptions().colors[3],
+                            fillColor: 'white'
+                        }
+                    }, {
+                        type: 'pie',
+                        name: 'Total Sales',
+                        data: [{
+                            name: 'Ip',
+                            y: ress1[1]
+                        }, {
+                            name: 'Op',
+                            y: ress3[0]
+                        }, {
+                            name: 'Doctor',
+                            y: ress2[1]
+                        }],
+                        center: [100, 80],
+                        size: 100,
+                        showInLegend: false,
+                        dataLabels: {
+                            enabled: false
+                        }
+                    }]
+
+
+                });
+            }
+        });
+   
+
+
+   
+
+
+   
+</script>

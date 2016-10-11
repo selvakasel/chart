@@ -1,0 +1,417 @@
+﻿@*<div class="modal fade" id="myModalss" tabindex="-1" role="dialog" aria-labelledby="myModal"
+    ria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title" id="myModalfmdt">
+                    Purchase Details
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id='myDialogContainer2'>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>
+                            From Date
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="frmtdate" class="form-control" />
+                    </div>
+                    <div class="col-sm-6">
+                        <label>
+                            To Date
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="todate" class="form-control" /></div>
+                    <div class="col-sm-6">
+                        <label>
+                            MainStore ID
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="mainid" class="form-control" />
+                        <input type="hidden" id="mainid1" class="form-control" />
+                        <input type="hidden" id="mainid2" class="form-control" /></div>
+                    <div class="col-sm-6">
+                        <label>
+                            SubStore ID
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="subid" class="form-control" />
+                        <input type="hidden" id="tsubid1" class="form-control" />
+                        <input type="hidden" id="tsubid2" class="form-control" /></div>
+                    <div class="col-sm-6">
+                        <label>
+                            IP
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="ip" class="form-control" />
+                        <input type="hidden" id="ip1" class="form-control" />
+                        <input type="hidden" id="ip2" class="form-control" /></div>
+                    <div class="col-sm-6">
+                        <label>
+                            OP
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="op" class="form-control" />
+                        <input type="hidden" id="op1" class="form-control" />
+                        <input type="hidden" id="op2" class="form-control" /></div>
+                    <div class="col-sm-6">
+                        <label>
+                            General
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="general" class="form-control" />
+                        <input type="hidden" id="gen1" class="form-control" />
+                        <input type="hidden" id="gen2" class="form-control" /></div>
+                    <div class="col-sm-6">
+                        <label>
+                            Doctore
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="doctore" class="form-control" />
+                        <input type="hidden" id="doc2" class="form-control" />
+                        <input type="hidden" id="doc1" class="form-control" /></div>
+                </div>
+                <label style="color: Red;">
+                    * Fields are required</label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnsav" class="btn btn-primary">
+                    Submit
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<script type="text/javascript">
+
+    $("#frmtdate").pickadate({
+        format: "dd/mm/yyyy",
+        min: true,
+        selectMonths: true,
+        selectYears: true,
+        editable: 'yuvi'
+
+    });
+    $("#todate").pickadate({
+        format: "dd/mm/yyyy",
+        min: true,
+        selectMonths: true,
+        selectYears: true,
+        editable: 'yuvi'
+
+    });
+
+    $("#gpp").click(function () {    
+        $("#myModalss").modal('show');
+    });
+
+    $("#btnsav").click(function () {
+        alert();
+        var fromdate = $("#frmtdate").val();
+        var todate = $("#todate").val();
+        var mainstoreid = $("#mainid").val();
+        var substoreid = $("#subid").val();
+        var ip = $("#ip").val();
+        var op = $("#op").val();
+        var general = $("#general").val();
+        var doctor = $("#doctore").val();
+
+
+
+
+        $.ajax({
+            url: "../Dashboard/newasset",
+            data: { Fromdate: fromdate, Todate: todate },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var PO = [];
+                var nonPO = [];
+                var Total = [];
+
+
+                for (i = 0; i < result.length; i++) {
+
+                    PO.push([result[i].ProductName]);
+                    nonPO.push([result[i].ProductName]);
+                    Total.push([result[i].PurchasePrice]);
+
+                }
+
+
+                vibrant.setOptions({
+                    colors: ['rgb(15, 115, 255)', 'rgb(255, 82, 27)', 'rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+                $('#newasset').vibrant({
+                    chart: {
+                        type: 'column',
+                        options3d: {
+                            enabled: true,
+                            alpha: 10,
+                            beta: 25
+
+                        }
+
+                    },
+                    title: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: series2,
+                        labels: {
+                            rotation: -70,
+                            style: {
+                                font: '08px Helvetica'
+                            }
+                        }
+
+                    },
+                    yAxis: {
+
+                        title: {
+                            text: 'Purchase Price (rupees)',
+                            align: 'high'
+                        }
+
+                    },
+
+                    plotOptions: {
+                        column: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    legend: {
+
+                        align: 'right',
+                        verticalAlign: 'top',
+                        x: -80,
+                        y: 2,
+                        floating: true,
+                        backgroundColor: ((vibrant.theme && vibrant.theme.legendBackgroundColor) || '#FFFFFF'),
+                        shadow: false,
+                        enabled: false
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+
+                        data: Assignedto
+                    }]
+                });
+
+
+            }
+        });
+ 
+
+    });
+
+
+    <div class="">
+<div class="col-sm-12">
+<div class="row">
+<div class="col-sm-3">
+<div class="panel panel-default">
+<div class="panel panel-head">
+<div class="panel panel-title">
+<h4>PUrchase</h4></div>
+  <div class="panel-body"> 
+  <div class="ss" id="container">
+</div>   
+ </div></div>
+</div>
+
+</div>
+<div class="col-sm-3">
+<div class="panel panel-default">
+<div class="panel panel-head">
+<div class="panel panel-title">
+<h4>PUrchase</h4></div>
+  <div class="panel-body"> 
+  <div class="ss" id="">
+</div>   
+ </div></div>
+</div>
+
+</div>
+<div class="col-sm-3">
+<div class="panel panel-default">
+<div class="panel panel-head">
+<div class="panel panel-title">
+<h4>PUrchase</h4></div>
+  <div class="panel-body"> 
+  <div class="ss" id="">
+</div>   
+ </div></div>
+</div>
+
+</div>
+<div class="col-sm-3">
+<div class="panel panel-default">
+<div class="panel panel-head">
+<div class="panel panel-title">
+<h4>PUrchase</h4></div>
+  <div class="panel-body"> 
+  <div class="ss" id="">
+</div>   
+ </div></div>
+</div>
+
+</div>
+
+</div>
+</div>
+<div class="col-sm-12">
+<div class="row">
+<div class="col-sm-3">
+<div class="panel panel-default">
+<div class="panel panel-head">
+<div class="panel panel-title">
+<h4>PUrchase</h4></div>
+  <div class="panel-body"> 
+  <div class="ss" id="container">
+</div>   
+ </div></div>
+</div>
+
+</div>
+<div class="col-sm-3">
+<div class="panel panel-default">
+<div class="panel panel-head">
+<div class="panel panel-title">
+<h4>PUrchase</h4></div>
+  <div class="panel-body"> 
+  <div class="ss" id="">
+</div>   
+ </div></div>
+</div>
+
+</div>
+<div class="col-sm-3">
+<div class="panel panel-default">
+<div class="panel panel-head">
+<div class="panel panel-title">
+<h4>PUrchase</h4></div>
+  <div class="panel-body"> 
+  <div class="ss" id="">
+</div>   
+ </div></div>
+</div>
+
+</div>
+<div class="col-sm-3">
+<div class="panel panel-default">
+<div class="panel panel-head">
+<div class="panel panel-title">
+<h4>PUrchase</h4></div>
+  <div class="panel-body"> 
+  <div class="ss" id="">
+</div>   
+ </div></div>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+   <script src="../Content/wibran-3d.js" type="text/javascript"></script>
+    <script src="../Content/wibran-more.js" type="text/javascript"></script>
+    <script src="../Content/wibran.js" type="text/javascript"></script>
+    <script src="../Content/Wibranex.js" type="text/javascript"></script>
+
+    
+  
+
+<script type="text/javascript">
+
+  
+        $('#container').vibrant({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Browser market shares January, 2015 to May, 2015'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            color: (vibrant.theme && vibrant.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: "Brands",
+                colorByPoint: true,
+                data: [{
+                    name: "Microsoft Internet Explorer",
+                    y: 56.33
+                }, {
+                    name: "Chrome",
+                    y: 24.03,
+                    sliced: true,
+                    selected: true
+                }, {
+                    name: "Firefox",
+                    y: 10.38
+                }, {
+                    name: "Safari",
+                    y: 4.77
+                }, {
+                    name: "Opera",
+                    y: 0.91
+                }, {
+                    name: "Proprietary or Undetectable",
+                    y: 0.2
+                }]
+            }]
+        });
+    
+
+</script>
+
+
+
+
+
+
+   
+
+
+
+</script>
+
+*@

@@ -1,0 +1,1167 @@
+﻿@model HealthCareInMvc4.Areas.Store.Models.ChartViewModel  
+
+<style type="text/css">
+    .form-control
+    {
+        border-radius: 0px !important;
+    }
+    #panel
+    {
+        position: fixed;
+        height:0 !important;
+        background: transparent;
+        right: 0;
+        top: 8%;
+        z-index:1;
+    }
+    
+    #panel-content
+    {
+        position: relative;
+        top: 80px;
+        width: 175px;
+        height: 70vh;
+        background: #7f7f7f;
+        float: right;
+        display: none;
+    }
+    
+    #panel-tab
+    {
+        position: relative;
+        width: 50px !important;
+        height: 0 !important;
+        background-color: transparent;
+        float: left;
+        top:73px !important;
+    }
+    body
+    {
+        min-height: 100vh !important;
+    }
+    #myTab
+    {
+        border-radius: 23px 0px 0px 23px;
+        position: relative;
+        top: 150px;
+        background: #808080;
+        height: 50px;
+        color: White;
+    }
+    
+    #myTab p
+    {
+        padding: 12px !important;
+    }
+    .panel-title {
+   padding-top: 10px;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+</style>
+<style type="text/css">
+    #cssmenu
+    {
+        position: relative;
+        margin: 0;
+        font-family: 'Roboto Condensed';
+        line-height: 1;
+        width: 250px;
+    }
+    .align-right
+    {
+        float: right;
+    }
+    #cssmenu ul
+    {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: block;
+    }
+    #cssmenu ul li
+    {
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+    #cssmenu ul li a
+    {
+        text-decoration: none;
+        cursor: pointer;
+    }
+    #cssmenu > ul > li > a
+    {
+        color: #dddddd;
+        text-transform: uppercase;
+        display: block;
+        padding: 20px; /* border-top: 1px solid #000000;
+        border-left: 1px solid #000000;
+        border-right: 1px solid #000000;*/
+        background: #7f7f7f;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        letter-spacing: 1px;
+        font-size: 16px;
+        font-weight: 300;
+        -webkit-transition: all 0.25s ease-in;
+        -moz-transition: all 0.25s ease-in;
+        -ms-transition: all 0.25s ease-in;
+        -o-transition: all 0.25s ease-in;
+        transition: all 0.25s ease-in;
+        position: relative;
+    }
+    #cssmenu > ul > li:first-child > a
+    {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border-bottom: 1px solid white;
+    }
+    #cssmenu > ul > li:last-child > a
+    {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-bottom: 1px solid white;
+    }
+    #cssmenu > ul > li:hover > a, #cssmenu > ul > li.open > a, #cssmenu > ul > li.active > a
+    {
+        background: #7f7f7f;
+        color: #ffffff;
+    }
+    #cssmenu ul > li.has-sub > a::after
+    {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 13px solid #000000;
+        border-botom: 13px solid transparent;
+        border-left: 125px solid transparent;
+        border-right: 125px solid transparent;
+        left: 0;
+        bottom: -13px;
+        bottom: 0px;
+        z-index: 1;
+        opacity: 0;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -ms-transition: all .2s ease;
+        -o-transition: all .2s ease;
+        transition: all .2s ease;
+    }
+    #cssmenu ul > li.has-sub > a::before
+    {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 13px solid #151515;
+        border-botom: 13px solid transparent;
+        border-left: 125px solid transparent;
+        border-right: 125px solid transparent;
+        left: 0;
+        bottom: -12px;
+        bottom: -1px;
+        z-index: 3;
+        opacity: 0;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -ms-transition: all .2s ease;
+        -o-transition: all .2s ease;
+        transition: all .2s ease;
+    }
+    #cssmenu ul > li.has-sub::after
+    {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: 7px solid transparent;
+        border-top-color: #dddddd;
+        z-index: 2;
+        right: 20px;
+        top: 24.5px;
+        pointer-events: none;
+    }
+    #cssmenu ul > li:hover::after, #cssmenu ul > li.active::after, #cssmenu ul > li.open::after
+    {
+        border-top-color: #ffffff;
+    }
+    #cssmenu ul > li.has-sub.open > a::after
+    {
+        opacity: 1;
+        bottom: -13px;
+    }
+    #cssmenu ul > li.has-sub.open > a::before
+    {
+        opacity: 1;
+        bottom: -12px;
+    }
+    #cssmenu ul ul
+    {
+        display: none;
+    }
+    #cssmenu ul ul li
+    {
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+    #cssmenu ul ul li a
+    {
+        background: #f1f1f1;
+        display: block;
+        position: relative;
+        font-size: 15px;
+        padding: 14px 20px;
+        border-bottom: 1px solid #dddddd;
+        color: #777777;
+        font-weight: 300;
+        -webkit-transition: all 0.25s ease-in;
+        -moz-transition: all 0.25s ease-in;
+        -ms-transition: all 0.25s ease-in;
+        -o-transition: all 0.25s ease-in;
+        transition: all 0.25s ease-in;
+    }
+    #cssmenu ul ul li:first-child > a
+    {
+        padding-top: 18px;
+    }
+    #cssmenu ul ul ul li
+    {
+        border: 0;
+    }
+    #cssmenu ul ul li:hover > a, #cssmenu ul ul li.open > a, #cssmenu ul ul li.active > a
+    {
+        background: #e4e4e4;
+        color: #666666;
+    }
+    #cssmenu ul ul > li.has-sub > a::after
+    {
+        border-top: 13px solid #dddddd;
+    }
+    #cssmenu ul ul > li.has-sub > a::before
+    {
+        border-top: 13px solid #e4e4e4;
+    }
+    #cssmenu ul ul ul li a
+    {
+        padding-left: 30px;
+    }
+    #cssmenu ul ul > li.has-sub::after
+    {
+        top: 18.5px;
+        border-width: 6px;
+        border-top-color: #777777;
+    }
+    #cssmenu ul ul > li:hover::after, #cssmenu ul ul > li.active::after, #cssmenu ul ul > li.open::after
+    {
+        border-top-color: #666666;
+    }
+    .panel-heading
+    {
+        background-color: #555555 !important;
+    }
+    .panel
+    {
+        border-top: 0 none !important;
+        border-left: 1px solid #555555 !important;
+        border-bottom: 1px solid #555555 !important;
+        border-right: 1px solid #555555 !important;
+    }
+    thead, th
+    {
+        background-color: #555555 !important;
+    }
+    
+    /*#salestab
+{
+   height:200px !important;
+   overflow:scroll;
+}*/
+</style>
+
+<div class="">
+<div class="col-sm-12">
+<div class="row">
+        <div class="col-sm-5" id="Store">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th align="center">
+                            Approval Type
+                        </th>
+                        <th align="center">
+                            Approval Detail
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var itm1 in Model.SalesOrderProduct)
+                    {
+                        <tr> 
+                        <td>POAprroved</td>                           
+                            <td>
+                              @itm1.AmountPaid
+                            </td>
+                       </tr>
+                        <tr>
+                        <td>PORejected</td>
+                            <td>
+                                @itm1.Balance
+                            </td>
+                        </tr>
+                        <tr>
+                        <td>POPending</td>
+                            <td>
+                             @itm1.Amount
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-7">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th align="center">Sub_Store Name</th>                        
+                         <th align="center"> Approval Status</th>
+                         <th align="center">Purchase Prise</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var itm1 in Model.SalesOrderDayWise)
+                    {
+                        <tr>
+                            <td>@itm1.Name</td> 
+                            <td>@itm1.ProductName</td> 
+                            <td>@itm1.BillAmount
+                            </td>                          
+                        </tr>
+                        
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    <br />
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="panel panel-frimary">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            POPending
+                            @*<button type="button" id="but1"   position: relative; top: -7px" value="1">
+                                <span class="fa fa-calendar myicon"></span>
+                            </button>*@
+                            <button type="button" id="but1" style="float: right;margin-top: -8px;"
+                            value="1">
+                            <span class="fa fa-calendar myicon"></span>
+                        </button>
+                            </h4>
+                             
+                    </div>
+                    <div class="panel-body">
+                        <div id="gkkfv">
+                        </div>
+                    </div>
+                     <div class="foote">
+                        <a href="#" style="padding-left: 170px; font-size: 10px;" onclick="Popending()">more info</a>
+                        </div>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="panel panel-frimary">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                           &nbsp PORejected
+                            <button type="button" id="but2"  style="margin-top: -8px;float:right " value="2">
+                                <span class="fa fa-calendar myicon"></span>  </button>
+                          
+                            </h4>
+                            
+                    </div>
+                    <div class="panel-body">
+                        <div id="gkk">
+                        </div>
+                    </div>
+                     <div class="foote">
+                        <a href="#" style="padding-left: 170px; font-size: 10px;" onclick="PoRejected()">more info</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="panel panel-frimary">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            POapproval
+                            <button type="button" id="but3"  style="float: right;margin-top: -8px;" value="3">
+                                <span class="fa fa-calendar myicon"></span>
+                            </button>
+
+                            </h4>
+                                                </div>
+                    <div class="panel-body">
+                        <div id="gkfk">
+                        </div>
+                    </div>
+                     <div class="foote">
+                        <a href="#" style="padding-left: 170px; font-size: 10px;" onclick="Poapproval()">more info</a>
+                        </div>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="panel panel-frimary">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                       &nbsp Store Wise Pending
+                       <button type="button" id="but4"   style="float: right;margin-top: -8px;" value="4">
+                                <span class="fa fa-calendar myicon"></span>
+                            </button>
+                        </h4>
+                         
+                    </div>
+                    <div class="panel-body">
+                        <div id="gkkv">
+                        </div>
+                    </div>
+                     <div class="foote">
+                        <a href="#" style="padding-left: 170px; font-size: 10px;" onclick="Postorwisepend()">more info</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModal"
+    ria-hidden="true" style="width: 530px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title" id="myModalfmdt">
+                    Purchase Details
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id='myDialogContainer2'>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>
+                            From Date
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="frmtdate1" class="form-control" />
+                    </div>
+                    <div class="col-sm-6">
+                        <label>
+                            To Date
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="todate1" class="form-control" /></div>
+                </div>
+                <label id="vali2" style="color: Red;">
+                    * Fields are required</label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnsav1" class="btn btn-primary">
+                    Submit
+                </button>
+                <button type="button" id="cancel2" class="btn btn-danger">
+                    Cancel
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<script type="text/javascript">
+    function Popending() {
+        window.open("../HmsWebPages/InventoryRpt/Popendingfrm.aspx?ReportName=" + "rptpopendingdash.rpt");
+    }
+    function PoRejected() {
+        window.open("../HmsWebPages/InventoryRpt/PoRejectedfrm.aspx?ReportName=" + "Rptporejected.rpt");
+    }
+    function Poapproval() {
+        window.open("../HmsWebPages/InventoryRpt/Poapprovalfrm.aspx?ReportName=" + "rptPoapproval.rpt");
+    }
+    function Postorwisepend() {
+        window.open("../HmsWebPages/InventoryRpt/Postorwisependfrm.aspx?ReportName=" + "rptpodash.rpt");
+    }
+
+</script>
+
+
+
+<script type="text/javascript">
+ var m = 0;
+ $("#but1").click(function () {   //,#but2,#but3,#but4
+
+        $("#myModal2").modal('show');
+        $("#myModal2").modal({ backdrop: false });
+
+        $("#frmtdate1").pickadate({
+            format: "dd/mm/yyyy",
+            // min: true,
+            selectMonths: true,
+            selectYears: true,
+            editable: 'ray'
+
+        });
+        $("#todate1").pickadate({
+            format: "dd/mm/yyyy",
+            //  min: true,
+            selectMonths: true,
+            selectYears: true,
+            editable: 'ray'
+
+        });
+        m = $(this).val();
+
+
+    });
+    var fromdate;
+    var todate;
+    $("#btnsav1").click(function () {
+        $("#vali2").hide();
+        fromdate = $("#frmtdate1").val();
+        todate = $("#todate1").val();
+
+        if (fromdate == '') {
+            $("#vali2").show();
+            $("#frmtdate1").focus();
+            return false;
+        }
+        if (todate == '') {
+            $("#vali2").show();
+            $("#todate1").focus();
+            return false;
+        }
+
+        if (parseInt(m) == 1) {
+            PoPending1();
+            fromdate = $("#frmtdate1").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 2) {
+            PORejected1();
+            fromdate = $("#frmtdate1").val('');
+            todate = $("#todate1").val('');
+        } else if (parseInt(m) == 3) {
+            POapproval1()
+            fromdate = $("#frmtdate1").val('');
+            todate = $("#todate1").val('');
+
+        } else if (parseInt(m) == 4) {
+            approvaldetails1();
+            fromdate = $("#frmtdate1").val('');
+            todate = $("#todate1").val('');
+        } 
+        m = 0;
+        $("#myModal2").modal('hide');
+    });
+
+    $("#cancel1").click(function () {
+        $("#myModalss").modal('hide');
+    });
+    $("#cancel2").click(function () {
+        $("#myModal2").modal('hide');
+    });
+
+    function PoPending1() {
+
+        $.ajax({
+            url: "../Dashboard/PoPending1",
+            data: { Fromdate: fromdate, Todate: todate },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+                var series2 = [];
+                var Assignedto = [];
+
+                for (i = 0; i < result.length; i++) {
+
+                    series2.push([result[i].Name]);
+
+                    Assignedto.push([result[i].AmountPaid]);
+
+                }
+
+                vibrant.setOptions({
+                    colors: ['rgb(15, 115, 255)', 'rgb(255, 82, 27)', 'rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+                $('#gkkfv').vibrant({
+                    chart: {
+                        type: 'area',
+                        inverted: true
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        style: {
+                            position: 'absolute',
+                            right: '0px',
+                            bottom: '10px'
+                        }
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'top',
+                        x: -150,
+                        y: 100,
+                        floating: true,
+                        borderWidth: 1,
+                        backgroundColor: (vibrant.theme && vibrant.theme.legendBackgroundColor) || '#FFFFFF'
+                    },
+                    xAxis: {
+                        categories: series2
+                    },
+                    yAxis: {
+                        title: {
+                            text: ''
+                        },
+                        labels: {
+                            formatter: function () {
+                                return this.value;
+                            }
+                        },
+                        min: 0
+                    },
+                    plotOptions: {
+                        area: {
+                            fillOpacity: 0.5
+                        }
+                    },
+                    series: [{
+                        name: 'No Of PoPending',
+                        data: Assignedto
+
+                    }]
+                });
+
+            }
+        });
+    }
+
+
+
+    function PORejected1() {
+
+        $.ajax({
+            url: "../Dashboard/PORejected",
+            data: { Fromdate: fromdate, Todate: todate },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+            
+            var series2 = [];
+            var Assignedto = [];
+           
+
+            for (i = 0; i < result.length; i++) {
+
+                series2.push([result[i].Name]);
+                Assignedto.push([result[i].AmountPaid]);
+               
+
+            }
+            vibrant.setOptions({
+                colors: [ 'rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+            });
+
+            $('#gkk').vibrant({
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: series2
+                },
+                yAxis: {
+                    title: {
+                        text: ''
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'No Of PoRejected',
+                    data: Assignedto
+                }]
+            });
+        }
+    });
+    }
+
+
+    function POapproval1() {
+        $.ajax({
+            url: "../Dashboard/POapproval1",
+            data: { Fromdate: fromdate, Todate: todate },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+                    
+
+                 var res = [];
+
+                var rest = { "name": "", "y": "" };
+                for (i = 0; i < result.length; i++) {
+                    rest.name = result[i].Name;
+                    rest.y = result[i].AmountPaid;
+                    res.push(rest);
+                    rest = { "name": "", "y": "" };
+
+
+            }
+                vibrant.setOptions({
+                    colors: [ '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+            $('#gkfk').vibrant({
+                    chart: {
+
+                        type: 'pie'
+                    },
+                    title: {
+                        text: ''
+                    },
+                    yAxis: {
+                        showEmpty: false
+                    },
+                    legend: {
+                        itemStyle: {
+                            fontWeight: 'bold',
+                            fontSize: '08px'
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: false
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    series: [{
+                        name: "No Of PoApproval",
+                        colorByPoint: true,
+                        data: res
+                    }]
+                });
+
+
+        }
+    });
+
+
+
+    }
+
+
+    function approvaldetails1() {
+        $.ajax({
+            url: "../Dashboard/approvaldetails1",
+            data: { Fromdate: fromdate, Todate: todate },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+                var Rate = [];
+                var Inputtx = [];
+                var Total = [];
+                var Quantity = [];
+
+
+                for (i = 0; i < result.length; i++) {
+
+                    Rate.push([result[i].AmountPaid]);
+                    Inputtx.push([result[i].Balance]);
+                    Total.push([result[i].Amount]);
+
+                }
+
+
+                var a = parseInt(Rate);
+                var b = parseInt(Inputtx);
+                var c = parseInt(Total);
+
+                vibrant.setOptions({
+                    colors: ['#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+                $('#gkkv').vibrant({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: 0,
+                        plotShadow: false
+                    },
+                    title: {
+                        text: '',
+                        align: 'center',
+                        verticalAlign: 'middle',
+                        y: 40
+                    },
+                    plotOptions: {
+                        pie: {
+                            dataLabels: {
+                                enabled: true,
+                                distance: -50,
+                                style: {
+                                    fontWeight: 'bold',
+                                    color: 'white',
+                                    textShadow: '0px 1px 2px black'
+                                }
+                            },
+                            startAngle: -90,
+                            endAngle: 90,
+                            center: ['50%', '75%']
+                        }
+                    },
+                    series: [{
+                        type: 'pie',
+                        name: '',
+                        innerSize: '50%',
+                        data: [
+                ['POAprroved', a],
+                ['PORejected', b],
+                ['POPending', c],
+                {
+                    name: '',
+                    y: 0.2,
+                    dataLabels: {
+                        enabled: false
+                    }
+                }
+            ]
+                    }]
+                });
+            }
+        });
+
+    }
+
+  </script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+    $.ajax({
+        url: "../Dashboard/PoPending",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+            var series2 = [];
+            var Assignedto = [];
+
+            for (i = 0; i < result.length; i++) {
+
+                series2.push([result[i].Name]);
+
+                Assignedto.push([result[i].AmountPaid]);
+
+            }
+            vibrant.setOptions({
+                colors: ['#CC6600', '#CC6600', '#CC6600', '#CC6600']
+            });
+
+            $('#gkkfv').vibrant({
+                chart: {
+                    type: 'area',
+                    inverted: true
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    style: {
+                        position: 'absolute',
+                        right: '0px',
+                        bottom: '10px'
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -150,
+                    y: 100,
+                    floating: true,
+                    borderWidth: 1,
+                    backgroundColor: (vibrant.theme && vibrant.theme.legendBackgroundColor) || '#FFFFFF'
+                },
+                xAxis: {
+                    categories: series2
+                },
+                yAxis: {
+                    title: {
+                        text: ''
+                    },
+                    labels: {
+                        formatter: function () {
+                            return this.value;
+                        }
+                    },
+                    min: 0
+                },
+                plotOptions: {
+                    area: {
+                        fillOpacity: 0.5
+                    }
+                },
+                series: [{
+                    name: 'No Of PoPending',
+                    data:Assignedto 
+
+                }]
+            });
+
+        }
+    });
+
+
+
+   
+</script>
+<script type="text/javascript">
+
+    $.ajax({
+        url: "../Dashboard/PORejected",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+            var series2 = [];
+            var Assignedto = [];
+           
+
+            for (i = 0; i < result.length; i++) {
+
+                series2.push([result[i].Name]);
+                Assignedto.push([result[i].AmountPaid]);
+               
+
+            }
+
+            vibrant.setOptions({
+                colors: ['rgb(15, 115, 255)', 'rgb(255, 82, 27)', 'rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+            });
+
+            $('#gkk').vibrant({
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: series2
+                },
+                yAxis: {
+                    title: {
+                        text: ''
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'No Of PORejected',
+                    data: Assignedto
+                }]
+            });
+        }
+    });
+</script>
+<script type="text/javascript">
+
+    $.ajax({
+        url: "../Dashboard/POapproval",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {          
+
+                 var res = [];
+
+                var rest = { "name": "", "y": "" };
+                for (i = 0; i < result.length; i++) {
+                    rest.name = result[i].Name;
+                    rest.y = result[i].AmountPaid;
+                    res.push(rest);
+                    rest = { "name": "", "y": "" };
+
+
+            }
+
+                vibrant.setOptions({
+                    colors: [ '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+            $('#gkfk').vibrant({
+                    chart: {
+
+                        type: 'pie'
+                    },
+                    title: {
+                        text: ''
+                    },
+                    yAxis: {
+                        showEmpty: false
+                    },
+                    legend: {
+                        itemStyle: {
+                            fontWeight: 'bold',
+                            fontSize: '08px'
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: false
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    series: [{
+                        name: "No Of POapproval",
+                        colorByPoint: true,
+                        data: res
+                    }]
+                });
+
+
+        }
+    });
+
+
+
+   
+</script>
+<script type="text/javascript">
+
+    $.ajax({
+        url: "../Dashboard/approvaldetails",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+            var Rate = [];
+            var Inputtx = [];
+            var Total = [];
+            var Quantity = [];
+
+
+            for (i = 0; i < result.length; i++) {
+
+                Rate.push([result[i].AmountPaid]);
+                Inputtx.push([result[i].Balance]);
+                Total.push([result[i].Amount]);
+
+            }
+
+
+            var a = parseInt(Rate);
+            var b = parseInt(Inputtx);
+            var c = parseInt(Total);
+
+            vibrant.setOptions({
+                colors: ['rgb(15, 115, 255)', 'rgb(255, 82, 27)', 'rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+            });
+
+            $('#gkkv').vibrant({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: 0,
+                    plotShadow: false
+                },
+                title: {
+                    text: '',
+                    align: 'center',
+                    verticalAlign: 'middle',
+                    y: 40
+                },               
+                plotOptions: {
+                    pie: {
+                        dataLabels: {
+                            enabled: true,
+                            distance: -50,
+                            style: {
+                                fontWeight: 'bold',
+                                color: 'white',
+                                textShadow: '0px 1px 2px black'
+                            }
+                        },
+                        startAngle: -90,
+                        endAngle: 90,
+                        center: ['50%', '75%']
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: '',
+                    innerSize: '50%',
+                    data: [
+                ['POAprroved', a],
+                ['PORejected', b],
+                ['POPending', c],
+                {
+                    name: '',
+                    y: 0.2,
+                    dataLabels: {
+                        enabled: false
+                    }
+                }
+            ]
+                }]
+            });
+        }
+    });
+
+</script>

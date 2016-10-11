@@ -1,0 +1,1207 @@
+﻿@model HealthCareInMvc4.Areas.Store.Models.ChartViewModel
+
+<style type="text/css">
+    .form-control
+    {
+        border-radius: 0px !important;
+    }
+    #panel
+    {
+        position: fixed;
+        height:0 !important;
+        background: transparent;
+        right: 0;
+        top: 8%;
+        z-index:1;
+    }
+    
+    #panel-content
+    {
+        position: relative;
+        top: 80px;
+        width: 175px;
+        height: 70vh;
+        background: #7f7f7f;
+        float: right;
+        display: none;
+    }
+    
+    #panel-tab
+    {
+        position: relative;
+        width: 50px !important;
+        height: 0 !important;
+        background-color: transparent;
+        float: left;
+        top:73px !important;
+    }
+    body
+    {
+        min-height: 100vh !important;
+    }
+    #myTab
+    {
+        border-radius: 23px 0px 0px 23px;
+        position: relative;
+        top: 150px;
+        background: #808080;
+        height: 50px;
+        color: White;
+    }
+    
+    #myTab p
+    {
+        padding: 12px !important;
+    }
+    .panel-title {
+   padding-top: 10px;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+</style>
+<style type="text/css">
+    #cssmenu
+    {
+        position: relative;
+        margin: 0;
+        font-family: 'Roboto Condensed';
+        line-height: 1;
+        width: 250px;
+    }
+    .align-right
+    {
+        float: right;
+    }
+    #cssmenu ul
+    {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: block;
+    }
+    #cssmenu ul li
+    {
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+    #cssmenu ul li a
+    {
+        text-decoration: none;
+        cursor: pointer;
+    }
+    #cssmenu > ul > li > a
+    {
+        color: #dddddd;
+        text-transform: uppercase;
+        display: block;
+        padding: 20px; /* border-top: 1px solid #000000;
+        border-left: 1px solid #000000;
+        border-right: 1px solid #000000;*/
+        background: #7f7f7f;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        letter-spacing: 1px;
+        font-size: 16px;
+        font-weight: 300;
+        -webkit-transition: all 0.25s ease-in;
+        -moz-transition: all 0.25s ease-in;
+        -ms-transition: all 0.25s ease-in;
+        -o-transition: all 0.25s ease-in;
+        transition: all 0.25s ease-in;
+        position: relative;
+    }
+    #cssmenu > ul > li:first-child > a
+    {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border-bottom: 1px solid white;
+    }
+    #cssmenu > ul > li:last-child > a
+    {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-bottom: 1px solid white;
+    }
+    #cssmenu > ul > li:hover > a, #cssmenu > ul > li.open > a, #cssmenu > ul > li.active > a
+    {
+        background: #7f7f7f;
+        color: #ffffff;
+    }
+    #cssmenu ul > li.has-sub > a::after
+    {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 13px solid #000000;
+        border-botom: 13px solid transparent;
+        border-left: 125px solid transparent;
+        border-right: 125px solid transparent;
+        left: 0;
+        bottom: -13px;
+        bottom: 0px;
+        z-index: 1;
+        opacity: 0;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -ms-transition: all .2s ease;
+        -o-transition: all .2s ease;
+        transition: all .2s ease;
+    }
+    #cssmenu ul > li.has-sub > a::before
+    {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 13px solid #151515;
+        border-botom: 13px solid transparent;
+        border-left: 125px solid transparent;
+        border-right: 125px solid transparent;
+        left: 0;
+        bottom: -12px;
+        bottom: -1px;
+        z-index: 3;
+        opacity: 0;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -ms-transition: all .2s ease;
+        -o-transition: all .2s ease;
+        transition: all .2s ease;
+    }
+    #cssmenu ul > li.has-sub::after
+    {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: 7px solid transparent;
+        border-top-color: #dddddd;
+        z-index: 2;
+        right: 20px;
+        top: 24.5px;
+        pointer-events: none;
+    }
+    #cssmenu ul > li:hover::after, #cssmenu ul > li.active::after, #cssmenu ul > li.open::after
+    {
+        border-top-color: #ffffff;
+    }
+    #cssmenu ul > li.has-sub.open > a::after
+    {
+        opacity: 1;
+        bottom: -13px;
+    }
+    #cssmenu ul > li.has-sub.open > a::before
+    {
+        opacity: 1;
+        bottom: -12px;
+    }
+    #cssmenu ul ul
+    {
+        display: none;
+    }
+    #cssmenu ul ul li
+    {
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+    #cssmenu ul ul li a
+    {
+        background: #f1f1f1;
+        display: block;
+        position: relative;
+        font-size: 15px;
+        padding: 14px 20px;
+        border-bottom: 1px solid #dddddd;
+        color: #777777;
+        font-weight: 300;
+        -webkit-transition: all 0.25s ease-in;
+        -moz-transition: all 0.25s ease-in;
+        -ms-transition: all 0.25s ease-in;
+        -o-transition: all 0.25s ease-in;
+        transition: all 0.25s ease-in;
+    }
+    #cssmenu ul ul li:first-child > a
+    {
+        padding-top: 18px;
+    }
+    #cssmenu ul ul ul li
+    {
+        border: 0;
+    }
+    #cssmenu ul ul li:hover > a, #cssmenu ul ul li.open > a, #cssmenu ul ul li.active > a
+    {
+        background: #e4e4e4;
+        color: #666666;
+    }
+    #cssmenu ul ul > li.has-sub > a::after
+    {
+        border-top: 13px solid #dddddd;
+    }
+    #cssmenu ul ul > li.has-sub > a::before
+    {
+        border-top: 13px solid #e4e4e4;
+    }
+    #cssmenu ul ul ul li a
+    {
+        padding-left: 30px;
+    }
+    #cssmenu ul ul > li.has-sub::after
+    {
+        top: 18.5px;
+        border-width: 6px;
+        border-top-color: #777777;
+    }
+    #cssmenu ul ul > li:hover::after, #cssmenu ul ul > li.active::after, #cssmenu ul ul > li.open::after
+    {
+        border-top-color: #666666;
+    }
+    .panel-heading
+    {
+        background-color: #555555 !important;
+    }
+    .panel
+    {
+        border-top: 0 none !important;
+        border-left: 1px solid #555555 !important;
+        border-bottom: 1px solid #555555 !important;
+        border-right: 1px solid #555555 !important;
+    }
+    thead, th
+    {
+        background-color: #555555 !important;
+    }
+    
+    /*#salestab
+{
+   height:200px !important;
+   overflow:scroll;
+}*/
+</style>
+
+
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModal"
+    ria-hidden="true" style="width: 530px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title" id="myModalfmdt">
+                    Purchase Details
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id='myDialogContainer2'>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>
+                            From Date
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="frmtdate1" class="form-control" />
+                    </div>
+                    <div class="col-sm-6">
+                        <label>
+                            To Date
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="todate1" class="form-control" /></div>
+                </div>
+                <label id="vali2" style="color: Red;">
+                    * Fields are required</label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnsav1" class="btn btn-primary">
+                    Submit
+                </button>
+                <button type="button" id="cancel2" class="btn btn-danger">
+                    Cancel
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="" id="hide2">
+    <div class="row">
+        <div class="col-sm-5" id="Store">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th align="center">
+                            Test Name
+                        </th>
+                        <th align="center">
+                            Total No. of Patient Tested
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var itm1 in ViewBag.patient1 as List<HealthCareInMvc4.SalesOrderServicceRef.SalesOrder>)
+                    {
+                        <tr>
+                            <td>
+                                @itm1.Batch
+                            </td>
+                            <td>
+                                @itm1.BillAmount
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-7">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th align="center">
+                            Repeated Patient Name
+                        </th>
+                        <th align="center">
+                            No Of Times
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var itm1 in ViewBag.patient2 as List<HealthCareInMvc4.SalesOrderServicceRef.SalesOrder>)
+                    {
+                        <tr>
+                            <td>
+                                @itm1.BillingPostalCode
+                            </td>
+                            <td>
+                                @itm1.ClientID
+                            </td>
+                        </tr>
+                        
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="panel panel-primary">
+                <div class="panel panel-heading">
+                    <h4 class="panel-title">
+                        Department wise Test Flow
+                        <button type="button" id="but1" style="float:right;margin-top: -8px;"
+                            value="1">
+                            <span class="fa fa-calendar myicon"></span>
+                        </button>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div id="Patient1">
+                    </div>
+                </div>
+                 <div class="foote">
+                        <a href="#" style="padding-left: 170px; font-size: 10px;" onclick="Patientwisetest()">more info</a>
+                        </div>
+            </div>
+        </div>
+        <div class="col-sm-7">
+            <div class="panel panel-primary">
+                <div class="panel panel-heading">
+                    <h4 class="panel-title" >
+                        Test Wise Patient Flow
+                        <button type="button" id="but2" style="float:right;margin-top: -8px;"
+                            value="2">
+                            <span class="fa fa-calendar myicon"></span>
+                        </button>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div id="Patient2">
+                    </div>
+                </div>
+                 <div class="foote">
+                        <a href="#" style="padding-left: 170px; font-size: 10px;" onclick="testwise()">more info</a>
+                        </div>
+            </div>
+        </div>
+    </div>  
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="panel panel-primary">
+                <div class="panel panel-heading">
+                    <h4 class="panel-title">
+                        Repeated Patients
+                        <button type="button" id="but3" style="float:right;margin-top: -8px;"
+                            value="3">
+                            <span class="fa fa-calendar myicon"></span>
+                        </button>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div id="Patient3">
+                    </div>
+                </div>
+                 <div class="foote">
+                        <a href="#" style="padding-left: 170px; font-size: 10px;" onclick="reapeded()">more info</a>
+                        </div>
+            </div>
+        </div>  
+           <div class="col-sm-7">
+            <div class="panel panel-primary">
+                <div class="panel panel-heading">
+                    <h4 class="panel-title" >
+                        Time Wise Patient flow
+                        <button type="button" id="but5" style="float:right;margin-top: -8px;"
+                            value="5">
+                            <span class="fa fa-calendar myicon"></span>
+                        </button>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <div id="Patient5">
+                    </div>
+                </div>
+                 <div class="foote">
+                        <a href="#" style="padding-left: 170px; font-size: 10px;" onclick="timewise()">more info</a>
+                        </div>
+            </div>
+        </div>     
+    </div>
+      <div class="row">
+     
+    </div>
+</div>
+
+<script type="text/javascript">
+    function Patientwisetest() {
+        window.open("../HmsWebPages/InventoryRpt/Patientwisedepartmentflow.aspx?ReportName=" + "patientray1.rpt");
+    }
+    function testwise() {
+        window.open("../HmsWebPages/InventoryRpt/Patientwisetestflow.aspx?ReportName=" + "patientray2.rpt");
+    }
+    function reapeded() {
+        window.open("../HmsWebPages/InventoryRpt/Patientrpeated.aspx?ReportName=" + "patientray3.rpt");
+    }
+
+    function timewise() {
+        window.open("../HmsWebPages/InventoryRpt/Patientwisetimeflow.aspx?ReportName=" + "patientray4.rpt");
+    }
+
+</script>
+
+
+<script type="text/javascript">   
+
+    var m = 0;
+    $("#but1,#but2,#but3,#but5").click(function () {
+
+        $("#myModal2").modal('show');
+        $("#myModal2").modal({ backdrop: false });
+
+        $("#frmtdate1").pickadate({
+            format: "dd/mm/yyyy",
+            // min: true,
+            selectMonths: true,
+            selectYears: true,
+            editable: 'ray'
+
+        });
+        $("#todate1").pickadate({
+            format: "dd/mm/yyyy",
+            //  min: true,
+            selectMonths: true,
+            selectYears: true,
+            editable: 'ray'
+
+        });
+        m = $(this).val();
+
+
+    });
+    var fromdate;
+    var todate;
+    $("#btnsav1").click(function () {
+        $("#vali2").hide();
+        fromdate = $("#frmtdate1").val();
+        todate = $("#todate1").val();
+
+        if (fromdate == '') {
+            $("#vali2").show();
+            $("#frmtdate1").focus();
+            return false;
+        }
+        if (todate == '') {
+            $("#vali2").show();
+            $("#todate1").focus();
+            return false;
+        }
+
+        if (parseInt(m) == 1) {
+            Patient11();
+            fromdate = $("#frmtdate1").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 2) {
+            Patient21();
+            fromdate = $("#frmtdate1").val('');
+            todate = $("#todate1").val('');
+        } else if (parseInt(m) == 3) {
+            Patient31();
+            
+            fromdate = $("#frmtdate1").val('');
+            todate = $("#todate1").val('');
+
+        }else if (parseInt(m) == 5) {
+            Patient51();
+            fromdate = $("#frmtdate1").val('');
+            todate = $("#todate1").val('');
+
+        } 
+        m = 0;
+        $("#myModal2").modal('hide');
+    });
+
+    $("#cancel2").click(function () {
+        $("#myModal2").modal('hide');
+    });
+</script>
+<script type="text/javascript">
+
+
+
+    Patient1();
+    Patient2();
+    Patient3();  
+    Patient5();
+
+
+    function Patient1() {
+
+        var ress1 = [];
+        var ress2 = [];
+
+        $.ajax({
+            url: "../Dashboard/Patient1",
+            type: 'POST',
+          //  data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+
+            success: function (result) {
+
+                $.each(result, function (ui, item) {
+                if(item.DepartmentName!="")
+                {
+                    ress1.push(item.DepartmentName);
+                    ress2.push(item.Tested);
+                    }
+                });
+
+                vibrant.setOptions({
+                    colors: [ '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+                $('#Patient1').vibrant({
+
+                    chart: {
+                        type: 'line'
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    
+                    xAxis: {
+            type: 'category',
+            categories: ress1,
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+                    yAxis: {
+                        title: {
+                            text: 'Department Name'
+                        }
+                    },
+                    plotOptions: {
+                        line: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            enableMouseTracking: false
+                        }
+                    },
+                    series: [{
+                        name: 'No Of Patient Tested',
+                        data: ress2
+                    }]
+                });
+
+            }
+        });
+    }
+
+    function Patient2() {
+
+        var ress1 = [];
+        var ress2 = [];
+
+        $.ajax({
+            url: "../Dashboard/Patient2",
+            type: 'POST',
+           // data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+
+            success: function (result) {
+
+                $.each(result, function (ui, item) {
+                 if(item.Testname!="")
+                {
+                    ress1.push(item.Testname);
+                    ress2.push(item.Total);
+                    }
+                });
+
+                vibrant.setOptions({
+                    colors: ['#CF7CCF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+                $('#Patient2').vibrant({
+
+                    chart: {
+                        type: 'area',
+                        inverted: true
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        style: {
+                            position: 'absolute',
+                            right: '0px',
+                            bottom: '10px'
+                        }
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'top',
+                        x: -150,
+                        y: 100,
+                        floating: true,
+                        borderWidth: 1,
+                        //ckgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+                    },
+                    xAxis: {
+                        categories: ress1
+                    },
+                    yAxis: {
+                        title: {
+                            text: ''
+                        },
+                        labels: {
+                            formatter: function () {
+                                return this.value;
+                            }
+                        },
+                        min: 0
+                    },
+                    plotOptions: {
+                        area: {
+                            fillOpacity: 0.5
+                        }
+                    },
+                    series: [{
+                        name: 'No Of Patient Tested',
+                        data: ress2
+                    }]
+                });
+
+            }
+        });
+    }
+     function Patient3() {
+
+           var ress1 = [];
+           var ress2 = [];
+
+           $.ajax({
+               url: "../Dashboard/Patient3",
+               type: 'POST',
+             //  data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+
+               success: function (result) {
+
+                   $.each(result, function (ui, item) {
+                   if(item.PatientName!="")
+                {
+                       ress1.push(item.PatientName);
+                       ress2.push(item.NoOfTimes);
+                       }
+                   });
+
+                   vibrant.setOptions({
+                       colors: [ '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                   });
+                   
+                   $('#Patient3').vibrant({
+
+                       chart: {
+                           type: 'column',
+                           margin: 75,
+                           options3d: {
+                               enabled: true,
+                               alpha: 10,
+                               beta: 25,
+                               depth: 70
+                           }
+                       },
+                       title: {
+                           text: ''
+                       },
+                       subtitle: {
+                           text: ''
+                       },
+                       plotOptions: {
+                           column: {
+                               depth: 25
+                           }
+                       },
+                       
+                       xAxis: {
+            type: 'category',
+            categories: ress1,
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+                       yAxis: {
+                           title: {
+                               text: null
+                           }
+                       },
+                       series: [{
+                           name: 'Patients',
+                           data: ress2
+                       }]
+                   });
+
+               }
+           });
+       }
+       
+
+       function Patient5() {
+
+           var ress1 = [];
+           var ress2 = [];
+
+           $.ajax({
+               url: "../Dashboard/Patient5",
+               type: 'POST',
+              // data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+
+               success: function (result) {
+
+                   $.each(result, function (ui, item) {
+                   if(parseInt(item.time)>12)
+                   {
+
+                     ress1.push(eval(parseInt(item.time)-12)+" PM");
+                   }
+                   else if(parseInt(item.time)==0)
+                   {
+                   item.time="12 AM";
+                   ress1.push(item.time);
+                   }
+                   else if(parseInt(item.time)==12)
+                   {
+                   item.time="12 PM";
+                   ress1.push(item.time);
+                   }
+                   else{
+                    ress1.push(item.time+" AM");
+                   }
+                       //ress1.push(item.time);
+                       ress2.push(item.NOofpatient);
+                   });
+
+                   vibrant.setOptions({
+                       colors: ['#6AF9C4']
+                   });
+
+                   $('#Patient5').vibrant({
+
+                       title: {
+                           text: '',
+                           x: -20 //center
+                       },
+                       subtitle: {
+                           text: '',
+                           x: -20
+                       },
+                       xAxis: {
+                           categories: ress1
+                       },
+                       yAxis: {
+                           title: {
+                               text: 'No Of Patients'
+                           },
+                           plotLines: [{
+                               value: 0,
+                               width: 1,
+                               color: '#808080'
+                           }]
+                       },
+                       tooltip: {
+                            valuePrefix: ''
+                       },
+                       legend: {
+                           layout: 'vertical',
+                           align: 'right',
+                           verticalAlign: 'middle',
+                           borderWidth: 0
+                       },
+                       series: [{
+                           name: 'No Of Patients',
+                           data: ress2
+                       }]
+                   });
+
+               }
+           });
+       }
+
+        function Patient11() {
+
+        var ress1 = [];
+        var ress2 = [];
+
+        $.ajax({
+            url: "../Dashboard/Patient1",
+            type: 'POST',
+            data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+
+            success: function (result) {
+
+                $.each(result, function (ui, item) {
+                if(item.DepartmentName!="")
+                {
+                    ress1.push(item.DepartmentName);
+                    ress2.push(item.Tested);
+                    }
+                });
+
+                vibrant.setOptions({
+                    colors: [ '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+                $('#Patient1').vibrant({
+
+                    chart: {
+                        type: 'line'
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    
+                    xAxis: {
+            type: 'category',
+            categories: ress1,
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+                    yAxis: {
+                        title: {
+                            text: 'Department Name'
+                        }
+                    },
+                    plotOptions: {
+                        line: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            enableMouseTracking: false
+                        }
+                    },
+                    series: [{
+                        name: 'No Of Patient Tested',
+                        data: ress2
+                    }]
+                });
+
+            }
+        });
+    }
+
+    function Patient21() {
+
+        var ress1 = [];
+        var ress2 = [];
+
+        $.ajax({
+            url: "../Dashboard/Patient2",
+            type: 'POST',
+            data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+
+            success: function (result) {
+
+                $.each(result, function (ui, item) {
+                 if(item.Testname!="")
+                {
+                    ress1.push(item.Testname);
+                    ress2.push(item.Total);
+                    }
+                });
+
+                vibrant.setOptions({
+                    colors: ['#CF7CCF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+                $('#Patient2').vibrant({
+
+                    chart: {
+                        type: 'area',
+                        inverted: true
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        style: {
+                            position: 'absolute',
+                            right: '0px',
+                            bottom: '10px'
+                        }
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'top',
+                        x: -150,
+                        y: 100,
+                        floating: true,
+                        borderWidth: 1,
+                        //ckgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+                    },
+                    xAxis: {
+                        categories: ress1
+                    },
+                    yAxis: {
+                        title: {
+                            text: ''
+                        },
+                        labels: {
+                            formatter: function () {
+                                return this.value;
+                            }
+                        },
+                        min: 0
+                    },
+                    plotOptions: {
+                        area: {
+                            fillOpacity: 0.5
+                        }
+                    },
+                    series: [{
+                        name: 'No Of Patient Tested',
+                        data: ress2
+                    }]
+                });
+
+            }
+        });
+    }
+     function Patient31() {
+
+           var ress1 = [];
+           var ress2 = [];
+
+           $.ajax({
+               url: "../Dashboard/Patient3",
+               type: 'POST',
+               data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+
+               success: function (result) {
+
+                   $.each(result, function (ui, item) {
+                   if(item.PatientName!="")
+                {
+                       ress1.push(item.PatientName);
+                       ress2.push(item.NoOfTimes);
+                       }
+                   });
+
+                   vibrant.setOptions({
+                       colors: [ '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                   });
+                   
+                   $('#Patient3').vibrant({
+
+                       chart: {
+                           type: 'column',
+                           margin: 75,
+                           options3d: {
+                               enabled: true,
+                               alpha: 10,
+                               beta: 25,
+                               depth: 70
+                           }
+                       },
+                       title: {
+                           text: ''
+                       },
+                       subtitle: {
+                           text: ''
+                       },
+                       plotOptions: {
+                           column: {
+                               depth: 25
+                           }
+                       },
+                       
+                       xAxis: {
+            type: 'category',
+            categories: ress1,
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+                       yAxis: {
+                           title: {
+                               text: null
+                           }
+                       },
+                       series: [{
+                           name: 'Patients',
+                           data: ress2
+                       }]
+                   });
+
+               }
+           });
+       }
+       
+
+       function Patient51() {
+
+           var ress1 = [];
+           var ress2 = [];
+
+           $.ajax({
+               url: "../Dashboard/Patient5",
+               type: 'POST',
+               data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+
+               success: function (result) {
+
+                   $.each(result, function (ui, item) {
+                   if(parseInt(item.time)>12)
+                   {
+
+                     ress1.push(eval(parseInt(item.time)-12)+" PM");
+                   }
+                   else if(parseInt(item.time)==0)
+                   {
+                   item.time="12 AM";
+                   ress1.push(item.time);
+                   }
+                   else if(parseInt(item.time)==12)
+                   {
+                   item.time="12 PM";
+                   ress1.push(item.time);
+                   }
+                   else{
+                    ress1.push(item.time+" AM");
+                   }
+                       //ress1.push(item.time);
+                       ress2.push(item.NOofpatient);
+                   });
+
+                   vibrant.setOptions({
+                       colors: ['#6AF9C4']
+                   });
+
+                   $('#Patient5').vibrant({
+
+                       title: {
+                           text: '',
+                           x: -20 //center
+                       },
+                       subtitle: {
+                           text: '',
+                           x: -20
+                       },
+                       xAxis: {
+                           categories: ress1
+                       },
+                       yAxis: {
+                           title: {
+                               text: 'No Of Patients'
+                           },
+                           plotLines: [{
+                               value: 0,
+                               width: 1,
+                               color: '#808080'
+                           }]
+                       },
+                       tooltip: {
+                            valuePrefix: ''
+                       },
+                       legend: {
+                           layout: 'vertical',
+                           align: 'right',
+                           verticalAlign: 'middle',
+                           borderWidth: 0
+                       },
+                       series: [{
+                           name: 'No Of Patients',
+                           data: ress2
+                       }]
+                   });
+
+               }
+           });
+       }
+    function fromdateconv(dates) {
+
+        var dob = dates;
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+        return fd;
+    }
+
+    function todateconv(dates) {
+        var dob = dates;
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+        return td;
+    }
+</script>
+

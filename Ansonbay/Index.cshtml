@@ -1,0 +1,1753 @@
+﻿
+
+<style type="text/css">
+    .ui-year-calendar
+    {
+        display: none;
+    }
+    .ui-datepicker table
+    {
+        display: none;
+    }
+    
+    .ui-datepicker .ui-datepicker-buttonpane button
+    {
+        color: Black;
+    }
+    .ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current
+    {
+        color: Black;
+        font-weight: bold;
+    }
+    .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year
+    {
+        width: 60%;
+    }
+    .ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all
+    {
+        position: relative;
+        left: 800px;
+    }
+    .form-control
+    {
+        border-radius: 0px !important;
+    }
+    #panel
+    {
+        position: fixed;
+        height: 0 !important;
+        background: transparent;
+        right: 0;
+        top: 8%;
+        z-index: 1;
+    }
+    
+    #panel-content
+    {
+        position: relative;
+        top: 80px;
+        width: 175px;
+        height: 70vh;
+        background: #7f7f7f;
+        float: right;
+        display: none;
+    }
+    
+    #panel-tab
+    {
+        position: relative;
+        width: 50px !important;
+        height: 0 !important;
+        background-color: transparent;
+        float: left;
+        top: 73px !important;
+    }
+    body
+    {
+        min-height: 100vh !important;
+    }
+    #myTab
+    {
+        border-radius: 23px 0px 0px 23px;
+        position: relative;
+        top: 150px;
+        background: #808080;
+        height: 50px;
+        color: White;
+    }
+    
+    #myTab p
+    {
+        padding: 12px !important;
+    }
+    .panel-title
+    {
+        padding-top: 10px;
+        margin-bottom: 0;
+        font-size: 16px;
+    }
+    .panel-body
+    {
+        padding: 15px;
+        height: 409px;
+    }
+    .table-bordered
+    {
+        border: 0px solid #C0C4C4;
+        position: relative;
+        top: 22px;
+    }
+</style>
+<style type="text/css">
+    #cssmenu
+    {
+        position: relative;
+        margin: 0;
+        font-family: 'Roboto Condensed';
+        line-height: 1;
+        width: 250px;
+    }
+    .align-right
+    {
+        float: right;
+    }
+    #cssmenu ul
+    {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: block;
+    }
+    #cssmenu ul li
+    {
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+    #cssmenu ul li a
+    {
+        text-decoration: none;
+        cursor: pointer;
+    }
+    #cssmenu > ul > li > a
+    {
+        color: #dddddd;
+        text-transform: uppercase;
+        display: block;
+        padding: 20px; /* border-top: 1px solid #000000;
+        border-left: 1px solid #000000;
+        border-right: 1px solid #000000;*/
+        background: #7f7f7f;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        letter-spacing: 1px;
+        font-size: 16px;
+        font-weight: 300;
+        -webkit-transition: all 0.25s ease-in;
+        -moz-transition: all 0.25s ease-in;
+        -ms-transition: all 0.25s ease-in;
+        -o-transition: all 0.25s ease-in;
+        transition: all 0.25s ease-in;
+        position: relative;
+    }
+    #cssmenu > ul > li:first-child > a
+    {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border-bottom: 1px solid white;
+    }
+    #cssmenu > ul > li:last-child > a
+    {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-bottom: 1px solid white;
+    }
+    #cssmenu > ul > li:hover > a, #cssmenu > ul > li.open > a, #cssmenu > ul > li.active > a
+    {
+        background: #7f7f7f;
+        color: #ffffff;
+    }
+    #cssmenu ul > li.has-sub > a::after
+    {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 13px solid #000000;
+        border-botom: 13px solid transparent;
+        border-left: 125px solid transparent;
+        border-right: 125px solid transparent;
+        left: 0;
+        bottom: -13px;
+        bottom: 0px;
+        z-index: 1;
+        opacity: 0;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -ms-transition: all .2s ease;
+        -o-transition: all .2s ease;
+        transition: all .2s ease;
+    }
+    #cssmenu ul > li.has-sub > a::before
+    {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 13px solid #151515;
+        border-botom: 13px solid transparent;
+        border-left: 125px solid transparent;
+        border-right: 125px solid transparent;
+        left: 0;
+        bottom: -12px;
+        bottom: -1px;
+        z-index: 3;
+        opacity: 0;
+        -webkit-transition: all .2s ease;
+        -moz-transition: all .2s ease;
+        -ms-transition: all .2s ease;
+        -o-transition: all .2s ease;
+        transition: all .2s ease;
+    }
+    #cssmenu ul > li.has-sub::after
+    {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: 7px solid transparent;
+        border-top-color: #dddddd;
+        z-index: 2;
+        right: 20px;
+        top: 24.5px;
+        pointer-events: none;
+    }
+    #cssmenu ul > li:hover::after, #cssmenu ul > li.active::after, #cssmenu ul > li.open::after
+    {
+        border-top-color: #ffffff;
+    }
+    #cssmenu ul > li.has-sub.open > a::after
+    {
+        opacity: 1;
+        bottom: -13px;
+    }
+    #cssmenu ul > li.has-sub.open > a::before
+    {
+        opacity: 1;
+        bottom: -12px;
+    }
+    #cssmenu ul ul
+    {
+        display: none;
+    }
+    #cssmenu ul ul li
+    {
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+    #cssmenu ul ul li a
+    {
+        background: #f1f1f1;
+        display: block;
+        position: relative;
+        font-size: 15px;
+        padding: 14px 20px;
+        border-bottom: 1px solid #dddddd;
+        color: #777777;
+        font-weight: 300;
+        -webkit-transition: all 0.25s ease-in;
+        -moz-transition: all 0.25s ease-in;
+        -ms-transition: all 0.25s ease-in;
+        -o-transition: all 0.25s ease-in;
+        transition: all 0.25s ease-in;
+    }
+    #cssmenu ul ul li:first-child > a
+    {
+        padding-top: 18px;
+    }
+    #cssmenu ul ul ul li
+    {
+        border: 0;
+    }
+    #cssmenu ul ul li:hover > a, #cssmenu ul ul li.open > a, #cssmenu ul ul li.active > a
+    {
+        background: #e4e4e4;
+        color: #666666;
+    }
+    #cssmenu ul ul > li.has-sub > a::after
+    {
+        border-top: 13px solid #dddddd;
+    }
+    #cssmenu ul ul > li.has-sub > a::before
+    {
+        border-top: 13px solid #e4e4e4;
+    }
+    #cssmenu ul ul ul li a
+    {
+        padding-left: 30px;
+    }
+    #cssmenu ul ul > li.has-sub::after
+    {
+        top: 18.5px;
+        border-width: 6px;
+        border-top-color: #777777;
+    }
+    #cssmenu ul ul > li:hover::after, #cssmenu ul ul > li.active::after, #cssmenu ul ul > li.open::after
+    {
+        border-top-color: #666666;
+    }
+    .panel-heading
+    {
+        background-color: #0097a7 !important;
+    }
+    
+    .panel
+    {
+        border-top: 0 none !important;
+        border-left: 1px solid #555555 !important;
+        border-bottom: 1px solid #555555 !important;
+        border-right: 1px solid #555555 !important;
+    }
+    thead, th
+    {
+        background-color: #555555 !important;
+    }
+    
+    .table-bordered
+    {
+        border: 0px solid #C0C4C4;
+        position: relative;
+        top: -18px;
+    }
+     .panel panel-default
+    {
+        color: Silver;
+    }
+</style>
+
+
+<div class="col-sm-12" style="position: relative; bottom: 100px;"">
+    <div class="row">
+ <div class="col-sm-6">
+                <div class="panel panel-frimary" style="height: 362px; width: 633;">
+                    <div class="panel panel-heading" style="margin-bottom: 0px;">
+                        <h4 class="panel-title">
+                          Patient Visiting Time Interval</h4>
+                    </div>
+                    <div class="panel-body">
+                      <div id="Patientwaitingintervalid1">
+                        </div>
+                    </div>
+                    <div class="foote">
+                    </div>
+                </div>
+   </div>
+ <div class="col-sm-6">
+              
+                <div class="panel panel-frimary" style="height: 362px;">
+                    <div class="panel panel-heading" style="margin-bottom: 0px;">
+                        <h4 class="panel-title">
+                            Overall New And Existing Patient</h4>
+                        <div class="col-sm-12" style="top: -30px;">
+                            <div class="col-sm-6">
+                               @* <h4 style="margin-left: 273px;">Year</h4>*@
+                            </div>
+                            <div class="col-sm-6">
+                            @* @Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1, @DateTime.Now.Year.ToString(),
+                           new { @class = "form-control", id = "drop", style = "width: 81px;height: 30px;margin-left: 125px;" })*@
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="Overallnewexstid1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+      <div class="row">
+        <div class="col-sm-6">
+                <div class="panel panel-frimary" style="height: 391px;">
+                    <div class="panel panel-heading" style="margin-bottom: 0px;">
+                        <h4 class="panel-title">
+                            Referred To
+                          
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                
+                        <div id="Refferedtoid1">
+                        </div>
+                    </div>
+                    <div class="foote">
+                    </div>
+                </div>
+           </div>     
+        <div class="col-sm-6">
+                <div class="panel panel-frimary" style="height: 391px;">
+                    <div class="panel panel-heading" style="margin-bottom: 0px;">
+                        <h4 class="panel-title">
+                            Surgery Details-OT</h4>
+                        <div class="col-sm-12" style="top: -30px;">
+                            <div class="col-sm-6">
+                              @*  <h4 style="margin-left: 273px;">Year</h4>*@
+                            </div>
+                            <div class="col-sm-6">
+                      @* @Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1, @DateTime.Now.Year.ToString(),
+                           new { @class = "form-control", id = "drop1", style = "width: 81px;height: 30px;margin-left: 125px;" })*@
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="Surgerydetailsid1">
+                        </div>
+                    </div>
+                    <div class="foote">
+                    </div>
+                </div>
+            </div>
+     </div>
+      <div class="row">
+       <div class="col-sm-6">
+                <div class="panel panel-frimary" style="height: 361px;">
+                    <div class="panel panel-heading" style="margin-bottom: 0px;">
+                        <h4 class="panel-title">
+                            Referred By Clinic To Doctor
+                          
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+          
+                        <div id="Referedbyclinicid1">
+                        </div>
+                    </div>
+                    <div class="foote">
+                    </div>
+                </div>
+            </div>
+       <div class="col-sm-6">
+                <div class="panel panel-frimary" style="height: 361px;">
+                    <div class="panel panel-heading" style="margin-bottom: 0px;">
+                        <h4 class="panel-title">
+                            &nbsp Total No Of Reference
+                           
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+       
+                        <div id="Referenceid1">
+                        </div>
+                    </div>
+                    <div class="foote">
+                    </div>
+                </div>
+            </div>
+      
+      
+      </div>
+    <div class="row">
+           
+       <div class="col-sm-6">
+                <div class="panel panel-frimary" style="height: 361px;">
+                    <div class="panel panel-heading" style="margin-bottom: 0px;">
+                        <h4 class="panel-title">
+                            Patient Waiting Time
+                           
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+               
+                        <div id="Patientwaitingtimesid1">
+                        </div>
+                    </div>
+                    <div class="foote">
+                    </div>
+                </div>
+            </div>
+       <div class="col-sm-6">
+                <div class="panel panel-frimary" style="height: 362px; width: 633;">
+                    <div class="panel panel-heading" style="margin-bottom: 0px;">
+                        <h4 class="panel-title">
+                            Referred To Whom
+                           
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+         
+                        <div id="Referedtowhomid1">
+                        </div>
+                    </div>
+                    <div class="foote">
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-frimary" style="height: 391px;">
+                    <div class="panel panel-heading" style="margin-bottom: 0px;">
+                        <h4 class="panel-title">
+                            Shares In Pharmacy
+                        </h4>
+                        <div class="col-sm-12" style="top: -30px;">
+                            <div class="col-sm-6">
+                               @* <h4 style="margin-left: 273px;">Year</h4>*@
+                            </div>
+                            <div class="col-sm-6">
+                           @*  @Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1, @DateTime.Now.Year.ToString(),
+                           new { @class = "form-control", id = "drop2", style = "width: 81px;height: 30px;margin-left: 125px;" })*@
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="Doctorsharepharmacyid1">
+                        </div>
+                    </div>
+                    <div class="foote">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel panel-frimary" style="height: 391px;">
+                    <div class="panel panel-heading" style="margin-bottom: 0px;">
+                        <h4 class="panel-title">
+                            Shares In Xray
+                        </h4>
+                         <div class="col-sm-12" style="top: -30px;">
+                            <div class="col-sm-6">
+                               @* <h4 style="margin-left: 273px;">Year</h4>*@
+                            </div>
+                            <div class="col-sm-6">
+                               @* @Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1, @DateTime.Now.Year.ToString(),
+                           new { @class = "form-control", id = "drop3", style = "width: 81px;height: 30px;margin-left: 125px;" })*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="Sharesinxrayid1">
+                        </div>
+                    </div>
+                    <div class="foote">
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-frimary" style="height: 391px;">
+                    <div class="panel panel-heading" style="margin-bottom: 0px;">
+                        <h4 class="panel-title">
+                            Shares In Scan
+                        </h4>
+                        <div class="col-sm-12" style="top: -30px;">
+                            <div class="col-sm-6">
+                               @* <h4 style="margin-left: 273px;">Year</h4>*@
+                            </div>
+                            <div class="col-sm-6">
+                             @*  @Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1, @DateTime.Now.Year.ToString(),
+                           new { @class = "form-control", id = "drop4", style = "width: 81px;height: 30px;margin-left: 125px;"})*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="Sharesinscanid1">
+                        </div>
+                    </div>
+                    <div class="foote">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel panel-frimary" style="height: 391px;">
+                    <div class="panel panel-heading" style="margin-bottom: 0px;">
+                        <h4 class="panel-title">
+                            Shares In Laboratory
+                        </h4>
+                      <div class="col-sm-12" style="top: -30px;">
+                            <div class="col-sm-6">
+                                @*<h4 style="margin-left: 273px;">Year</h4>*@
+                            </div>
+                            <div class="col-sm-6">
+                                @*@Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1, @DateTime.Now.Year.ToString(),
+                           new { @class = "form-control", id = "drop5", style = "width: 81px;height: 30px;margin-left: 125px;" })*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="Sharesinlabid1">
+                        </div>
+                    </div>
+                    <div class="foote">
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+ </div>
+
+<div id="panel">
+    <div id="panel-content">
+        <br />
+        <br />
+    
+        <br />
+             
+      
+    </div>
+    <div id="panel-tab">
+        <div id="myTab">
+            <p>
+                Pre</p>
+        </div>
+    </div>
+</div>
+
+
+  <script type="text/javascript">
+
+      $("#myTab").click(function (event) {
+
+          window.location.href = "../Store/Ansonbay/ADDNEWPARTIALVIEW"
+
+      });
+
+
+
+
+
+</script>
+
+<script type="text/javascript">
+
+
+
+
+  
+
+     //Refferedto
+
+
+     $.ajax({
+         url: "../Store/Ansonbay/Refferedto",
+
+         type: 'POST',
+         dataType: 'json',
+         success: function (result) {
+
+         var res = [];
+
+             var rest = { "name": "", "y": "" };
+             for (i = 0; i < result.length; i++) {
+                 rest.name = result[i].BaseEntityName;
+                 rest.y = result[i].BedID;
+                 res.push(rest);
+                 var d = res;
+                 rest = { "name": "", "y": "" };
+
+
+             }
+
+//             var val1 = [];
+//             var val11 = [];
+
+
+//             $.each(result, function (ui, item) {
+
+//                 val1.push(item.BedID);
+//                 val11.push(item.BaseEntityName)
+
+//             });
+
+             vibrant.setOptions({
+                 colors: ['#EB8B29', '#8D14D9','#948D87']
+             });
+
+
+             $('#Refferedtoid1').vibrant({
+
+
+                 chart: {
+                     plotBackgroundColor: null,
+                     plotBorderWidth: 0,
+                     plotShadow: false,
+                     height: 320
+                 },
+                 title: {
+                     text: 'Referred To',
+                     align: 'center',
+                     verticalAlign: 'middle',
+                     y: 40
+                 },
+                 tooltip: {
+                     pointFormat: '{series.name}: <b>{point.percentage:.0f}</b>'
+                 },
+                 plotOptions: {
+                     pie: {
+                         dataLabels: {
+                             enabled: true,
+                             format: ' {point.name} - {point.percentage:.0f}',
+                             distance: -50,
+                             rotation: -25,
+                             style: {
+                                  fontWeight: 'bold',
+                                  color: 'white',
+                                  textShadow: '0px 1px 2px black'
+                             }
+                         },
+                         startAngle: -90,
+                         endAngle: 90,
+                         center: ['50%', '75%']
+                     }
+                 },
+                 series: [{
+                     type: 'pie',
+                     name: 'Referred To',
+                     innerSize: '55%',
+                     data:res
+                 }]
+              });
+
+         }
+
+     });
+
+
+     // Referedbyclinic  
+
+
+     $.ajax({
+         url: "../Store/Ansonbay/Referedbyclinic",
+         type: 'POST',
+         dataType: 'json',
+         success: function (result) {
+
+
+
+
+             var res = [];
+
+             var rest = { "name": "", "y": "" };
+             for (i = 0; i < result.length; i++) {
+                 rest.name = result[i].BaseEntityName;
+                 rest.y = result[i].BedID;
+                 res.push(rest);
+                 var d = res;
+                 rest = { "name": "", "y": "" };
+
+
+             }
+             vibrant.setOptions({
+                 colors: ['rgb(139, 188, 33)', '#66CCFF', '#A6FE67', '#FED867', '#FE6773', '#FFF263']
+             });
+
+
+
+             $('#Referedbyclinicid1').vibrant({
+
+
+                 chart: {
+                     type: 'pie',
+                     height: 270,
+                     options3d: {
+                         enabled: true,
+                         alpha: 60,
+                         beta: 0
+                     }
+                 },
+                 title: {
+                     text: ''
+                 },
+
+                 plotOptions: {
+                     pie: {
+                         allowPointSelect: true,
+                         cursor: 'pointer',
+                         depth: 40,
+                         showInLegend: true,
+                         dataLabels: {
+                             enabled: true,
+                             format: ' {point.y:1f}'
+                         }
+                     }
+                 },
+
+                 legend: {
+                     itemStyle: {
+                         fontWeight: 'bold',
+                         fontSize: '13px'
+                     }
+                 },
+                 series: [{
+                     name: "Refered By Clinic",
+                     colorByPoint: true,
+                     data: res
+                 }]
+
+
+
+
+
+             });
+
+         }
+
+     });
+
+     //    // Reference  
+
+
+
+     $.ajax({
+         url: "../Store/Ansonbay/Reference",
+         type: 'POST',
+         dataType: 'json',
+         success: function (result) {
+
+             var valu = [];
+             var refname = [];
+
+
+
+             $.each(result, function (ui, item) {
+
+                 valu.push(item.BedID);
+                 refname.push(item.BaseEntityName);
+
+
+             });
+
+             vibrant.setOptions({
+                 colors: ['rgb(255,64,0)', '#ff4000']
+             });
+
+
+             $('#Referenceid1').vibrant({
+
+                 chart: {
+                     type: 'bar',
+                     height: 270
+                 },
+                 title: {
+                     text: ''
+                 },
+                 subtitle: {
+                     text: ''
+                 },
+                 xAxis: {
+                     categories: refname,
+                     crosshair: true
+                 },
+                 yAxis: {
+                     min: 0,
+                     title: {
+                         text: ''
+                     }
+                 },
+                 tooltip: {
+                     headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                     pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                              '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                     footerFormat: '</table>',
+                     shared: true,
+                     useHTML: true
+                 },
+                 plotOptions: {
+                     bar: {
+                         pointPadding: 0.2,
+                         borderWidth: 0,
+                         dataLabels: {
+                             enabled: true,
+                             format: ' {point.y:0f}'
+                         }
+                     }
+                 },
+                 series: [{
+                     name: 'Reference',
+
+                     data: valu
+                 }]
+
+
+
+             });
+
+         }
+
+     });
+
+
+     // Patientwaitingtimes  
+
+
+     $.ajax({
+         url: "../Store/Ansonbay/Patientwaitingtimes",
+
+         type: 'POST',
+         dataType: 'json',
+         success: function (result) {
+
+
+
+
+             var val1 = [];
+             var val2 = [];
+
+
+             $.each(result, function (ui, item) {
+
+                 val1.push(item.BaseEntityName);
+                 val2.push(item.AdvAmt);
+
+
+
+             });
+
+             vibrant.setOptions({
+                 colors: ['rgb(0,127,255)', '#7FFF00']
+             });
+
+
+             $('#Patientwaitingtimesid1').vibrant({
+
+                 chart: {
+                     type: 'bar',
+                     height: 270,
+                     
+                     
+                 },
+                  xAxis: {
+                     categories: val1
+                 },
+                 yAxis: {
+                     title: {
+                         text: null
+                     }
+                 },
+                 title: {
+                     text: ''
+                 },
+                 subtitle: {
+                     text: ''
+                 },
+                 plotOptions: {
+                    bar: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:0f}'
+                        }
+                    }
+                },
+                
+                 series: [{
+                     name: 'Minutes',
+                     data: val2
+
+
+
+                 }]
+
+
+
+             });
+
+         }
+
+     });
+
+
+
+// Referedtowhom 
+
+
+     $.ajax({
+         url: "../Store/Ansonbay/Referedtowhom",
+
+         type: 'POST',
+         dataType: 'json',
+         success: function (result) {
+
+
+
+
+             var val = [];
+             var name = [];
+
+
+             $.each(result, function (ui, item) {
+                 val.push(item.BedID);
+                 name.push(item.BaseEntityName);
+
+             });
+
+             vibrant.setOptions({
+                 colors: ['rgb(0,127,255)', '#7FFF00']
+             });
+
+
+             $('#Referedtowhomid1').vibrant({
+
+
+                 chart: {
+                     type: 'line',
+                     height: 270
+
+                 },
+                 xAxis: {
+                     categories: name,
+                     crosshair: true,
+                     labels: {
+                         rotation: -45,
+                         style: {
+                             fontSize: '12px',
+                             fontFamily: 'Verdana, sans-serif'
+                         }
+                     }
+                 },
+                 yAxis: {
+                     title: {
+                         text: null
+                     }
+                 },
+                 title: {
+                     text: ''
+                 },
+                 subtitle: {
+                     text: ''
+                 },
+                 plotOptions: {
+                     Line: {
+                         
+                         dataLabels: {
+                             enabled: true,
+                             format: ' {point.y:0f}'
+                         }
+                     }
+                 },
+
+                 series: [{
+                     name: 'Referred To Whom',
+                     data: val,
+                     color: '#2FD655 '
+                  }]
+               });
+            }
+
+     });
+
+
+
+     // Patientwaitinginterval
+
+
+     $.ajax({
+         url: "../Store/Ansonbay/Patientwaitinginterval",
+
+         type: 'POST',
+         dataType: 'json',
+         success: function (result) {
+
+
+
+
+             var intv1 = [];
+             var intv2 = [];
+
+
+             $.each(result, function (ui, item) {
+
+                 intv1.push(item.BaseEntityName);
+                 intv2.push(item.BedID);
+
+
+
+             });
+
+            
+
+
+             $('#Patientwaitingintervalid1').vibrant({
+
+                 chart: {
+                     type: 'column',
+                     height: 270
+
+                 },
+                 title: {
+                     text: ''
+                 },
+                 subtitle: {
+                     text: ''
+                 },
+                 plotOptions: {
+                     column: {
+                         depth: 25,
+                         dataLabels: {
+                             enabled: true,
+                             format: ' {point.y:0f}'
+                         }
+                     }
+                 },
+                 xAxis: {
+                     categories: intv1,
+                     labels: {
+                         rotation: -45,
+                         style: {
+                             fontSize: '08px',
+                             fontFamily: 'Verdana, sans-serif'
+                         }
+                     }
+                 },
+                 yAxis: {
+                     title: {
+                         text: null
+                     }
+                 },
+                 series: [{
+                     name: 'Patient',
+                     color:'#FF5733',
+                     data: intv2
+                 }]
+
+
+
+             });
+
+         }
+
+     });
+
+
+
+
+
+     // Overall New And Existing Patient
+
+     $.ajax({
+         url: "../Store/Ansonbay/Overallnewexist",
+
+         type: 'POST',
+         dataType: 'json',
+         success: function (result) {
+
+
+
+             var sad = [];
+             var sad1 = [];
+             var sad2 = [];
+
+             $.each(result, function (ui, item) {
+                 sad1.push(item.BaseEntityName);
+                 sad.push(item.BedID);
+                 sad2.push(item.AdvAmt);
+
+
+             });
+
+             vibrant.setOptions({
+                 colors: ['rgb(0,127,255)', '#7FFF00']
+             });
+
+
+             $('#Overallnewexstid1').vibrant({
+
+
+
+//        chart: {
+//          type: 'area',
+//          height: 270
+//        },
+//        title: {
+//            text: ''
+//        },
+//        subtitle: {
+//            text:''
+//        },
+//        xAxis: {
+//        categories: sad1
+//       
+//        },
+//        yAxis: {
+//            title: {
+//                text: ''
+//            }
+//            
+//            
+//        },
+//        tooltip: {
+//            pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+//        },
+//        plotOptions: {
+//            area: {
+//               
+//                marker: {
+//                    enabled: false,
+//                    symbol: 'circle',
+//                    radius: 2,
+//                    states: {
+//                        hover: {
+//                            enabled: true
+//                        }
+//                    }
+//                }
+//            }
+//        },
+//        series: [{
+//                     name: 'Overall New Patient',
+//                     data: sad
+//                 },
+//                 {
+//                   name: 'Overall Existing Patient',
+//                   data: sad2
+//                 }]
+
+                 chart: {
+                     type: 'column',
+                     height: 270
+                 },
+                 title: {
+                     text: ''
+                 },
+                 subtitle: {
+                     text: ''
+                 },
+                 xAxis: {
+                     categories: sad1,
+                     crosshair: true
+                 },
+                 yAxis: {
+                     min: 0,
+                     title: {
+                         text: ''
+                     }
+                 },
+                
+                 plotOptions: {
+                     column: {
+                         pointPadding: 0.2,
+                         borderWidth: 0,
+                         dataLabels: {
+                             enabled: true,
+                             format: ' {point.y:0f}'
+                         }
+                     }
+                 },
+                 series: [{
+                     name: 'Overall New Patient',
+                     data: sad
+                 },
+                 {
+                   name: 'Overall Existing Patient',
+                   data: sad2
+                 }]
+
+
+
+             });
+
+         }
+
+     });
+
+
+
+
+     // Surgery Details
+
+
+     $.ajax({
+         url: "../Store/Ansonbay/Surgerydetails",
+
+         type: 'POST',
+         dataType: 'json',
+         success: function (result) {
+
+
+
+             var sad = [];
+             var sad1 = [];
+
+             $.each(result, function (ui, item) {
+                 sad1.push(item.BaseEntityName);
+                 sad.push(item.BedID);
+
+
+
+             });
+
+             vibrant.setOptions({
+                 colors: ['rgb(0,127,255)', '#7FFF00']
+             });
+
+
+             $('#Surgerydetailsid1').vibrant({
+
+             
+
+
+        chart: {
+          type: 'area',
+          height: 270
+        },
+        title: {
+            text: ''
+        },
+        subtitle: {
+            text:''
+        },
+        xAxis: {
+        categories: sad1
+       
+        },
+        yAxis: {
+            title: {
+                text: ''
+            }
+            
+            
+        },
+        tooltip: {
+            pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+        },
+        plotOptions: {
+            area: {
+                 
+                marker: {
+                    enabled: false,
+                    symbol: 'circle',
+                    radius: 2,
+                   
+                    states: {
+                        hover: {
+                            enabled: true
+                        }
+                    }
+                },
+                dataLabels: {
+                             enabled: true,
+                             format: ' {point.y:0f}'
+                         }
+                
+            }
+        },
+        series: [{
+                     name: 'Overall New Patient',
+                     data: sad
+                 
+                 }]
+
+//                 chart: {
+//                     type: 'line',
+//                     height: 300
+//                 },
+//                 title: {
+//                     text: ''
+//                 },
+//                 subtitle: {
+//                     text: ''
+//                 },
+//                 xAxis: {
+//                     categories: sad1,
+//                     crosshair: true
+//                 },
+//                 yAxis: {
+//                     min: 0,
+//                     //tickInterval: 1,
+//                    // minRange: 1,
+//                     title: {
+//                         text: ''
+//                     }
+//                 },
+//                 tooltip: {
+//                     headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+//                     pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+//                                              '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+//                     footerFormat: '</table>',
+//                     shared: true,
+//                     useHTML: true
+//                 },
+//                 plotOptions: {
+//                     column: {
+//                         pointPadding: 0.2,
+//                         borderWidth: 0,
+//                         dataLabels: {
+//                             enabled: true,
+//                             format: ' {point.y:0f}'
+//                         }
+//                     }
+//                 },
+//                 series: [{
+//                     name: 'Surgery',
+//                     data: sad
+
+//                 }]
+
+
+
+             });
+
+         }
+
+     });
+
+
+
+     // Doctorsharepharmacy  
+
+
+     $.ajax({
+         url: "../Store/Ansonbay/Doctorsharepharmacy",
+
+         type: 'POST',
+         dataType: 'json',
+         success: function (result) {
+
+
+
+
+             var val1 = [];
+             var val2 = [];
+             var name1 = [];
+
+
+             $.each(result, function (ui, item) {
+                 val1.push(parseInt((item.BedID).toString().substr(0, 2)));
+                 val2.push(parseInt((item.AdvAmt).toString().substr(0, 2)));
+                 name1.push(item.BaseEntityName);
+
+             });
+
+             vibrant.setOptions({
+                 colors: ['rgb(8, 249, 235)', 'rgb( 15, 8, 249 )', '#08F9EB', '#0F08F9']
+             });
+
+             $('#Doctorsharepharmacyid1').vibrant({
+
+
+                 chart: {
+                     type: 'column',
+                     height: 300
+
+                 },
+                 xAxis: {
+                     categories: name1,
+                     crosshair: true
+                 },
+                 yAxis: {
+                     title: {
+                         text: null
+                     },
+                     labels: {
+                         formatter: function () {
+                             return this.value + '%';
+                         }
+                     }
+                 },
+                 title: {
+                     text: ''
+                 },
+                 subtitle: {
+                     text: ''
+                 },
+                 plotOptions: {
+                     column: {
+                         pointPadding: 0.2,
+                         borderWidth: 0,
+                         dataLabels: {
+                             enabled: true,
+                             format: ' {point.y:0f}'
+                         }
+                     }
+                 },
+
+                 tooltip: {
+                     headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                     pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                                                             '<td style="padding:0"><b>{point.y:.0f}% </b></td></tr>',
+                     footerFormat: '</table>',
+                     shared: true,
+                     useHTML: true
+                 },
+                 series: [{
+                     name: 'Hospital',
+                     data: val1
+                 }
+                 , {
+                  name: 'Doctor',
+                  data: val2
+                  }]
+
+
+
+             });
+
+         }
+
+     });
+
+
+
+
+
+
+
+
+     // Sharesinxray
+
+
+     $.ajax({
+         url: "../Store/Ansonbay/Sharesinxray",
+
+         type: 'POST',
+         dataType: 'json',
+         success: function (result) {
+
+
+
+
+             var xrayname1 = [];
+             var xrayval11 = [];
+             var xrayval21 = [];
+
+
+             $.each(result, function (ui, item) {
+
+                 xrayname1.push(item.BaseEntityName);
+                 xrayval11.push(item.BedID);
+                 xrayval21.push(item.AdvAmt);
+
+
+
+             });
+
+             vibrant.setOptions({
+                 colors: ['rgb(0,127,255)', '#7FFF00']
+             });
+
+
+             $('#Sharesinxrayid1').vibrant({
+
+                 chart: {
+                     type: 'column',
+                     height: 300
+
+                 },
+                 title: {
+                     text: ''
+                 },
+                 subtitle: {
+                     text: ''
+                 },
+                 plotOptions: {
+                     column: {
+                         depth: 25
+                     }
+                 },
+                 xAxis: {
+                     categories: xrayname1,
+                     labels: {
+                         rotation: -45,
+                         style: {
+                             fontSize: '08px',
+                             fontFamily: 'Verdana, sans-serif'
+                         }
+                     }
+                 },
+                 yAxis: {
+                     title: {
+                         text: null
+                     }
+                 },
+                 series: [{
+                     name: 'Hospital',
+                     data: xrayval11
+                 },
+                 {
+                   name: 'Doctor',
+                  data: xrayval21
+             }]
+
+
+
+             });
+
+         }
+
+     });
+
+
+
+
+
+
+     // Sharesinscan
+
+
+     $.ajax({
+         url: "../Store/Ansonbay/Sharesinscan",
+
+         type: 'POST',
+         dataType: 'json',
+         success: function (result) {
+
+
+
+
+             var scanname1 = [];
+             var scanval11 = [];
+             var scanval21 = [];
+
+
+             $.each(result, function (ui, item) {
+
+                 scanname1.push(item.BaseEntityName);
+                 scanval11.push(item.BedID);
+                 scanval21.push(item.AdvAmt);
+
+
+
+             });
+
+             vibrant.setOptions({
+                 colors: ['rgb(0,127,255)', '#7FFF00']
+             });
+
+
+             $('#Sharesinscanid1').vibrant({
+
+                 chart: {
+                     type: 'column',
+                     height: 300
+
+                 },
+                 title: {
+                     text: ''
+                 },
+                 subtitle: {
+                     text: ''
+                 },
+                 plotOptions: {
+                     column: {
+                         depth: 25
+                     }
+                 },
+                 xAxis: {
+                     categories: scanname1,
+                     labels: {
+                         rotation: -45,
+                         style: {
+                             fontSize: '08px',
+                             fontFamily: 'Verdana, sans-serif'
+                         }
+                     }
+                 },
+                 yAxis: {
+                     title: {
+                         text: null
+                     }
+                 },
+                 series: [{
+                     name: 'Hospital',
+                     data: scanval11
+                 },
+                 {
+                    name: 'Doctor',
+                     data: scanval21
+                 }]
+
+
+
+             });
+
+         }
+
+     });
+
+
+
+
+     // Sharesinlab
+
+     $.ajax({
+         url: "../Store/Ansonbay/Sharesinlab",
+         type: 'POST',
+         dataType: 'json',
+         success: function (result) {
+
+
+
+
+             var labname1 = [];
+             var labval11 = [];
+             var labval21 = [];
+
+
+             $.each(result, function (ui, item) {
+
+                 labname1.push(item.BaseEntityName);
+                 labval11.push(item.BedID);
+                 labval21.push(item.AdvAmt);
+
+             });
+
+             vibrant.setOptions({
+                 colors: ['rgb(0,127,255)', '#7FFF00']
+             });
+
+
+             $('#Sharesinlabid1').vibrant({
+
+                 chart: {
+                     type: 'column',
+                     height: 300
+
+                 },
+                 title: {
+                     text: ''
+                 },
+                 subtitle: {
+                     text: ''
+                 },
+                 plotOptions: {
+                     column: {
+                         depth: 25
+                     }
+                 },
+                 xAxis: {
+                     categories: labname1,
+                     labels: {
+                         rotation: -45,
+                         style: {
+                             fontSize: '08px',
+                             fontFamily: 'Verdana, sans-serif'
+                         }
+                     }
+                 },
+                 yAxis: {
+                     title: {
+                         text: null
+                     }
+                 },
+                 series: [{
+                     name: 'Hospital',
+                     data: labval11
+                 },
+               {
+                   name: 'Doctor',
+                   data: labval21
+               }]
+
+             });
+
+         }
+
+     });
+
+
+  </script>

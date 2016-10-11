@@ -1,0 +1,1948 @@
+
+
+
+
+
+
+
+<style type="text/css">
+    .row
+    {
+        margin-top: 24px;
+        margin-bottom: 10px;
+    }
+    
+    #drop, #drop1, #drop2, #drop3, #drop4
+    {
+        width: 75px;
+        margin-top: -8px;
+        float: right;
+        padding-right: 6px;
+    }
+    .form-control
+    {
+        border-radius: 0px !important;
+    }
+    body
+    {
+        min-height: 100vh !important;
+    }
+    .panel-title
+    {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-bottom: 0;
+        font-size: 16px;
+        float: left;
+    }
+    .panel-body
+    {
+        padding: 0px;
+    }
+    
+    .panel-heading
+    {
+        background-color: #0097a7 !important;
+        margin-bottom: 0px;
+    }
+    .panel
+    {
+        border-top: 1px none !important;
+        border-left: 1px solid #0097a7 !important;
+        border-bottom: 1px solid #0097a7 !important;
+        border-right: 1px solid #0097a7 !important;
+        margin-bottom: 0px;
+    }
+</style>
+<div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel">
+                <div class="panel panel-heading">
+                    <h4 class="panel-title">
+                        Department Test Analysis
+                    </h4>
+                    <button type="button" id="departmenttestanalysisbtn" value="1">
+                        <span class="fa fa-calendar myicon"></span>
+                    </button>
+                </div>
+                <div class="panel-body">
+                    <div id="departmenttestanalysisid1">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel" style="border-right: 2px solid #0097a7 !important">
+                <div class="panel panel-heading">
+                    <h4 class="panel-title">
+                        Statewise Test Analysis</h4>
+                    <button type="button" id="statewisetestanalysisbtn" value="2">
+                        <span class="fa fa-calendar myicon"></span>
+                    </button>
+                </div>
+                <div class="panel-body">
+                    <div id="statewisetestanalysisid1">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel">
+                <div class="panel panel-heading">
+                    <h4 class="panel-title">
+                        Shares In Gribbles And Hospital
+                    </h4>
+                    @Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1, @DateTime.Now.Year.ToString(),
+                           new { @class = "form-control", id = "drop" })
+                </div>
+                <div class="panel-body">
+                    <div id="shareingribblehospitalid1">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-4">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Dr Selvaraj Statstics
+                        </h4>
+                        @Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1, @DateTime.Now.Year.ToString(),
+                           new { @class = "form-control", id = "drop1" })
+                    </div>
+                    <div class="panel-body">
+                        <div id="drlabonedoctorstatsticeid1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Gender
+                        </h4>
+                        @Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1, @DateTime.Now.Year.ToString(),
+                           new { @class = "form-control", id = "drop2" })
+                    </div>
+                    <div class="panel-body">
+                        <div id="salutiationid1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Patients Race
+                        </h4>
+                        <button type="button" id="racepatientsbtn" value="3">
+                            <span class="fa fa-calendar myicon"></span>
+                        </button>
+                    </div>
+                    <div class="panel-body">
+                        <div id="racepatientsid1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-4">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            New Doctors Activated
+                        </h4>
+                        @Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1, @DateTime.Now.Year.ToString(),
+                           new { @class = "form-control", id = "drop3" })
+                    </div>
+                    <div class="panel-body">
+                        <div id="newdoctorsactivatedid1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Lost Doctor Statistics</h4>
+                        @Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1, @DateTime.Now.Year.ToString(),
+                           new { @class = "form-control", id = "drop4" })
+                    </div>
+                    <div class="panel-body">
+                        <div id="lostdoctorstatisticsid1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Dr Selvaraj Department Analysis</h4>
+                        <button type="button" id="drlabonedoctoranalysisbtn" value="5">
+                            <span class="fa fa-calendar myicon"></span>
+                        </button>
+                    </div>
+                    <div class="panel-body">
+                        <div id="drlabonedoctoranalysisid1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModal"
+    ria-hidden="true" style="width: 370px; left: 292px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #0097a7;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    Close[x]
+                </button>
+                <h4 class="modal-title" id="myModalfmdt">
+                    Get Details
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id='myDialogContainer2'>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>
+                            From Date
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="frmtdate11" class="form-control" />
+                    </div>
+                    <div class="col-sm-6">
+                        <label>
+                            To Date
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="todate1" class="form-control" /></div>
+                </div>
+                <button type="button" id="btnsav1" class="btn btn-primary" style="margin-left: 262px;">
+                    Submit
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<script type="text/javascript">
+
+
+
+    $("#MenuNamepartialview").text('Gribbles Dashboard');
+
+    //    var currentmonths = TodayDate.getMonth();
+    var currentmonths = (new Date).getMonth();
+    $("#months").val(currentmonths);
+
+
+    $("#drop").change(function () {
+
+        var drop = $("#drop").val();
+        Shareingribblehospitalfun(drop);
+
+    });
+
+
+    $("#drop1").change(function () {
+
+        var drop1 = $("#drop1").val();
+        Drselvarajstatsticsfun(drop1);
+
+    });
+
+    $("#drop2").change(function () {
+
+        var drop2 = $("#drop2").val();
+        Salutiationstatsticsfun(drop2);
+
+    });
+    $("#drop3").change(function () {
+
+        var drop3 = $("#drop3").val();
+        Newdoctorsactivatedfun(drop3);
+
+    });
+    $("#drop4").change(function () {
+
+        var drop4 = $("#drop4").val();
+        Lostdoctorstatisticsfun(drop4);
+
+    });
+    var m = 0;
+
+    $("#ft1").hide(); $("#ft2").hide(); $("#ft3").hide(); $("#ft4").hide();
+    $("#departmenttestanalysisbtn,#statewisetestanalysisbtn,#racepatientsbtn,#lostdoctorstatisticsbtn,#drlabonedoctoranalysisbtn").click(function () {
+
+
+        $("#myModal2").modal('show');
+        $("#myModal2").modal({ backdrop: false });
+
+        $("#frmtdate11").pickadate({
+            format: "dd/mm/yyyy",
+            // min: true,
+            selectMonths: true,
+            selectYears: true,
+            editable: 'ray'
+
+        });
+        $("#todate1").pickadate({
+            format: "dd/mm/yyyy",
+            //  min: true,
+            selectMonths: true,
+            selectYears: true,
+            editable: 'ray'
+
+        });
+        m = $(this).val();
+
+    });
+
+
+    var fromdate;
+    var todate;
+
+    $("#btnsav1").click(function () {
+
+
+        fromdate = $("#frmtdate11").val();
+        todate = $("#todate1").val();
+
+        if (parseInt(m) == 1) {
+            $("#ft1").show();
+
+            $("#frmd1").val(fromdate);
+            $("#tod1").val(todate);
+
+            Departmenttestanalysisfun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+
+        }
+        else if (parseInt(m) == 2) {
+            $("#ft2").show();
+            $("#frmd2").val(fromdate);
+            $("#tod2").val(todate);
+
+            Statewisetestanalysisfun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 3) {
+            $("#ft3").show();
+            $("#frmd3").val(fromdate);
+            $("#tod3").val(todate);
+
+            Racepatientsfun()
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+
+        }
+        else if (parseInt(m) == 5) {
+            $("#ft4").show();
+            $("#frmd4").val(fromdate);
+            $("#tod4").val(todate);
+
+            Drlabonedoctoranalysisfun()
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+
+        }
+
+
+        m = 0;
+        $("#myModal2").modal('hide');
+    });
+
+
+    $("#cancel2").click(function () {
+        $(".modal fade").modal('hide');
+    });
+
+
+
+</script>
+<script type="text/javascript">
+
+
+    function mydate(dates) {
+        var dob = dates;
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '-' + splitdob[1] + '-' + splitdob[0];
+        return td;
+    }
+
+
+    function Departmenttestanalysisfun() {
+
+        $.ajax({
+            url: "../Store/GribblesDashboard/Departmenttestanalysis",
+            data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+                var Deptname = [];
+                var Deptval = [];
+                $.each(result, function (ui, item) {
+                    Deptname.push(item.BaseEntityName);
+                    Deptval.push(item.BedID);
+                });
+                $('#departmenttestanalysisid1').vibrant({
+                    chart: {
+                        type: 'bar',
+                        height: 230
+                    },
+
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: Deptname,
+                        labels: {
+                            // rotation: -55,
+                            style: {
+                                fontSize: '10px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Department',
+                        color: '#FF7F50',
+                        data: Deptval
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+
+    function Statewisetestanalysisfun() {
+
+        $.ajax({
+            url: "../Store/GribblesDashboard/Statewisetestanalysis",
+            data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var statename = [];
+                var stateval = [];
+
+                $.each(result, function (ui, item) {
+                    statename.push(item.BaseEntityName);
+                    stateval.push(item.BedID);
+
+
+                });
+
+                $('#statewisetestanalysisid1').vibrant({
+                    chart: {
+                        type: 'column',
+                        height: 230
+                    },
+
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: statename,
+                        labels: {
+                            rotation: -45,
+                            style: {
+                                fontSize: '12px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        column: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'State',
+                        data: stateval,
+                        color: '#0B615E'
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+
+
+
+    function Racepatientsfun() {
+
+        $.ajax({
+            url: "../Store/GribblesDashboard/Racepatients",
+            data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var res = [];
+
+                var rest = { "name": "", "y": "" };
+                for (i = 0; i < result.length; i++) {
+                    rest.name = result[i].BaseEntityName;
+                    rest.y = result[i].BedID;
+                    res.push(rest);
+                    var d = res;
+                    rest = { "name": "", "y": "" };
+
+
+                }
+
+                vibrant.setOptions({
+                    colors: ['rgb(139, 188, 33)', '#FF0000', '#00FFFF', '#800080', '#00FF00', '#FF00FF', '#0000A0', '#A52A2A']
+                });
+
+
+
+                $('#racepatientsid1').vibrant({
+                    chart: {
+
+                        type: 'pie',
+                        height: 220
+                    },
+                    title: {
+                        text: ''
+                    },
+                    yAxis: {
+                        showEmpty: false
+                    },
+                    legend: {
+                        itemStyle: {
+                            fontWeight: 'bold',
+                            fontSize: '10px'
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:1f}'
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    series: [{
+                        name: "Race",
+                        colorByPoint: true,
+                        data: res
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+
+
+
+    function Shareingribblehospitalfun(drop) {
+
+        var Gribblesval = [];
+        var Hospitalval = [];
+        var Months = [];
+
+
+        $.ajax({
+            url: "../Store/GribblesDashboard/shareingribble",
+            data: { Fromdate: drop },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+                $.each(result, function (ui, item) {
+
+                    Gribblesval.push(parseInt((item.BedID).toString().substr(0, 2)));
+                    Hospitalval.push(parseInt((item.AdvAmt).toString().substr(0, 2)));
+                    Months.push(item.BaseEntityName);
+
+                   
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(8, 249, 235)', 'rgb( 15, 8, 249 )', '#08F9EB', '#0F08F9']
+                });
+
+                $('#shareingribblehospitalid1').vibrant({
+                    chart: {
+                        type: 'column',
+                        height: 230
+
+                    },
+                    xAxis: {
+                        categories: Months,
+                        labels: {
+                            rotation: -45,
+                            style: {
+                                fontSize: '10px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        title: {
+                            text: null
+                        },
+                        labels: {
+                            formatter: function () {
+                                return this.value + '%';
+                            }
+                        }
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:0f}'
+                            }
+                        }
+                    },
+
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                           '<td style="padding:0"><b>{point.y:.0f}% </b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    series: [{
+                        name: 'Gribble',
+                        data: Gribblesval
+
+                    }
+                , {
+                    type: 'spline',
+                    dataLabels: {
+                        enabled: true,
+                        format: ' {point.y:0f}'
+                    },
+                    name: 'Hospital',
+                    data: Hospitalval,
+                    marker: {
+                        lineWidth: 2,
+                        fillColor: 'Blue'
+                    }
+
+
+
+                }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+    function Drselvarajstatsticsfun(drop1) {
+        $.ajax({
+            url: "../Store/GribblesDashboard/Drlabonedoctorstatstice",
+            data: { Fromdate: drop1 },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var Drname = [];
+                var Drval = [];
+
+                $.each(result, function (ui, item) {
+                    Drname.push(item.BaseEntityName);
+                    Drval.push(item.BedID);
+
+
+                });
+
+
+
+
+                $('#drlabonedoctorstatsticeid1').vibrant({
+                    chart: {
+                        type: 'area',
+                        height: 230
+                    },
+
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: Drname,
+                        labels: {
+                            rotation: -55,
+                            style: {
+                                fontSize: '12px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        area: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Dr Statstics',
+                        data: Drval,
+                        color: '#FFA500'
+
+
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+    function Salutiationstatsticsfun(drop2) {
+
+        $.ajax({
+            url: "../Store/GribblesDashboard/Salutiation",
+            data: { Fromdate: drop2 },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+                var gender = [];
+                var male = [];
+                var female = [];
+
+                $.each(result, function (ui, item) {
+                    gender.push(item.BaseEntityName);
+                    male.push(item.BedID);
+                    female.push(item.AdvAmt);
+
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(18,152,241)', '#EE00EE', '#FF0000', '#1298F1']
+                });
+
+
+                $('#salutiationid1').vibrant({
+
+
+                    chart: {
+                        type: 'line',
+                        height: 230
+                    },
+
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: gender,
+                        labels: {
+                            rotation: -55,
+                            style: {
+                                fontSize: '12px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        line: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+
+                    series: [{
+                        name: 'Male',
+                        data: male
+
+                    }
+                , {
+                    name: 'Female',
+                    data: female
+
+
+                }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+
+    function Drlabonedoctoranalysisfun() {
+
+
+        $.ajax({
+            url: "../Store/GribblesDashboard/Drlabonedoctoranalysis",
+            data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var res = [];
+
+                var rest = { "name": "", "y": "" };
+                for (i = 0; i < result.length; i++) {
+                    rest.name = result[i].BaseEntityName;
+                    rest.y = result[i].BedID;
+                    res.push(rest);
+                    var d = res;
+                    rest = { "name": "", "y": "" };
+
+
+                }
+
+                vibrant.setOptions({
+                    colors: ['rgb(139, 188, 33)', '#FF0000', '#00FFFF', '#800080', '#00FF00', '#FF00FF', '#0000A0', '#A52A2A']
+                });
+
+
+                $('#drlabonedoctoranalysisid1').vibrant({
+                    chart: {
+
+                        type: 'pie',
+                        height: 230
+                    },
+                    title: {
+                        text: ''
+                    },
+                    yAxis: {
+                        showEmpty: false
+                    },
+                    legend: {
+                        itemStyle: {
+                            fontWeight: 'bold',
+                            fontSize: '10px'
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:1f}'
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    series: [{
+                        name: "Race",
+                        colorByPoint: true,
+                        data: res
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+    function Newdoctorsactivatedfun(drop3) {
+        $.ajax({
+            url: "../Store/GribblesDashboard/Newdoctorsactivated",
+            data: { Fromdate: drop3 },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var newDrname = [];
+                var newDrval = [];
+
+                $.each(result, function (ui, item) {
+                    newDrname.push(item.BaseEntityName);
+                    newDrval.push(item.BedID);
+
+
+                });
+                $('#newdoctorsactivatedid1').vibrant({
+
+                    chart: {
+                        type: 'column',
+                        height: 230
+                    },
+
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: newDrname,
+                        labels: {
+                            // rotation: -55,
+                            style: {
+                                fontSize: '12px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        column: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'New Doctors',
+                        data: newDrval,
+                        color: '#FF1493'
+
+                    }]
+
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+
+
+    function Lostdoctorstatisticsfun(drop4) {
+
+
+        $.ajax({
+            url: "../Store/GribblesDashboard/Lostdoctorstatistics",
+            data: { Fromdate: drop4 },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+                var lostDrname = [];
+                var lostDrval = [];
+                $.each(result, function (ui, item) {
+                    lostDrname.push(item.BaseEntityName);
+                    lostDrval.push(item.BedID);
+
+                });
+                $('#lostdoctorstatisticsid1').vibrant({
+                    chart: {
+                        type: 'column',
+                        height: 230
+                    },
+
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: lostDrname,
+                        labels: {
+                            rotation: -45,
+                            style: {
+                                fontSize: '10px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        column: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Lost Doctor',
+                        data: lostDrval,
+                        color: '#4B0082'
+
+                    }]
+
+                });
+
+            }
+
+        });
+    }
+
+    function fromdateconv(dates) {
+
+        var dob = dates;
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+        return fd;
+    }
+
+    function todateconv(dates) {
+        var dob = dates;
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+        return td;
+    }
+
+
+    
+
+</script>
+<script type="text/javascript">
+
+    $.ajax({
+        url: "../Store/GribblesDashboard/Departmenttestanalysis",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var Deptname1 = [];
+            var Deptval = [];
+
+            $.each(result, function (ui, item) {
+                Deptname1.push(item.BaseEntityName);
+                Deptval.push(item.BedID);
+
+
+            });
+
+
+
+
+            $('#departmenttestanalysisid1').vibrant({
+                chart: {
+                    type: 'bar',
+                    height: 230
+
+                },
+
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: Deptname1,
+                    labels: {
+                        // rotation: -35,
+                        style: {
+                            fontSize: '10px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Department',
+                    color: '#FF7F50',
+                    data: Deptval
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+
+    $.ajax({
+        url: "../Store/GribblesDashboard/Statewisetestanalysis",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var statename1 = [];
+            var stateval1 = [];
+
+            $.each(result, function (ui, item) {
+                statename1.push(item.BaseEntityName);
+                stateval1.push(item.BedID);
+
+
+            });
+
+
+
+
+            $('#statewisetestanalysisid1').vibrant({
+                chart: {
+                    type: 'column',
+                    height: 230
+                },
+
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: statename1,
+                    labels: {
+                        rotation: -45,
+                        style: {
+                            fontSize: '12px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    column: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'State',
+                    data: stateval1,
+                    color: '#0B615E'
+
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+
+
+
+    $.ajax({
+        url: "../Store/GribblesDashboard/shareingribble",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+
+            var val1 = [];
+            var val2 = [];
+            var name1 = [];
+
+
+            $.each(result, function (ui, item) {
+
+                val1.push(parseInt((item.BedID).toString().substr(0, 2)));
+                val2.push(parseInt((item.AdvAmt).toString().substr(0, 2)));
+                name1.push(item.BaseEntityName);
+
+                //alert(val1);
+            });
+
+            vibrant.setOptions({
+                colors: ['rgb(8, 249, 235)', 'rgb( 15, 8, 249 )', '#08F9EB', '#0F08F9']
+            });
+
+            $('#shareingribblehospitalid1').vibrant({
+
+
+                chart: {
+                    type: 'column',
+                    height: 230
+
+                },
+                xAxis: {
+                    categories: name1,
+                    labels: {
+                        rotation: -45,
+                        style: {
+                            fontSize: '10px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: null
+                    },
+                    labels: {
+                        formatter: function () {
+                            return this.value + '%';
+                        }
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:0f}'
+                        }
+                    }
+                },
+
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                           '<td style="padding:0"><b>{point.y:.0f}% </b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                series: [{
+                    name: 'Gribble',
+                    data: val1
+
+                }
+                , {
+                    type: 'spline',
+                    dataLabels: {
+                        enabled: true,
+                        format: ' {point.y:0f}'
+                    },
+                    name: 'Hospital',
+                    data: val2,
+                    marker: {
+                        lineWidth: 2,
+                        fillColor: 'Blue'
+                    }
+
+
+
+                }]
+            });
+
+        }
+
+    });
+
+
+    $.ajax({
+        url: "../Store/GribblesDashboard/Drlabonedoctorstatstice",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var Drname1 = [];
+            var Drval1 = [];
+
+            $.each(result, function (ui, item) {
+                Drname1.push(item.BaseEntityName);
+                Drval1.push(item.BedID);
+
+
+            });
+            $('#drlabonedoctorstatsticeid1').vibrant({
+                chart: {
+                    type: 'area',
+                    height: 230
+                },
+
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: Drname1,
+                    labels: {
+                        rotation: -55,
+                        style: {
+                            fontSize: '10px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    area: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Dr Statstics',
+                    data: Drval1,
+                    color: '#FFA500'
+
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+    $.ajax({
+        url: "../Store/GribblesDashboard/Salutiation",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+            var gender1 = [];
+            var male1 = [];
+            var female1 = [];
+
+            $.each(result, function (ui, item) {
+                gender1.push(item.BaseEntityName);
+                male1.push(item.BedID);
+                female1.push(item.AdvAmt);
+
+
+            });
+
+            vibrant.setOptions({
+                colors: ['rgb(18,152,241)', '#EE00EE', '#FF0000', '#1298F1']
+            });
+
+
+            $('#salutiationid1').vibrant({
+
+
+                chart: {
+                    type: 'line',
+                    height: 230
+                },
+
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: gender1,
+                    labels: {
+                        rotation: -55,
+                        style: {
+                            fontSize: '10px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+
+                series: [{
+                    name: 'Male',
+                    data: male1
+
+                }
+                , {
+                    name: 'Female',
+                    data: female1
+
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+    //Racepatients
+
+    $.ajax({
+        url: "../Store/GribblesDashboard/Racepatients",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var res = [];
+
+            var rest = { "name": "", "y": "" };
+            for (i = 0; i < result.length; i++) {
+                rest.name = result[i].BaseEntityName;
+                rest.y = result[i].BedID;
+                res.push(rest);
+                var d = res;
+                rest = { "name": "", "y": "" };
+
+
+            }
+
+            vibrant.setOptions({
+                colors: ['rgb(139, 188, 33)', '#FF0000', '#00FFFF', '#800080', '#00FF00', '#FF00FF', '#0000A0', '#A52A2A', '#FFD700']
+            });
+
+
+
+            $('#racepatientsid1').vibrant({
+                chart: {
+
+                    type: 'pie',
+                    height: 230
+                },
+                title: {
+                    text: ''
+                },
+                yAxis: {
+                    showEmpty: false
+                },
+                legend: {
+                    itemStyle: {
+                        fontWeight: 'bold',
+                        fontSize: '12px'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:1f}'
+                        },
+                        showInLegend: true
+                    }
+                },
+                series: [{
+                    name: "Race",
+                    colorByPoint: true,
+                    data: res
+                }]
+
+
+
+            });
+
+        }
+
+    });
+    // Newdoctorsactivated
+    $.ajax({
+        url: "../Store/GribblesDashboard/Newdoctorsactivated",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var newDrname1 = [];
+            var newDrval1 = [];
+
+            $.each(result, function (ui, item) {
+                newDrname1.push(item.BaseEntityName);
+                newDrval1.push(item.BedID);
+
+
+            });
+
+            $('#newdoctorsactivatedid1').vibrant({
+
+                chart: {
+                    type: 'column',
+                    height: 230
+                },
+
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: newDrname1,
+                    labels: {
+                        // rotation: -55,
+                        style: {
+                            fontSize: '12px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    column: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'New Doctors',
+                    data: newDrval1,
+                    color: '#FF1493'
+
+                }]
+
+
+
+
+            });
+
+        }
+    });
+
+
+    // Lostdoctorstatistics
+
+    $.ajax({
+        url: "../Store/GribblesDashboard/Lostdoctorstatistics",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var lostDrname1 = [];
+            var lostDrval1 = [];
+
+            $.each(result, function (ui, item) {
+                lostDrname1.push(item.BaseEntityName);
+                lostDrval1.push(item.BedID);
+
+
+            });
+
+            vibrant.setOptions({
+                colors: ['rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+            });
+
+
+            $('#lostdoctorstatisticsid1').vibrant({
+                chart: {
+                    type: 'column',
+                    height: 230
+                },
+
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: lostDrname1,
+                    labels: {
+                        rotation: -35,
+                        style: {
+                            fontSize: '12px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    column: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Lost Doctor',
+                    data: lostDrval1,
+                    color: '#4B0082'
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+
+    $.ajax({
+        url: "../Store/GribblesDashboard/Drlabonedoctoranalysis",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+
+            var res = [];
+
+            var rest = { "name": "", "y": "" };
+            for (i = 0; i < result.length; i++) {
+                rest.name = result[i].BaseEntityName;
+                rest.y = result[i].BedID;
+                res.push(rest);
+                var d = res;
+                rest = { "name": "", "y": "" };
+
+
+            }
+
+
+            vibrant.setOptions({
+                colors: ['rgb(139, 188, 33)', '#FF0000', '#00FFFF', '#800080', '#00FF00', '#FF00FF', '#0000A0', '#A52A2A']
+            });
+
+
+            $('#drlabonedoctoranalysisid1').vibrant({
+
+                chart: {
+
+                    type: 'pie',
+                    height: 230
+                },
+                title: {
+                    text: ''
+                },
+                yAxis: {
+                    showEmpty: false
+                },
+                legend: {
+                    itemStyle: {
+                        fontWeight: 'bold',
+                        fontSize: '10px'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:1f}'
+                        },
+                        showInLegend: true
+                    }
+                },
+                series: [{
+                    name: "Race",
+                    colorByPoint: true,
+                    data: res
+                }]
+            });
+
+        }
+
+    });
+    
+
+</script>

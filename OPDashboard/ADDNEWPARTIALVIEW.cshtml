@@ -1,0 +1,6392 @@
+﻿<style type="text/css">
+    button
+    {
+        font-size: 11px;
+        float: right;
+    }
+    .row
+    {
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+    
+   @* #drop, #drop1, #drop2, #drop3, #drop4, #drop5
+    {
+        width: 75px;
+        margin-top: -1px;
+        float: left;
+        padding-left: 118px;    
+        padding: 0px;
+        color: Red;
+    }*@
+    .form-control
+    {
+        border-radius: 0px !important;
+    }
+    body
+    {
+        min-height: 100vh !important;
+    }
+    .panel-title
+    {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-bottom: 0;
+        font-size: 16px;
+        float: left;
+    }
+    .panel-body
+    {
+        padding: 0px;
+    }
+    
+    .panel-heading
+    {
+        background-color: #0097a7 !important;
+        margin-bottom: 0px;
+    }
+    .panel
+    {
+        border-top: 1px none !important;
+        border-left: 1px solid #0097a7 !important;
+        border-bottom: 1px solid #0097a7 !important;
+        border-right: 1px solid #0097a7 !important;
+        margin-bottom: 0px;
+    }
+    input[type=button]
+    {
+        width: 60px;
+        float: right;
+        display: block;
+    }
+</style>
+@*<style type="text/css">
+    button
+    {
+        font-size: 11px;
+        float: right;
+    }
+    .row
+    {
+        margin-top: 24px;
+        margin-bottom: 10px;
+    }
+    
+    #drop, #drop1, #drop2, #drop3, #drop4, #drop5
+    {
+        width: 75px;
+        margin-top: -8px;
+        float: right;
+        padding-right: 6px;
+    }
+    .form-control
+    {
+        border-radius: 0px !important;
+    }
+    
+    body
+    {
+        min-height: 100vh !important;
+    }
+    .panel-title
+    {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-bottom: 0;
+        font-size: 16px;
+        float: left;
+    }
+    .panel-body
+    {
+        padding: 0px;
+    }
+    .thead
+    {
+        background-color: #0097a7 !important;
+        color: White;
+        height: 30px;
+        margin-top: -15px;
+    }
+    .panel-heading
+    {
+        background-color: #0097a7 !important;
+        margin-bottom: 0px;
+    }
+    .panel
+    {
+        border-top: 1px none !important;
+        border-left: 1px solid #0097a7 !important;
+        border-bottom: 1px solid #0097a7 !important;
+        border-right: 1px solid #0097a7 !important;
+        margin-bottom: 0px;
+    }
+    #patcatpanel
+    {
+        border-right: 0px solid #0097a7 !important;
+    }
+</style>*@
+<div id="activegridtabdash" class="panel-body">
+    <div class="row" style="top: 1px;">
+        <div class="col-sm-12" style="margin-left: 24px; margin-top: -15px;">
+            <ul id="myTabact" class="nav nav-tabs">
+                <li id="days" class="active"><a href="#daysgrid" data-toggle="tab">Patients</a></li>
+                <li id="week"><a href="#weekgrid" data-toggle="tab">Collection </a></li>
+                @*<li id="month"><a href="#monthgrid" data-toggle="tab">Refund </a></li>*@
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="panel-body">
+        <div class="tab-content" style="margin-top: -39px;">
+            <div id="daysgrid" class="tab-pane fade in active">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-3" id="dash1" style="left: 21px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Gender
+                                    </h4>
+                                    <button type="button" id="genderbtn" value="1">
+                                        <span class="fa fa-calendar myicon"></span>
+                                    </button>
+                                    <select id="drop" onchange="getval(this)"; style="color: Red; float: left; margin-left: 118px; padding: 0px; height: 22px; margin-top:-1px; width: 75px;">
+                                        <option>--select--</option>
+                                        <option value="1" style="color: black;">Pie</option>
+                                        <option value="2" style="color: black;">Line</option>
+                                        <option value="3" style="color: black;">Bar</option>
+                                        <option value="4" style="color: black;">column</option>
+                                    </select>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-12" id="ft1">
+                                        <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="frmd1" disabled="disabled" style="width: 90px;" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="tod1" disabled="disabled" style="width: 90px;" /></div>
+                                    </div>
+                                    <div id="dashboardid1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" id="dash6" style="left: 9px; display: block; padding-right: 5px;
+                            padding-left: 25px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Patient Types
+                                    </h4>
+                                    <input type="button" id="btnbackpatin" value="Back" />
+                                </div>
+                                <div class="panel-body" id="patcatpanel">
+                                    <div id="dashboardid2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" id="dash8" style="padding-right: 11px; padding-left: 10px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Appointment Status
+                                    </h4>
+                                    <button type="button" id="Appointmentbtn" value="8">
+                                        <span class="fa fa-calendar myicon"></span>
+                                    </button>
+                                     <select id="drop1" style="color: Red; float: right; padding: 0px; margin-right:12px; height: 22px; margin-top:-1px; width: 75px;">
+                                        <option value="1" style="color: black;">Pie</option>
+                                        <option value="2" style="color: black;">Line</option>
+                                        <option value="3" style="color: black;">Bar</option>
+                                        <option value="4" style="color: black;">column</option>
+                                    </select>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-12" id="ft8">
+                                        <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="frmd8" disabled="disabled" style="width: 90px;" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="tod8" disabled="disabled" style="width: 90px;" /></div>
+                                    </div>
+                                    <div id="dashboardid8">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" id="dash7" style="padding-right: 9px; padding-left: 18px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Deparment
+                                    </h4>
+                                    <input type="button" id="btnbackdeprt" value="Back" style="padding-top: 0px;" />
+                                    <input type="text" id="selva" hidden />
+                                </div>
+                                <div class="panel-body">
+                                    @Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1,
+                              new { @class = "form-control", id = "drop11", style = "bottom: 9px;position: relative;padding-bottom: 6px; background-color:White;" })
+                                    <div id="dashboardid7">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" id="dash4" style="right: 9px; padding-right: 0px; padding-left: 2px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Race Patient
+                                    </h4>
+                                    <button type="button" id="Racepatientsbtn" value="4">
+                                        <span class="fa fa-calendar myicon"></span>
+                                    </button>
+                                    <select id="drop3" style="color: Red; float: right; padding: 0px; margin-right:12px; height: 22px; margin-top:-1px; width: 75px;">
+                                        <option value="1" style="color: black;">Pie</option>
+                                        <option value="2" style="color: black;">Line</option>
+                                        <option value="3" style="color: black;">Bar</option>
+                                        <option value="4" style="color: black;">column</option>
+                                    </select>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-12" id="ft4">
+                                        <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="frmd4" disabled="disabled" style="width: 90px;" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="tod4" disabled="disabled" style="width: 90px;" /></div>
+                                    </div>
+                                    <div id="dashboardid4">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" id="dash3" style="padding-left: 0px; padding-right: 31px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Patient Categories
+                                    </h4>
+                                    <button type="button" id="patcatgbtn" value="3">
+                                        <span class="fa fa-calendar myicon"></span>
+                                    </button>
+                                    <select id="drop4" style="color: Red; float: right; padding: 0px; margin-right:12px; height: 22px; margin-top:-1px; width: 75px;">
+                                        <option value="1" style="color: black;">Pie</option>
+                                        <option value="2" style="color: black;">Line</option>
+                                        <option value="3" style="color: black;">Bar</option>
+                                        <option value="4" style="color: black;">column</option>
+                                    </select>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-12" id="ft3">
+                                        <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="frmd3" disabled="disabled" style="width: 90px;" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="tod3" disabled="disabled" style="width: 90px;" /></div>
+                                    </div>
+                                    <div id="dashboardid3">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" id="dash10" style="padding-left: 0px; padding-right: 31px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Patient Categories Gender
+                                    </h4>
+                                    <input type="button" id="btnbackcat" value="Back" style="padding-top: 0px;" />
+                                </div>
+                                <div class="panel-body">
+                                    <div id="dashboardid10">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-3" id="dash13" style="left: 21px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Registration Type
+                                    </h4>
+                                    <button type="button" id="Registrationbtn" value="15">
+                                        <span class="fa fa-calendar myicon"></span>
+                                    </button>
+                                    <select id="drop5" style="color: Red; float: right; padding: 0px; margin-right:12px; height: 22px; margin-top:-1px; width: 75px;">
+                                        <option value="1" style="color: black;">Pie</option>
+                                        <option value="2" style="color: black;">Line</option>
+                                        <option value="3" style="color: black;">Bar</option>
+                                        <option value="4" style="color: black;">column</option>
+                                    </select>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-12" id="ft15">
+                                        <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="frmd15" disabled="disabled" style="width: 90px;" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="tod15" disabled="disabled" style="width: 90px;" /></div>
+                                    </div>
+                                    <div id="dashboardid13">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" id="dash12" style="padding-right: 11px; padding-left: 10px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Patient From
+                                    </h4>
+                                    <button type="button" id="citizenbtn" value="14">
+                                        <span class="fa fa-calendar myicon"></span>
+                                    </button>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-12" id="ft14">
+                                        <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="frmd14" disabled="disabled" style="width: 90px;" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="tod14" disabled="disabled" style="width: 90px;" /></div>
+                                    </div>
+                                    <div id="dashboardid12">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" id="dash14" style="right: 9px; padding-right: 0px; padding-left: 2px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Patient Waiting Time
+                                    </h4>
+                                    <button type="button" id="waitbtn" value="17">
+                                        <span class="fa fa-calendar myicon"></span>
+                                    </button>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-12" id="ft17">
+                                        <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="frmd17" disabled="disabled" style="width: 90px;" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="tod17" disabled="disabled" style="width: 90px;" /></div>
+                                    </div>
+                                    <div id="dashboardid14">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" id="dash5" style="right: 9px; padding-right: 18px; padding-left: 2px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Patient Location
+                                    </h4>
+                                    <button type="button" id="Patientlocationsbtn" value="5">
+                                        <span class="fa fa-calendar myicon"></span>
+                                    </button>
+                                    @*<input type="button" id="btnbacklocat" value="Back" style="margin-right: 10px;" />*@
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-12" id="ft5">
+                                        <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="frmd5" disabled="disabled" style="width: 90px;" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="tod5" disabled="disabled" style="width: 90px;" /></div>
+                                    </div>
+                                    <div id="dashboardid5">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="weekgrid" class="tab-pane">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-3" id="coll7" style="padding-right: 6px; padding-left: 30px;">
+                            @*style="left: 21px;"*@
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Collection
+                                    </h4>
+                                    <button type="button" id="collectionbtn" value="12">
+                                        <span class="fa fa-calendar myicon"></span>
+                                    </button>
+                                    <input type="button" id="backcollection" value="Back" style="margin-right: 10px;"
+                                        hidden />
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-12" id="ft12">
+                                        <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="frmd12" disabled="disabled" style="width: 90px;" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="tod12" disabled="disabled" style="width: 90px;" /></div>
+                                    </div>
+                                    <div id="dashboardidcol7">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" id="coll1" style="padding-right: 4px; padding-left: 0px;">
+                            @*style="left: 21px;"*@
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Deposit Amount
+                                    </h4>
+                                    <button type="button" id="Depositbtn" value="6">
+                                        <span class="fa fa-calendar myicon"></span>
+                                    </button>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-12" id="ft6">
+                                        <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="frmd6" disabled="disabled" style="width: 90px;" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="tod6" disabled="disabled" style="width: 90px;" /></div>
+                                    </div>
+                                    <div id="dashboardidcol1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" id="coll2" style="padding-right: 0px; padding-left: 0px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Final Billing
+                                    </h4>
+                                    <button type="button" id="Finalbtn" value="7">
+                                        <span class="fa fa-calendar myicon"></span>
+                                    </button>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-12" id="ft7">
+                                        <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="frmd7" disabled="disabled" style="width: 90px;" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="tod7" disabled="disabled" style="width: 90px;" /></div>
+                                    </div>
+                                    <div id="dashboardidcol2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" id="coll3" style="padding-left: 3px; padding-right: 27px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Refund Amount
+                                    </h4>
+                                    <button type="button" id="refundbtn" value="9">
+                                        <span class="fa fa-calendar myicon"></span>
+                                    </button>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-12" id="ft9">
+                                        <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="frmd9" disabled="disabled" style="width: 90px;" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="tod9" disabled="disabled" style="width: 90px;" /></div>
+                                    </div>
+                                    <div id="dashboardidcol3">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" id="coll8" style="padding-left: 3px; padding-right: 27px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Refund Gender Wise
+                                    </h4>
+                                    <input type="button" id="backrefgent" value="Back" />
+                                </div>
+                                <div class="panel-body">
+                                    <div id="dashboardidcol8">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-3" id="coll5" style="padding-left: 29px; padding-right: 6px;">
+                            @*style="left: 21px;"*@
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Panel Collection
+                                    </h4>
+                                    <button type="button" id="panelcollbtn" value="11">
+                                        <span class="fa fa-calendar myicon"></span>
+                                    </button>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-12" id="ft11">
+                                        <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="frmd11" disabled="disabled" style="width: 90px;" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="tod11" disabled="disabled" style="width: 90px;" /></div>
+                                    </div>
+                                    <div id="dashboardidcol5">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" id="coll6" style="padding-left: 29px; padding-right: 6px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Panel Collection Type
+                                    </h4>
+                                    <input type="button" id="btnbackcollty" value="Back" />
+                                </div>
+                                <div class="panel-body">
+                                    <div id="dashboardidcol6">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" id="coll4" style="padding-right: 0px; padding-left: 2px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Panal Claim
+                                    </h4>
+                                    <button type="button" id="panalbtn" value="10">
+                                        <span class="fa fa-calendar myicon"></span>
+                                    </button>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-12" id="ft10">
+                                        <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="frmd10" disabled="disabled" style="width: 90px;" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="tod10" disabled="disabled" style="width: 90px;" /></div>
+                                    </div>
+                                    <div id="dashboardidcol4" style="height: 220px;">@*style="height: 222px;"*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" id="coll9" style="padding-right: 0px; padding-left: 2px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Final Billing Status
+                                    </h4>
+                                    <button type="button" id="finalsts" value="13">
+                                        <span class="fa fa-calendar myicon"></span>
+                                    </button>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-12" id="ft13">
+                                        <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="frmd13" disabled="disabled" style="width: 90px;" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="tod13" disabled="disabled" style="width: 90px;" /></div>
+                                    </div>
+                                    <div id="dashboardidcol9">@*style="height: 222px;"*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" id="coll10" style="padding-left: 3px; padding-right: 27px;">
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Ip Collection
+                                    </h4>
+                                    <button type="button" id="ipbtn" value="16">
+                                        <span class="fa fa-calendar myicon"></span>
+                                    </button>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-12" id="ft16">
+                                        <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="frmd16" disabled="disabled" style="width: 90px;" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="tod16" disabled="disabled" style="width: 90px;" /></div>
+                                    </div>
+                                    <div id="dashboardidcol10">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="col-sm-3" id="coll11" style="padding-left: 29px; padding-right: 6px;">
+                            @*style="left: 21px;"*@
+                            <div class="panel">
+                                <div class="panel panel-heading">
+                                    <h4 class="panel-title">
+                                        Deposit Payment Type
+                                    </h4>
+                                    <button type="button" id="paymentbtn" value="17">
+                                        <span class="fa fa-calendar myicon"></span>
+                                    </button>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-12" id="ft18">
+                                        <div class="col-sm-1">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="frmd18" disabled="disabled" style="width: 90px;" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" id="tod18" disabled="disabled" style="width: 90px;" /></div>
+                                    </div>
+                                    <div id="dashboardidcol11">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            @*<div id="monthgrid" class="tab-pane">
+            </div>*@
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModal"
+    ria-hidden="true" style="width: 370px; left: 500px; margin: 0px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #0097a7; border-top-width: 0px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    [x]
+                </button>
+                <h4 class="modal-title" id="myModalfmdt">
+                    Get Details
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id='myDialogContainer2'>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>
+                            From Date
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="frmtdate11" class="form-control" />
+                    </div>
+                    <div class="col-sm-6">
+                        <label>
+                            To Date
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="todate1" class="form-control" /></div>
+                </div>
+                <button type="button" id="btnsav1" class="btn" style="margin-left: 262px; background-color: #0097a7;">
+                    Submit
+                </button>
+                @* <label id="vali2" style="color: Red;">
+                    * Fields are required</label>*@
+            </div>
+            @*<div class="modal-footer">
+                
+               
+            </div>*@
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<script type="text/javascript">
+
+
+    $("#dash6").hide(); $("#dash7").hide(); $("#coll6").hide(); $("#coll1").hide(); $("#coll2").hide(); $("#coll3").hide();
+    $("#coll4").hide(); $("#coll5").hide(); $("#coll8").hide(); $("#dash10").hide(); $("#coll9").hide(); $("#backcollection").hide(); $("#coll10").hide();
+
+    /////chart hide
+
+   
+
+
+    $("#ft1").hide(); $("#ft2").hide(); $("#ft3").hide(); $("#ft4").hide(); $("#ft5").hide(); $("#ft6").hide(); $("#ft7").hide(); $("#ft14").hide();
+    $("#ft8").hide(); $("#ft9").hide(); $("#ft10").hide(); $("#ft11").hide(); $("#ft12").hide(); $("#ft13").hide(); $("#ft15").hide(); $("#ft16").hide();
+    $("#ft17").hide(); $("#ft18").hide();
+
+    $("#genderbtn,#patypebtn,#patcatgbtn,#Racepatientsbtn,#waitbtn,#ipbtn,#citizenbtn,#Registrationbtn,#Patientlocationsbtn,#finalsts,#collectionbtn,#Appointmentbtn,#Finalbtn,#Depositbtn,#refundbtn,#panalbtn,#panelcollbtn").click(function () {
+
+
+        $("#myModal2").modal('show');
+        $("#myModal2").modal({ backdrop: false });
+
+        $("#frmtdate11").pickadate({
+            format: "dd/mm/yyyy",
+            // min: true,
+            selectMonths: true,
+            selectYears: true,
+            editable: 'ray'
+
+        });
+        $("#todate1").pickadate({
+            format: "dd/mm/yyyy",
+            //  min: true,
+            selectMonths: true,
+            selectYears: true,
+            editable: 'ray'
+
+        });
+        m = $(this).val();
+
+    });
+
+
+    var fromdate;
+    var todate;
+
+    $("#drop11").change(function () {
+        debugger
+        var drop11 = $("#drop11 option:selected").text();
+        departmentfun(drop11);
+         
+    });
+
+
+    $("#btnsav1").click(function () {
+
+
+        fromdate = $("#frmtdate11").val();
+        todate = $("#todate1").val();
+        debugger
+        if (parseInt(m) == 1) {
+            $("#ft1").show();
+
+            $("#frmd1").val(fromdate);
+            $("#tod1").val(todate);
+
+            Genderfun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+
+        }
+        else if (parseInt(m) == 2) {
+            $("#ft2").show();
+
+            $("#frmd2").val(fromdate);
+            $("#tod2").val(todate);
+
+            patienttypefun();
+
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 3) {
+            $("#ft3").show();
+            $("#frmd3").val(fromdate);
+            $("#tod3").val(todate);
+
+            patientcat();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+
+        }
+
+        else if (parseInt(m) == 4) {
+            $("#ft4").show();
+            $("#frmd4").val(fromdate);
+            $("#tod4").val(todate);
+
+            Racefun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 5) {
+            $("#ft5").show();
+            $("#frmd5").val(fromdate);
+            $("#tod5").val(todate);
+
+            locationfun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 6) {
+            $("#ft6").show();
+            $("#frmd6").val(fromdate);
+            $("#tod6").val(todate);
+
+            depositfun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 7) {
+            $("#ft7").show();
+            $("#frmd7").val(fromdate);
+            $("#tod7").val(todate);
+
+            billfun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 8) {
+            $("#ft8").show();
+            $("#frmd8").val(fromdate);
+            $("#tod8").val(todate);
+
+            statusday();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+
+        else if (parseInt(m) == 9) {
+            $("#ft9").show();
+            $("#frmd9").val(fromdate);
+            $("#tod9").val(todate);
+
+            refundfun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 10) {
+            $("#ft10").hide();
+            $("#frmd10").val(fromdate);
+            $("#tod10").val(todate);
+
+            PanalClaim();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+
+        else if (parseInt(m) == 11) {
+            $("#ft11").show();
+            $("#frmd11").val(fromdate);
+            $("#tod11").val(todate);
+
+            panelcoll();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+
+
+        else if (parseInt(m) == 12) {
+            $("#ft12").show();
+            $("#frmd12").val(fromdate);
+            $("#tod12").val(todate);
+
+            collectionfund();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 13) {
+            $("#ft13").show();
+            $("#frmd13").val(fromdate);
+            $("#tod13").val(todate);
+
+            finalstatus();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+
+
+        else if (parseInt(m) == 14) {
+            $("#ft14").show();
+            $("#frmd14").val(fromdate);
+            $("#tod14").val(todate);
+
+            patientfrom();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 15) {
+            $("#ft15").show();
+            $("#frmd15").val(fromdate);
+            $("#tod15").val(todate);
+
+            RegistrationType();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 16) {
+            $("#ft16").show();
+            $("#frmd16").val(fromdate);
+            $("#tod16").val(todate);
+
+            ipcollection();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 17) {
+            $("#ft17").show();
+            $("#frmd17").val(fromdate);
+            $("#tod17").val(todate);
+
+            waiting();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        m = 0;
+        $("#myModal2").modal('hide');
+    });
+
+
+    $("#cancel2").click(function () {
+        $(".modal fade").modal('hide');
+    });
+
+
+</script>
+
+<script type="text/javascript">
+
+    function getval(sel) {
+        
+        if (sel.value == 1) {
+            
+            pie();
+        }
+        else if (sel.value == 2) {
+        
+            line();
+        }
+        else if (sel.value == 3) {
+        
+            bar();
+        }
+        else if (sel.value == 4) {
+        
+        column();
+        }
+    else {
+        alert("Select Any one");
+        $("#drop").focus();
+        
+        }
+    }
+
+
+</script>
+
+<script type="text/javascript">
+    $("#newtab").hide();
+    $("#MenuNamepartialview").text('OP Dashboard');
+
+    $("#btnbackcollty").click(function () {
+        $("#coll6").hide();
+        $("#coll5").show();
+    });
+    $("#btnbackpatin").click(function () {
+        $("#dash6").hide();
+        $("#dash1").show();
+    });
+    $("#btnbackdeprt").click(function () {
+        $("#dash7").hide();
+        $("#dash8").show();
+    });
+    //    $("#btnbacklocat").click(function () {
+    //        $("#dash4").show();
+    //        $("#dash3").show();
+    //        
+    //    });
+
+    $("#backrefgent").click(function () {
+        $("#coll3").show();
+        $("#coll8").hide();
+    });
+    $("#btnbackcat").click(function () {
+        $("#dash3").show();
+        $("#dash10").hide();
+    });
+
+    $("#backcollection").click(function () {
+        $("#backcollection").hide();
+        $("#coll2").hide();
+        $("#coll1").hide();
+        $("#coll3").hide();
+        $("#coll4").hide();
+        $("#coll5").hide();
+        $("#coll9").hide();
+        $("#coll6").hide();
+        $("#coll8").hide();
+        $("#coll10").hide();
+    });
+
+    //    $("#days").click(function () {
+
+    //        $("#frmid").css('display', 'block');
+    //        $("#monthid").css('display', 'none');
+    //        $("#Weekid").css('display', 'none');
+    //    });
+    //    $("#week").click(function () {
+
+    //        $("#monthid").css('display', 'none');
+    //        $("#frmid").css('display', 'none');
+    //        $("#Weekid").css('display', 'block');
+    //    });
+    //    $("#month").click(function () {
+
+    //        $("#monthid").css('display', 'block');
+    //        $("#frmid").css('display', 'none');
+    //        $("#Weekid").css('display', 'none');
+    //    });
+
+    //    $("#monthid").change(function () {
+
+    //        var type = $("#monthid").val();
+    //        patienttypemonthfun(type);
+    //    });
+
+</script>
+<script type="text/javascript">
+
+    //collection
+
+    $.ajax({
+        url: "../Store/OPDashBoard/collectiondep",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+            //            $.each(result, function (ui, item) {
+            //                sad1.push(item.Name);
+            //                sad.push(item.Id);
+
+
+            //            });
+
+            $.each(result, function (ui, item) {
+                sad.push(item.Name);
+
+                if (item.Id == 0) {
+                    var a = "";
+                    sad1.push(a);
+                }
+                else {
+                    sad1.push(item.Id);
+                }
+
+            });
+
+            vibrant.setOptions({
+                colors: ['#80B5C8', '#B9EEE3']
+            });
+
+
+            $('#dashboardidcol7').vibrant({
+                chart: {
+                    type: 'column',
+                    height: 220,
+                    width: 300
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: sad,
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    column: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        showInLegend: false
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Collection',
+                    data: sad1,
+                    point: {
+                        events: {
+                            click: function (event) {
+
+                                $("#coll2").show();
+                                $("#coll1").show();
+                                $("#coll3").show();
+                                $("#coll4").show();
+                                $("#coll5").show();
+                                $("#coll9").show();
+                                $("#coll10").show();
+                                $("#backcollection").show();
+                            }
+                        }
+                    }
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+
+
+    // Gender (Day)
+
+
+    $.ajax({
+        url: "../Store/OPDashBoard/Genderday",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+            var res = [];
+
+            var rest = { "name": "", "y": "" };
+            for (i = 0; i < result.length; i++) {
+                rest.name = result[i].Name;
+                rest.y = result[i].Id;
+
+                res.push(rest);
+                var d = res;
+                rest = { "name": "", "y": "" };
+
+
+            }
+            var h = d;
+
+            //$("#jqStatus").datatable().fnAddData(result.Name, result.Id, "")
+
+
+            vibrant.setOptions({
+                colors: ['#80B5C8', '#B9EEE3']
+            });
+
+
+            $('#dashboardid1').vibrant({
+
+
+
+                chart: {
+
+                    type: 'pie',
+                    height: 220
+
+
+                },
+                title: {
+                    text: ''
+                },
+                yAxis: {
+                    showEmpty: false
+                },
+                legend: {
+                    itemStyle: {
+                        fontWeight: 'bold',
+                        fontSize: '12px',
+                        color: "gray"
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:1f}{point.y:}'
+
+                        },
+                        showInLegend: true
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:f} </b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                series: [{
+                    name: "Gender",
+                    colorByPoint: true,
+                    data: res,
+
+                    point: {
+                        events: {
+                            click: function (event) {
+                                debugger
+                                var a = this.name;
+                                $("#dash6").show();
+                                $("#dash1").hide();
+
+                                ya(a);
+
+                            }
+                        }
+                    }
+
+                }]
+
+            });
+
+        }
+
+    });
+
+
+    function pie() {
+        $.ajax({
+            url: "../Store/OPDashBoard/Genderday",
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+                var res = [];
+
+                var rest = { "name": "", "y": "" };
+                for (i = 0; i < result.length; i++) {
+                    rest.name = result[i].Name;
+                    rest.y = result[i].Id;
+
+                    res.push(rest);
+                    var d = res;
+                    rest = { "name": "", "y": "" };
+
+
+                }
+                var h = d;
+
+                //$("#jqStatus").datatable().fnAddData(result.Name, result.Id, "")
+
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardid1').vibrant({
+
+
+
+                    chart: {
+
+                        type: 'pie',
+                        height: 220
+
+
+                    },
+                    title: {
+                        text: ''
+                    },
+                    yAxis: {
+                        showEmpty: false
+                    },
+                    legend: {
+                        itemStyle: {
+                            fontWeight: 'bold',
+                            fontSize: '12px',
+                            color: "gray"
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:1f}{point.y:}'
+
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:f} </b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    series: [{
+                        name: "Gender",
+                        colorByPoint: true,
+                        data: res,
+
+                        point: {
+                            events: {
+                                click: function (event) {
+                                    debugger
+                                    var a = this.name;
+                                    $("#dash6").show();
+                                    $("#dash1").hide();
+
+                                    ya(a);
+
+                                }
+                            }
+                        }
+
+                    }]
+
+                });
+
+            }
+
+        });
+    }
+    function bar() {
+        $.ajax({
+            url: "../Store/OPDashBoard/Genderday",
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+
+                //            $.each(result, function (ui, item) {
+                //                sad1.push(item.Name);
+                //                sad.push(item.Id);
+
+
+                //            });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardid1').vibrant({
+                    chart: {
+                        type: 'bar',
+                        height: 220,
+                        width: 300,
+                        options3d: {
+                            enabled: true,
+                            alpha: 10,
+                            beta: 25,
+                            depth: 70
+                        }
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Gender',
+                        data: sad1,
+                        point: {
+                            events: {
+                                click: function (event) {
+                                    debugger
+                                    var a = this.category;
+                                    $("#dash6").show();
+                                    $("#dash1").hide();
+
+                                    ya(a);
+
+                                }
+                            }
+                        }
+                    }
+
+
+                ]
+
+
+
+                });
+
+            }
+
+        });
+    }
+    function column() {
+
+        $.ajax({
+            url: "../Store/OPDashBoard/Genderday",
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+
+                //            $.each(result, function (ui, item) {
+                //                sad1.push(item.Name);
+                //                sad.push(item.Id);
+
+
+                //            });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardid1').vibrant({
+                    chart: {
+                        type: 'column',
+                        height: 220,
+                        width: 300,
+                        options3d: {
+                            enabled: true,
+                            alpha: 10,
+                            beta: 25,
+                            depth: 70
+                        }
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        column: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Gender',
+                        data: sad1,
+                        point: {
+                            events: {
+                                click: function (event) {
+                                    debugger
+                                    var a = this.category;
+                                    $("#dash6").show();
+                                    $("#dash1").hide();
+
+                                    ya(a);
+
+                                }
+                            }
+                        }
+                    }
+
+
+                ]
+
+
+
+                });
+
+            }
+
+        });
+    }
+    //ip deposit payment mode
+    $.ajax({
+        url: "../Store/OPDashBoard/paymenttype",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+
+            //            $.each(result, function (ui, item) {
+            //                sad1.push(item.Name);
+            //                sad.push(item.Id);
+
+
+            //            });
+
+            $.each(result, function (ui, item) {
+                sad.push(item.Name);
+
+                if (item.Id == 0) {
+                    var a = "";
+                    sad1.push(a);
+                }
+                else {
+                    sad1.push(item.Id);
+                }
+
+            });
+
+            vibrant.setOptions({
+                colors: ['#80B5C8', '#B9EEE3']
+            });
+
+
+            $('#dashboardidcol11').vibrant({
+                chart: {
+                    type: 'bar',
+                    height: 220,
+                    width: 300,
+                    options3d: {
+                        enabled: true,
+                        alpha: 10,
+                        beta: 25,
+                        depth: 70
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: sad,
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        showInLegend: false
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Gender',
+                    data: sad1,
+                    point: {
+                        events: {
+                            click: function (event) {
+                                debugger
+                                var a = this.category;
+                                $("#dash6").show();
+                                $("#dash1").hide();
+
+                                ya(a);
+
+                            }
+                        }
+                    }
+                }
+
+
+                ]
+
+
+
+            });
+
+        }
+
+    });
+    //final bill status
+
+
+
+    $.ajax({
+        url: "../Store/OPDashBoard/finalstatus",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+
+            //            $.each(result, function (ui, item) {
+            //                sad1.push(item.Name);
+            //                sad.push(item.Id);
+
+
+            //            });
+
+            $.each(result, function (ui, item) {
+                sad.push(item.Name);
+
+                if (item.Id == 0) {
+                    var a = "";
+                    sad1.push(a);
+                }
+                else {
+                    sad1.push(item.Id);
+                }
+
+            });
+
+            vibrant.setOptions({
+                colors: ['#80B5C8', '#B9EEE3']
+            });
+
+
+            $('#dashboardidcol9').vibrant({
+                chart: {
+                    type: 'column',
+                    height: 220,
+                    width: 300,
+                    options3d: {
+                        enabled: true,
+                        alpha: 10,
+                        beta: 25,
+                        depth: 70
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: sad,
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    column: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        showInLegend: false
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Deposit',
+                    data: sad1
+                }
+
+
+                ]
+
+
+
+            });
+
+        }
+
+    });
+
+
+    function finalstatus() {
+
+        var dob = $("#frmtdate11").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#todate1").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+
+        $.ajax({
+            url: "../Store/OPDashBoard/finalstatus",
+            type: 'POST',
+            data: { Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+
+                //            $.each(result, function (ui, item) {
+                //                sad1.push(item.Name);
+                //                sad.push(item.Id);
+
+
+                //            });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardidcol9').vibrant({
+                    chart: {
+                        type: 'column',
+                        height: 220,
+                        width: 300,
+                        options3d: {
+                            enabled: true,
+                            alpha: 10,
+                            beta: 25,
+                            depth: 70
+                        }
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        column: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Deposit',
+                        data: sad1
+                    }
+
+
+                ]
+
+
+
+                });
+
+            }
+
+        });
+
+
+    }
+
+
+    // Patient Types (Day)
+
+
+    function ya(a) {
+
+        debugger
+
+        var ge = a;
+        $.ajax({
+            url: "../Store/OPDashBoard/PatientTypesday",
+            type: 'POST',
+            data: { Fromdate: '', Todate: '', set: ge },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+                //            $.each(result, function (ui, item) {
+                //                sad1.push(item.Name);
+                //                sad.push(item.Id);
+
+
+                //            });
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+                vibrant.setOptions({
+                    colors: ['#beb594', '#80B5C8']
+                });
+
+
+                $('#dashboardid2').vibrant({
+                    chart: {
+                        type: 'bar',
+                        height: 220
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        },
+                        series: {
+                            animation: {
+                                duration: 2000
+                            }
+                        }
+
+
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Patient Types',
+                        data: sad1,
+                        point: {
+                            events: {
+                                click: function (event) {
+
+
+
+                                }
+                            }
+                        }
+
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+    //Patient Categories(day)
+
+    $.ajax({
+        url: "../Store/OPDashBoard/PatientCategoriesday",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+            //            $.each(result, function (ui, item) {
+            //                sad1.push(item.Name);
+            //                sad.push(item.Id);
+
+
+            //            });
+
+            $.each(result, function (ui, item) {
+                sad.push(item.Name);
+
+                if (item.Id == 0) {
+                    var a = "";
+                    sad1.push(a);
+                }
+                else {
+                    sad1.push(item.Id);
+                }
+
+            });
+
+            vibrant.setOptions({
+                colors: ['#80B5C8', '#B9EEE3']
+            });
+
+
+            $('#dashboardid3').vibrant({
+                chart: {
+                    type: 'column',
+                    height: 220
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: sad,
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    column: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        showInLegend: false
+                    },
+                    series: {
+                        animation: {
+                            duration: 2000
+                        }
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Patient Categories',
+                    data: sad1,
+                    point: {
+                        events: {
+                            click: function (event) {
+                                debugger
+                                var a = this.category;
+
+                                $("#dash3").hide();
+                                $("#dash10").show();
+
+                                if (a == 'General') {
+                                    a = 0;
+                                }
+                                else if (a == 'Panel') {
+                                    a = 1;
+                                }
+                                gold(a);
+                            }
+                        }
+                    }
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+    //patient panel sex
+
+    function gold(a) {
+
+
+        var sex = a;
+
+        $.ajax({
+            url: "../Store/OPDashBoard/patientgentercat",
+            type: 'POST',
+            data: { set: sex, Fromdate: '', Todate: '' },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+
+                //            $.each(result, function (ui, item) {
+                //                sad1.push(item.Name);
+                //                sad.push(item.Id);
+
+
+                //            });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardid10').vibrant({
+                    chart: {
+                        type: 'area',
+                        inverted: true,
+                        height: 220,
+                        width: 300
+
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            // overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        area: {
+                            dataLabels: {
+                                enabled: true
+                            },
+
+                            showInLegend: false
+                        },
+                        series: {
+                            animation: {
+                                duration: 2000
+                            }
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Patient Categories',
+                        data: sad1
+                    }
+
+
+                ]
+
+
+
+                });
+
+            }
+
+        });
+
+    }
+
+
+    //race patient (day)
+
+    $.ajax({
+        url: "../Store/OPDashBoard/Raceday",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+            var res = [];
+
+            var rest = { "name": "", "y": "" };
+            for (i = 0; i < result.length; i++) {
+                rest.name = result[i].Name;
+                rest.y = result[i].Id;
+
+                res.push(rest);
+                var d = res;
+                rest = { "name": "", "y": "" };
+
+
+            }
+            var h = d;
+
+            //$("#jqStatus").datatable().fnAddData(result.Name, result.Id, "")
+
+
+            vibrant.setOptions({
+                colors: ['#80B5C8', '#B9EEE3', '#A6C5D3', '#beb594']
+            });
+
+
+            $('#dashboardid4').vibrant({
+
+
+
+                chart: {
+
+                    type: 'pie',
+                    height: 220,
+                    width: 300
+
+
+                },
+                title: {
+                    text: ''
+                },
+                yAxis: {
+                    showEmpty: false
+                },
+                legend: {
+                    itemStyle: {
+                        fontWeight: 'bold',
+                        fontSize: '12px',
+                        color: "gray"
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:1f}{point.y:}'
+
+                        },
+                        showInLegend: true
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:f} </b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                series: [{
+                    name: "Patients",
+                    colorByPoint: true,
+                    data: res,
+
+                    point: {
+                        events: {
+                            click: function (event) {
+
+
+                            }
+                        }
+                    }
+
+                }]
+
+            });
+
+        }
+
+    });
+
+
+
+    //Patient Location(day)
+
+    $.ajax({
+        url: "../Store/OPDashBoard/Patientlocationday",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+
+            $.each(result, function (ui, item) {
+
+                sad.push(item.Name);
+
+                if (item.Id == 0) {
+                    var a = "";
+                    sad1.push(a);
+                }
+                else {
+                    sad1.push(item.Id);
+                }
+
+            });
+            vibrant.setOptions({
+                colors: ['#A6C5D3']
+            });
+
+
+            $('#dashboardid5').vibrant({
+                chart: {
+                    type: 'column',
+                    height: 220,
+                    width: 310
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: sad,
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    column: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Patient Location',
+                    data: sad1
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+    // Deposit day
+
+    $.ajax({
+        url: "../Store/OPDashBoard/depositday",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+
+            //            $.each(result, function (ui, item) {
+            //                sad1.push(item.Name);
+            //                sad.push(item.Id);
+
+
+            //            });
+
+            $.each(result, function (ui, item) {
+                sad.push(item.Name);
+
+                if (item.Id == 0) {
+                    var a = "";
+                    sad1.push(a);
+                }
+                else {
+                    sad1.push(item.Id);
+                }
+
+            });
+
+            vibrant.setOptions({
+                colors: ['#80B5C8', '#B9EEE3']
+            });
+
+
+            $('#dashboardidcol1').vibrant({
+                chart: {
+                    type: 'column',
+                    height: 220,
+                    width: 300,
+                    options3d: {
+                        enabled: true,
+                        alpha: 10,
+                        beta: 25,
+                        depth: 70
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: sad,
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    column: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        showInLegend: false
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Deposit',
+                    data: sad1
+                }
+
+
+                ]
+
+
+
+            });
+
+        }
+
+    });
+
+    //  appoi department
+
+    function tm(a) {
+        debugger
+
+
+        var drop11 = $("#drop11 option:selected").text();
+
+        $("#selva").val(a);
+
+        $("#selva").hide();
+
+        $.ajax({
+            url: "../Store/OPDashBoard/department",
+            type: 'POST',
+            data: { Appointmentstatus: a, Department: drop11 },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+                //            $.each(result, function (ui, item) {
+                //                sad1.push(item.Name);
+                //                sad.push(item.Id);
+
+
+                //            });
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#80B5C8']
+                });
+
+
+                $('#dashboardid7').vibrant({
+                    chart: {
+                        type: 'bar',
+                        height: 180
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: [{
+                        categories: sad,
+                        reversed: false
+
+                    }, {
+                        opposite: true,
+                        reversed: false,
+                        categories: sad,
+                        labels: {
+                            step: 1
+                        }
+                    }
+                ],
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Deparment',
+                        data: sad1
+
+
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+
+    }
+
+
+
+
+    function departmentfun(drop11) {
+        debugger
+        var f = $("#selva").val();
+
+        $("#selva").hide();
+
+        $.ajax({
+            url: "../Store/OPDashBoard/department",
+            type: 'POST',
+            data: { Appointmentstatus: f, Department: drop11 },
+            // data: { Department: drop11 },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#80B5C8']
+                });
+
+
+                $('#dashboardid7').vibrant({
+                    chart: {
+                        type: 'bar',
+                        height: 180
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: [{
+                        categories: sad,
+                        reversed: false
+
+                    }, {
+                        opposite: true,
+                        reversed: false,
+                        categories: sad,
+                        labels: {
+                            step: 1
+                        }
+                    }
+                ],
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Deparment',
+                        data: sad1
+
+
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+
+    }
+
+    //finnal bill day
+
+    $.ajax({
+        url: "../Store/OPDashBoard/billday",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+
+            //            $.each(result, function (ui, item) {
+            //                sad1.push(item.Name);
+            //                sad.push(item.Id);
+
+
+            //            });
+
+            $.each(result, function (ui, item) {
+                sad.push(item.Name);
+
+                if (item.Id == 0) {
+                    var a = "";
+                    sad1.push(a);
+                }
+                else {
+                    sad1.push(item.Id);
+                }
+
+            });
+
+            vibrant.setOptions({
+                colors: ['#80B5C8', '#B9EEE3']
+            });
+
+
+            $('#dashboardidcol2').vibrant({
+                chart: {
+                    type: 'area',
+                    inverted: true,
+                    height: 220,
+                    width: 300
+
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: sad,
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        // overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    area: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        showInLegend: false
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Final Bill',
+                    data: sad1
+                }
+
+
+                ]
+
+
+
+            });
+
+        }
+
+    });
+
+
+
+    //paneal collection
+
+
+    $.ajax({
+        url: "../Store/OPDashBoard/panealcollection",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+            //                $.each(result, function (ui, item) {
+            //                    sad1.push(item.Name);
+            //                    sad.push(item.Id);
+
+
+            //                });
+
+            $.each(result, function (ui, item) {
+                sad.push(item.Name);
+
+                if (item.Id == 0) {
+                    var a = "";
+                    sad1.push(a);
+                }
+                else {
+                    sad1.push(item.Id);
+                }
+
+            });
+
+            vibrant.setOptions({
+                colors: ['#beb594', '#80B5C8']
+            });
+
+
+            $('#dashboardidcol5').vibrant({
+                chart: {
+                    type: 'bar',
+                    height: 220,
+                    width: 300
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: sad,
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        showInLegend: false
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Panel Collection',
+                    data: sad1,
+                    point: {
+                        events: {
+                            click: function (event) {
+                                debugger
+                                var a = this.category;
+                                $("#coll5").hide();
+                                $("#coll6").show();
+
+                                pa(a);
+
+                            }
+                        }
+                    }
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+    function pa(a) {
+        debugger;
+
+        var dd = a;
+
+        $.ajax({
+            url: "../Store/OPDashBoard/paneltypecol",
+            type: 'POST',
+            data: { set: dd, Fromdate: '', Todate: '' },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+                    sad1.push(item.Id);
+
+
+                });
+
+                //                $.each(result, function (ui, item) {
+                //                    sad.push(item.Name);
+
+                //                    if (item.Id == 0) {
+                //                        var a = "";
+                //                        sad1.push(a);
+
+                //                    }
+                //                    else {
+                //                        sad1.push(item.Id);
+                //                    }
+
+                //                });
+
+                vibrant.setOptions({
+                    colors: ['#A6C5D3', '#B9EEE3']
+                });
+
+
+                $('#dashboardidcol6').vibrant({
+                    chart: {
+                        type: 'column',
+                        height: 220,
+                        width: 300,
+                        options3d: {
+                            enabled: true,
+                            alpha: 10,
+                            beta: 25,
+                            depth: 70
+                        }
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        column: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Panel Collection',
+                        data: sad1
+                    }
+
+
+                        ]
+
+
+
+                });
+
+            }
+
+        });
+
+    }
+    function panelcoll() {
+
+        var dob = $("#frmtdate11").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#todate1").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        $.ajax({
+            url: "../Store/OPDashBoard/panealcollection",
+            type: 'POST',
+            data: { Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+                //                $.each(result, function (ui, item) {
+                //                    sad1.push(item.Name);
+                //                    sad.push(item.Id);
+
+
+                //                });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#beb594', '#80B5C8']
+                });
+
+
+                $('#dashboardidcol5').vibrant({
+                    chart: {
+                        type: 'bar',
+                        height: 220,
+                        width: 300
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Panel Collection',
+                        data: sad1,
+                        point: {
+                            events: {
+                                click: function (event) {
+                                    debugger
+                                    var a = this.category;
+                                    $("#coll5").hide();
+                                    $("#coll6").show();
+
+                                    da(a);
+
+                                }
+                            }
+                        }
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+
+    }
+
+
+
+    function da(a) {
+        debugger;
+
+        var dob = $("#frmd11").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#tod11").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dd = a;
+
+        $.ajax({
+            url: "../Store/OPDashBoard/paneltypecol",
+            type: 'POST',
+            data: { set: dd, Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+                    sad1.push(item.Id);
+
+
+                });
+
+                //                $.each(result, function (ui, item) {
+                //                    sad.push(item.Name);
+
+                //                    if (item.Id == 0) {
+                //                        var a = "";
+                //                        sad1.push(a);
+
+                //                    }
+                //                    else {
+                //                        sad1.push(item.Id);
+                //                    }
+
+                //                });
+
+                vibrant.setOptions({
+                    colors: ['#A6C5D3', '#B9EEE3']
+                });
+
+
+                $('#dashboardidcol6').vibrant({
+                    chart: {
+                        type: 'column',
+                        height: 220,
+                        width: 300,
+                        options3d: {
+                            enabled: true,
+                            alpha: 10,
+                            beta: 25,
+                            depth: 70
+                        }
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        column: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Panel Collection',
+                        data: sad1
+                    }
+
+
+                        ]
+
+
+
+                });
+
+            }
+
+        });
+
+    }
+
+    //collection date
+
+    function collectionfund() {
+
+        var dob = $("#frmtdate11").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#todate1").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        $.ajax({
+            url: "../Store/OPDashBoard/collectiondep",
+            type: 'POST',
+            data: { Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+                //            $.each(result, function (ui, item) {
+                //                sad1.push(item.Name);
+                //                sad.push(item.Id);
+
+
+                //            });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardidcol7').vibrant({
+                    chart: {
+                        type: 'column',
+                        height: 220,
+                        width: 300
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        column: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Collection',
+                        data: sad1,
+                        point: {
+                            events: {
+                                click: function (event) {
+
+                                    $("#coll2").show();
+                                    $("#coll1").show();
+                                    $("#coll3").show();
+                                    $("#coll4").show();
+                                    $("#coll5").show();
+                                    $("#coll9").show();
+                                    $("#coll10").show();
+                                    $("#backcollection").show();
+                                }
+                            }
+                        }
+
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+
+
+
+    }
+
+    //Appointment Status
+
+    $.ajax({
+        url: "../Store/OPDashBoard/statusday",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+
+            //            $.each(result, function (ui, item) {
+            //                sad1.push(item.Name);
+            //                sad.push(item.Id);
+
+
+            //            });
+
+            $.each(result, function (ui, item) {
+                sad.push(item.Name);
+
+                if (item.Id == 0) {
+                    var a = "";
+                    sad1.push(a);
+                }
+                else {
+                    sad1.push(item.Id);
+                }
+
+            });
+
+            vibrant.setOptions({
+                colors: ['#80B5C8', '#B9EEE3']
+            });
+
+
+            $('#dashboardid8').vibrant({
+                chart: {
+                    type: 'column',
+                    height: 220
+
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: sad,
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    column: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        showInLegend: false
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Appointment Status',
+                    data: sad1,
+                    point: {
+                        events: {
+                            click: function (event) {
+                                debugger
+                                a = this.category;
+                                $("#dash7").show();
+                                $("#dash8").hide();
+                                if (a == 'Confirmed') {
+                                    var a = 0;
+                                }
+                                else if (a == 'Prebooking') {
+                                    var a = 2;
+                                }
+                                else if (a == 'Cancelled') {
+                                    var a = 3;
+                                }
+                                tm(a);
+                            }
+                        }
+                    }
+                }
+
+
+                ]
+
+
+
+            });
+
+        }
+
+    });
+
+
+
+
+
+    $.ajax({
+        url: "../Store/OPDashBoard/Panalamt",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+            var res = [];
+
+            var rest = { "name": "", "y": "" };
+            for (i = 0; i < result.length; i++) {
+                rest.name = result[i].Name;
+                rest.y = result[i].Id;
+
+                res.push(rest);
+                var d = res;
+                rest = { "name": "", "y": "" };
+
+
+            }
+            var h = d;
+
+            //$("#jqStatus").datatable().fnAddData(result.Name, result.Id, "")
+
+
+            vibrant.setOptions({
+                colors: ['#80B5C8', '#B9EEE3']
+            });
+
+
+            $('#dashboardidcol4').vibrant({
+
+
+
+                chart: {
+                    hight: 220,
+                    width: 300,
+                    plotBackgroundColor: null,
+                    plotBorderWidth: 0,
+                    plotShadow: true
+                },
+                title: {
+                    text: ''
+                },
+                yAxis: {
+                    showEmpty: false
+                },
+                legend: {
+                    itemStyle: {
+                        fontWeight: 'bold',
+                        fontSize: '12px',
+                        color: "gray"
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            distance: -50,
+                            format: ' {point.y:1f}{point.y:}'
+
+                        },
+                        startAngle: -90,
+                        endAngle: 90,
+                        //center: ['60%', '50%'],
+                        showInLegend: true
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:f} </b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                series: [{
+                    type: 'pie',
+                    innerSize: '50%',
+                    name: "Panal Amount",
+                    colorByPoint: true,
+                    data: res
+
+                    //                    point: {
+                    //                        events: {
+                    //                            click: function (event) {
+                    //                                debugger
+                    //                                var a = this.name;
+                    //                               
+
+                    //                                pa(a);
+
+                    //                            }
+                    //                        }
+                    //                    }
+
+                }]
+
+            });
+
+        }
+
+    });
+
+
+    function Genderfun() {
+
+        var dob = $("#frmtdate11").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#todate1").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+
+
+        $.ajax({
+            url: "../Store/OPDashBoard/Genderday",
+            type: 'POST',
+            data: { Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+                var res = [];
+
+                var rest = { "name": "", "y": "" };
+                for (i = 0; i < result.length; i++) {
+                    rest.name = result[i].Name;
+                    rest.y = result[i].Id;
+
+                    res.push(rest);
+                    var d = res;
+                    rest = { "name": "", "y": "" };
+
+
+                }
+                var h = d;
+
+
+
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardid1').vibrant({
+
+
+
+                    chart: {
+
+                        type: 'pie',
+                        height: 220
+
+
+                    },
+                    title: {
+                        text: ''
+                    },
+                    yAxis: {
+                        showEmpty: false
+                    },
+                    legend: {
+                        itemStyle: {
+                            fontWeight: 'bold',
+                            fontSize: '12px'
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:1f}{point.y:}'
+
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    series: [{
+                        name: "Gender",
+                        colorByPoint: true,
+                        data: res,
+
+                        point: {
+                            events: {
+                                click: function (event) {
+                                    debugger
+                                    var a = this.name;
+                                    $("#dash6").show();
+                                    $("#dash1").hide();
+                                    ya1(a);
+
+                                }
+                            }
+                        }
+
+
+
+                    }]
+
+                });
+
+            }
+
+        });
+
+    }
+
+    function ya1(a) {
+
+        debugger
+
+        var dob = $("#frmd1").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#tod1").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dd = a;
+
+        $.ajax({
+            url: "../Store/OPDashBoard/PatientTypesday",
+            type: 'POST',
+            data: { Fromdate: fd, Todate: td, set: dd },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+                //                $.each(result, function (ui, item) {
+                //                    sad1.push(item.Name);
+                //                    sad.push(item.Id);
+
+
+                //                });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#beb594', '#80B5C8']
+                });
+
+
+                $('#dashboardid2').vibrant({
+                    chart: {
+                        type: 'bar',
+                        height: 220
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false,
+                            series: {
+                                animation: {
+                                    duration: 10000
+                                }
+                            }
+                        }
+
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Patient Types',
+                        data: sad1
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+
+
+    function PanalClaim() {
+
+
+
+        var dob = $("#frmtdate11").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#todate1").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+
+        $.ajax({
+            url: "../Store/OPDashBoard/Panalamt",
+            type: 'POST',
+            data: { Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+                var res = [];
+
+                var rest = { "name": "", "y": "" };
+                for (i = 0; i < result.length; i++) {
+                    rest.name = result[i].Name;
+                    rest.y = result[i].Id;
+
+                    res.push(rest);
+                    var d = res;
+                    rest = { "name": "", "y": "" };
+
+
+                }
+                var h = d;
+
+                //$("#jqStatus").datatable().fnAddData(result.Name, result.Id, "")
+
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardidcol4').vibrant({
+
+
+
+                    chart: {
+                        hight: 100,
+                        width: 300,
+                        plotBackgroundColor: null,
+                        plotBorderWidth: 0,
+                        plotShadow: false
+                    },
+                    title: {
+                        text: ''
+                    },
+                    yAxis: {
+                        showEmpty: false
+                    },
+                    legend: {
+                        itemStyle: {
+                            fontWeight: 'bold',
+                            fontSize: '12px',
+                            color: "gray"
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                distance: -50,
+                                format: ' {point.y:1f}{point.y:}'
+
+                            },
+                            startAngle: -90,
+                            endAngle: 90,
+                            center: ['60%', '50%'],
+                            showInLegend: true
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:f} </b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    series: [{
+                        type: 'pie',
+                        innerSize: '50%',
+                        name: "Panal Amount",
+                        colorByPoint: true,
+                        data: res
+
+                        //                    point: {
+                        //                        events: {
+                        //                            click: function (event) {
+                        //                                debugger
+                        //                                var a = this.name;
+                        //                                $("#dash6").show();
+
+                        //                                ya(a);
+
+                        //                            }
+                        //                        }
+                        //                    }
+
+                    }]
+
+                });
+
+            }
+
+        });
+
+    }
+
+
+
+    function patientcat() {
+
+        var dob = $("#frmtdate11").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#todate1").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+
+        $.ajax({
+            url: "../Store/OPDashBoard/PatientCategoriesday",
+            type: 'POST',
+            data: { Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+                //                $.each(result, function (ui, item) {
+                //                    sad1.push(item.Name);
+                //                    sad.push(item.Id);
+
+
+                //                });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardid3').vibrant({
+                    chart: {
+                        type: 'bar',
+                        height: 220
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Patient Categories',
+                        data: sad1,
+                        point: {
+                            events: {
+                                click: function (event) {
+                                    debugger
+                                    var a = this.category;
+
+                                    $("#dash3").hide();
+                                    $("#dash10").show();
+
+                                    if (a == 'General') {
+                                        a = 0;
+                                    }
+                                    else if (a == 'Panel') {
+                                        a = 1;
+                                    }
+                                    date(a);
+                                }
+                            }
+                        }
+
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+
+    //patient panel sex date 
+
+    function date(a) {
+
+        var dob = $("#frmd3").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#tod3").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var sex = a;
+
+        $.ajax({
+            url: "../Store/OPDashBoard/patientgentercat",
+            type: 'POST',
+            data: { set: sex, Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+
+                //            $.each(result, function (ui, item) {
+                //                sad1.push(item.Name);
+                //                sad.push(item.Id);
+
+
+                //            });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardid10').vibrant({
+                    chart: {
+                        type: 'area',
+                        inverted: true,
+                        height: 220,
+                        width: 300
+
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            // overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        area: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Patient Categories',
+                        data: sad1
+                    }
+
+
+                ]
+
+
+
+                });
+
+            }
+
+        });
+
+    }
+
+
+    function Racefun() {
+
+        var dob = $("#frmtdate11").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#todate1").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+
+        $.ajax({
+            url: "../Store/OPDashBoard/Raceday",
+            type: 'POST',
+            data: { Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+                var res = [];
+
+                var rest = { "name": "", "y": "" };
+                for (i = 0; i < result.length; i++) {
+                    rest.name = result[i].Name;
+                    rest.y = result[i].Id;
+
+                    res.push(rest);
+                    var d = res;
+                    rest = { "name": "", "y": "" };
+
+
+                }
+                var h = d;
+
+
+
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3', '#A6C5D3', '#beb594']
+                });
+
+
+                $('#dashboardid4').vibrant({
+
+
+
+                    chart: {
+
+                        type: 'pie',
+                        height: 220,
+                        width: 300
+
+
+                    },
+                    title: {
+                        text: ''
+                    },
+                    yAxis: {
+                        showEmpty: false
+                    },
+                    legend: {
+                        itemStyle: {
+                            fontWeight: 'bold',
+                            fontSize: '12px'
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: false,
+                                format: ' {point.y:1f}{point.y:%}'
+
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.0f} %</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    series: [{
+                        name: "Gender",
+                        colorByPoint: true,
+                        data: res,
+                        point: {
+                            events: {
+                                click: function (event) {
+
+
+                                }
+                            }
+                        }
+
+
+
+                    }]
+
+                });
+
+            }
+
+        });
+
+    }
+
+    function locationfun() {
+
+
+        var dob = $("#frmtdate11").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#todate1").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+
+
+        $.ajax({
+            url: "../Store/OPDashBoard/Patientlocationday",
+            type: 'POST',
+            data: { Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+                //                $.each(result, function (ui, item) {
+                //                    sad1.push(item.Name);
+                //                    sad.push(item.Id);
+
+
+                //                });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#A6C5D3']
+                });
+
+
+                $('#dashboardid5').vibrant({
+                    chart: {
+                        type: 'column',
+                        height: 220,
+                        width: 300
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        column: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Patient Locations',
+                        data: sad1
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+    function depositfun() {
+
+        var dob = $("#frmtdate11").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+
+        var dob = $("#todate1").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        $.ajax({
+            url: "../Store/OPDashBoard/depositday",
+            type: 'POST',
+            data: { Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+
+                //            $.each(result, function (ui, item) {
+                //                sad1.push(item.Name);
+                //                sad.push(item.Id);
+
+
+                //            });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardidcol1').vibrant({
+                    chart: {
+                        type: 'column',
+                        height: 220,
+                        width: 300,
+                        options3d: {
+                            enabled: true,
+                            alpha: 10,
+                            beta: 25,
+                            depth: 70
+                        }
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        column: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Deposit',
+                        data: sad1
+                    }
+
+
+                ]
+
+
+
+                });
+
+            }
+
+        });
+
+    }
+
+
+    function billfun() {
+
+        var dob = $("#frmtdate11").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#todate1").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+
+
+        $.ajax({
+            url: "../Store/OPDashBoard/billday",
+            type: 'POST',
+            data: { Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+
+                //            $.each(result, function (ui, item) {
+                //                sad1.push(item.Name);
+                //                sad.push(item.Id);
+
+
+                //            });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardidcol2').vibrant({
+                    chart: {
+                        type: 'column',
+                        height: 220,
+                        width: 300
+
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        column: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Final Bill',
+                        data: sad1
+                    }
+
+
+                ]
+
+
+
+                });
+
+            }
+
+        });
+
+    }
+
+
+    function statusday() {
+
+        var dob = $("#frmtdate11").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#todate1").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+
+        $.ajax({
+            url: "../Store/OPDashBoard/statusday",
+            type: 'POST',
+            data: { Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+
+                //            $.each(result, function (ui, item) {
+                //                sad1.push(item.Name);
+                //                sad.push(item.Id);
+
+
+                //            });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardid8').vibrant({
+                    chart: {
+                        type: 'column',
+                        height: 220
+
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Appointment Status',
+                        data: sad1,
+                        point: {
+                            events: {
+                                click: function (event) {
+                                    debugger
+                                    a = this.category;
+                                    $("#dash7").show();
+                                    $("#dash8").hide();
+                                    if (a == 'Confirmed') {
+                                        var a = 0;
+                                    }
+                                    else if (a == 'Prebooking') {
+                                        var a = 2;
+                                    }
+                                    else if (a == 'Cancelled') {
+                                        var a = 3;
+                                    }
+                                    tm(a);
+                                }
+                            }
+                        }
+                    }
+
+
+                ]
+
+
+
+                });
+
+            }
+
+        });
+
+    }
+
+
+    //refund
+
+
+    $.ajax({
+        url: "../Store/OPDashBoard/refundday",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+            //            $.each(result, function (ui, item) {
+            //                sad1.push(item.Name);
+            //                sad.push(item.Id);
+
+
+            //            });
+
+            $.each(result, function (ui, item) {
+                sad.push(item.Name);
+
+                if (item.Id == 0) {
+                    var a = "";
+                    sad1.push(a);
+                }
+                else {
+                    sad1.push(item.Id);
+                }
+
+            });
+
+            vibrant.setOptions({
+                colors: ['#A6C5D3', '#80B5C8', '#B9EEE3']
+            });
+
+
+            $('#dashboardidcol3').vibrant({
+                chart: {
+                    type: 'column',
+                    height: 220,
+                    width: 300
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: sad,
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    column: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        showInLegend: false
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Refund',
+                    data: sad1,
+                    point: {
+                        events: {
+                            click: function (event) {
+                                debugger
+                                var a = this.category;
+                                $("#coll3").hide();
+                                $("#coll8").show();
+
+                                if (a == 'Deposit') {
+                                    a = 1;
+                                }
+                                else if (a == 'FinalBill') {
+                                    a = 2;
+                                }
+                                else if (a == 'PanelAdvance') {
+                                    a = 3;
+                                }
+                                else if (a == 'Pharmacy') {
+                                    a = 4;
+                                }
+                                else if (a == 'PanelClaim') {
+                                    a = 5;
+                                }
+                                za(a);
+
+                            }
+                        }
+                    }
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+    //refund gender
+
+    function za(a) {
+        var yy = a;
+        $.ajax({
+            url: "../Store/OPDashBoard/refgender",
+            type: 'POST',
+            data: { set: yy, Fromdate: '', Todate: '' },
+            dataType: 'json',
+            success: function (result) {
+
+
+                var res = [];
+
+                var rest = { "name": "", "y": "" };
+                for (i = 0; i < result.length; i++) {
+                    rest.name = result[i].Name;
+                    rest.y = result[i].Id;
+
+                    res.push(rest);
+                    var d = res;
+                    rest = { "name": "", "y": "" };
+
+
+                }
+                var h = d;
+
+                //$("#jqStatus").datatable().fnAddData(result.Name, result.Id, "")
+
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardidcol8').vibrant({
+
+
+
+                    chart: {
+
+                        type: 'pie',
+                        height: 220
+
+
+                    },
+                    title: {
+                        text: ''
+                    },
+                    yAxis: {
+                        showEmpty: false
+                    },
+                    legend: {
+                        itemStyle: {
+                            fontWeight: 'bold',
+                            fontSize: '12px',
+                            color: "gray"
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:1f}{point.y:}'
+
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:f} </b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    series: [{
+                        name: "Gender",
+                        colorByPoint: true,
+                        data: res
+
+
+
+                    }]
+
+                });
+
+            }
+
+        });
+
+    }
+    function refundfun() {
+
+
+        var dob = $("#frmtdate11").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#todate1").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+
+
+        $.ajax({
+            url: "../Store/OPDashBoard/refundday",
+            type: 'POST',
+            data: { Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+                //            $.each(result, function (ui, item) {
+                //                sad1.push(item.Name);
+                //                sad.push(item.Id);
+
+
+                //            });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#A6C5D3', '#B9EEE3', '#80B5C8']
+                });
+
+
+                $('#dashboardidcol3').vibrant({
+                    chart: {
+                        type: 'column',
+                        height: 225,
+                        width: 300
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        column: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Refund',
+                        data: sad1,
+                        point: {
+                            events: {
+                                click: function (event) {
+                                    debugger
+                                    var a = this.category;
+                                    $("#coll3").hide();
+                                    $("#coll8").show();
+
+                                    if (a == 'Deposit') {
+                                        a = 1;
+                                    }
+                                    else if (a == 'FinalBill') {
+                                        a = 2;
+                                    }
+                                    else if (a == 'PanelAdvance') {
+                                        a = 3;
+                                    }
+                                    else if (a == 'Pharmacy') {
+                                        a = 4;
+                                    }
+                                    else if (a == 'PanelClaim') {
+                                        a = 5;
+                                    }
+                                    ma(a);
+
+                                }
+                            }
+                        }
+
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+
+
+    }
+
+    //refund gender wise
+
+    function ma(a) {
+
+        var dob = $("#frmd9").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#tod9").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var yy = a;
+
+        $.ajax({
+            url: "../Store/OPDashBoard/refgender",
+            type: 'POST',
+            data: { set: yy, Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+                var res = [];
+
+                var rest = { "name": "", "y": "" };
+                for (i = 0; i < result.length; i++) {
+                    rest.name = result[i].Name;
+                    rest.y = result[i].Id;
+
+                    res.push(rest);
+                    var d = res;
+                    rest = { "name": "", "y": "" };
+
+
+                }
+                var h = d;
+
+                //$("#jqStatus").datatable().fnAddData(result.Name, result.Id, "")
+
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardidcol8').vibrant({
+
+
+
+                    chart: {
+
+                        type: 'pie',
+                        height: 220
+
+
+                    },
+                    title: {
+                        text: ''
+                    },
+                    yAxis: {
+                        showEmpty: false
+                    },
+                    legend: {
+                        itemStyle: {
+                            fontWeight: 'bold',
+                            fontSize: '12px',
+                            color: "gray"
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:1f}{point.y:}'
+
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:f} </b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    series: [{
+                        name: "Gender",
+                        colorByPoint: true,
+                        data: res
+
+
+
+                    }]
+
+                });
+
+            }
+
+        });
+
+    }
+
+    // patient visting time
+
+
+    //    $.ajax({
+    //        url: "../Store/OPDashBoard/patientvisttime",
+    //        type: 'POST',
+    //        dataType: 'json',
+    //        success: function (result) {
+
+
+
+    //            var sad = [];
+    //            var sad1 = [];
+
+    //            $.each(result, function (ui, item) {
+    //                sad.push(item.Name);
+    //                sad1.push(item.Id);
+
+
+    //            });
+
+    //            $.each(result, function (ui, item) {
+    //                sad.push(item.Name);
+
+    //                if (item.Id == 0) {
+    //                    var a = "";
+    //                    sad1.push(a);
+    //                }
+    //                else {
+    //                    sad1.push(item.Id);
+    //                }
+
+    //            });
+
+    //            vibrant.setOptions({
+    //                colors: ['#80B5C8', '#B9EEE3']
+    //            });
+
+
+    //            $('#dashboardid14').vibrant({
+    //                chart: {
+    //                    type: 'column',
+    //                    height: 220
+    //                },
+    //                title: {
+    //                    text: ''
+    //                },
+    //                subtitle: {
+    //                    text: '</a>'
+    //                },
+    //                xAxis: {
+    //                    categories: sad,
+    //                    title: {
+    //                        text: null
+    //                    }
+    //                },
+    //                yAxis: {
+    //                    min: 0,
+    //                    title: {
+    //                        text: '',
+    //                        align: 'high'
+    //                    },
+    //                    labels: {
+    //                        overflow: 'justify'
+    //                    }
+    //                },
+    //                tooltip: {
+    //                    valueSuffix: ' '
+    //                },
+    //                plotOptions: {
+    //                    column: {
+    //                        dataLabels: {
+    //                            enabled: true
+    //                        },
+    //                        showInLegend: false
+    //                    }
+    //                },
+
+    //                credits: {
+    //                    enabled: false
+    //                },
+    //                series: [{
+    //                    name: 'Patient Visiting Time Interval',
+    //                    data: sad1,
+    //                    point: {
+    //                        events: {
+    //                            click: function (event) {
+
+
+
+    //                            }
+    //                        }
+    //                    }
+
+    //                }]
+
+
+
+    //            });
+
+    //        }
+
+    //    });
+
+
+</script>
+<script type="text/javascript">
+
+
+    $.ajax({
+        url: "../Store/OPDashBoard/Registrationtype",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+            //                $.each(result, function (ui, item) {
+            //                    sad1.push(item.Name);
+            //                    sad.push(item.Id);
+
+
+            //                });
+
+            $.each(result, function (ui, item) {
+                sad.push(item.Name);
+
+                if (item.Id == 0) {
+                    var a = "";
+                    sad1.push(a);
+                }
+                else {
+                    sad1.push(item.Id);
+                }
+
+            });
+
+            vibrant.setOptions({
+                colors: ['#beb594', '#80B5C8']
+            });
+
+
+            $('#dashboardid13').vibrant({
+                chart: {
+                    type: 'bar',
+                    height: 220,
+                    width: 300
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: sad,
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        showInLegend: false
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Panel Collection',
+                    data: sad1
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+    function RegistrationType() {
+
+        var dob = $("#frmtdate11").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#todate1").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        $.ajax({
+            url: "../Store/OPDashBoard/Registrationtype",
+            type: 'POST',
+            data: { Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+                //                $.each(result, function (ui, item) {
+                //                    sad1.push(item.Name);
+                //                    sad.push(item.Id);
+
+
+                //                });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#beb594', '#80B5C8']
+                });
+
+
+                $('#dashboardid13').vibrant({
+                    chart: {
+                        type: 'bar',
+                        height: 220,
+                        width: 300
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Registration Type',
+                        data: sad1
+
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+
+    }
+    // patient from
+    $.ajax({
+        url: "../Store/OPDashBoard/patientfrom",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+
+            //            $.each(result, function (ui, item) {
+            //                sad1.push(item.Name);
+            //                sad.push(item.Id);
+
+
+            //            });
+
+            $.each(result, function (ui, item) {
+                sad.push(item.Name);
+
+                if (item.Id == 0) {
+                    var a = "";
+                    sad1.push(a);
+                }
+                else {
+                    sad1.push(item.Id);
+                }
+
+            });
+
+            vibrant.setOptions({
+                colors: ['#80B5C8', '#B9EEE3']
+            });
+
+
+            $('#dashboardid12').vibrant({
+                chart: {
+                    type: 'column',
+                    height: 220,
+                    width: 300,
+                    options3d: {
+                        enabled: true,
+                        alpha: 10,
+                        beta: 25,
+                        depth: 70
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: sad,
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    column: {
+                        dataLabels: {
+                            enabled: true
+                        },
+
+                        showInLegend: false
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+
+                    name: 'Deposit',
+                    data: sad1
+
+                }
+
+
+                ]
+
+
+
+            });
+
+        }
+
+    });
+
+    function patientfrom() {
+
+        var dob = $("#frmtdate11").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#todate1").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        $.ajax({
+            url: "../Store/OPDashBoard/patientfrom",
+            type: 'POST',
+            data: { Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+
+                //            $.each(result, function (ui, item) {
+                //                sad1.push(item.Name);
+                //                sad.push(item.Id);
+
+
+                //            });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardid12').vibrant({
+                    chart: {
+                        type: 'column',
+                        height: 220,
+                        width: 300,
+                        options3d: {
+                            enabled: true,
+                            alpha: 10,
+                            beta: 25,
+                            depth: 70
+                        }
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        column: {
+                            dataLabels: {
+                                enabled: true
+                            },
+
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+
+                        name: 'Deposit',
+                        data: sad1
+
+                    }
+
+
+                ]
+
+
+
+                });
+
+            }
+
+        });
+
+    }
+    // ip collection
+    $.ajax({
+        url: "../Store/OPDashBoard/ipcollection",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+
+            //            $.each(result, function (ui, item) {
+            //                sad1.push(item.Name);
+            //                sad.push(item.Id);
+
+
+            //            });
+
+            $.each(result, function (ui, item) {
+                sad.push(item.Name);
+
+                if (item.Id == 0) {
+                    var a = "";
+                    sad1.push(a);
+                }
+                else {
+                    sad1.push(item.Id);
+                }
+
+            });
+
+            vibrant.setOptions({
+                colors: ['#80B5C8', '#B9EEE3']
+            });
+
+
+            $('#dashboardidcol10').vibrant({
+                chart: {
+                    type: 'area',
+                    height: 220,
+                    width: 300
+
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: sad,
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        // overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    area: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        showInLegend: false
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Ip Collection',
+                    data: sad1
+                }
+
+
+                ]
+
+
+
+            });
+
+        }
+
+    });
+
+    function ipcollection() {
+
+        var dob = $("#frmtdate11").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#todate1").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+
+        $.ajax({
+            url: "../Store/OPDashBoard/ipcollection",
+            type: 'POST',
+            data: { Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+
+                //            $.each(result, function (ui, item) {
+                //                sad1.push(item.Name);
+                //                sad.push(item.Id);
+
+
+                //            });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardidcol10').vibrant({
+                    chart: {
+                        type: 'area',
+                        height: 220,
+                        width: 300
+
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            // overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        area: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Ip Collection',
+                        data: sad1
+                    }
+
+
+                ]
+
+
+
+                });
+
+            }
+
+        });
+
+    }
+
+
+    $.ajax({
+        url: "../Store/OPDashBoard/waitingtime",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+            //            $.each(result, function (ui, item) {
+            //                sad1.push(item.Name);
+            //                sad.push(item.Id);
+
+
+            //            });
+
+            $.each(result, function (ui, item) {
+                sad.push(item.Name);
+
+                if (item.Id == 0) {
+                    var a = "";
+                    sad1.push(a);
+                }
+                else {
+                    sad1.push(item.Id);
+                }
+
+            });
+
+            vibrant.setOptions({
+                colors: ['#80B5C8', '#B9EEE3']
+            });
+
+
+            $('#dashboardid14').vibrant({
+                chart: {
+                    type: 'column',
+                    height: 220
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: sad,
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    column: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        showInLegend: false
+                    },
+                    series: {
+                        animation: {
+                            duration: 2000
+                        }
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Patient Categories',
+                    data: sad1,
+                    point: {
+                        events: {
+                            click: function (event) {
+
+                            }
+                        }
+                    }
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+    function waiting() {
+
+        var dob = $("#frmtdate11").val();
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+        var dob = $("#todate1").val();
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+
+
+        $.ajax({
+            url: "../Store/OPDashBoard/waitingtime",
+            type: 'POST',
+            data: { Fromdate: fd, Todate: td },
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+                //            $.each(result, function (ui, item) {
+                //                sad1.push(item.Name);
+                //                sad.push(item.Id);
+
+
+                //            });
+
+                $.each(result, function (ui, item) {
+                    sad.push(item.Name);
+
+                    if (item.Id == 0) {
+                        var a = "";
+                        sad1.push(a);
+                    }
+                    else {
+                        sad1.push(item.Id);
+                    }
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['#80B5C8', '#B9EEE3']
+                });
+
+
+                $('#dashboardid14').vibrant({
+                    chart: {
+                        type: 'column',
+                        height: 220
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        column: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            showInLegend: false
+                        },
+                        series: {
+                            animation: {
+                                duration: 2000
+                            }
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Patient Categories',
+                        data: sad1,
+                        point: {
+                            events: {
+                                click: function (event) {
+
+                                }
+                            }
+                        }
+
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+</script>

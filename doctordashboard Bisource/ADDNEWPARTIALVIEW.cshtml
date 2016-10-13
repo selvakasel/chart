@@ -1,0 +1,4977 @@
+﻿@*<script src="../../Content/Wibranex.js" type="text/javascript"></script>
+<script src="../../Content/wibran.js" type="text/javascript"></script>
+<script src="../../Content/wibran-more.js" type="text/javascript"></script>
+<script src="../../Content/wibran-3d.js" type="text/javascript"></script>*@
+
+<style type="text/css">
+    
+    
+    
+    button {
+      font-size  : 11px;
+      float   : right;
+    }
+   .row
+   {
+       margin-top:24px;
+       margin-bottom:10px;
+       }
+    
+  #drop,#drop1,#drop2,#drop3,#drop4,#drop5
+   {
+       width: 75px; 
+       margin-top: -8px;      
+      float: right;
+       padding-right: 6px;
+       }
+    .form-control
+    {
+        border-radius: 0px !important;       
+    }    
+    body
+    {
+        min-height: 100vh !important;
+    }    
+    .panel-title
+    {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-bottom: 0;
+        font-size: 16px;
+        float: left;
+    }
+    .panel-body
+    {
+        padding: 0px;
+    }
+    
+    .panel-heading
+    {
+        background-color: #0097a7 !important;
+        margin-bottom: 0px;
+    }    
+    .panel
+    {
+        border-top: 1px none !important;
+        border-left: 1px solid #0097a7 !important;
+        border-bottom: 1px solid #0097a7 !important;
+        border-right: 1px solid #0097a7 !important;
+        margin-bottom: 0px;
+    }
+</style>
+
+<div>
+ 
+        <div class="row">
+           <div class="col-sm-12"> 
+            <div class="col-sm-5">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Patient Visiting Time Interval
+                        </h4>
+                            <button type="button" id="Patientwaitingintervalbtn" value="14"><span class="fa fa-calendar myicon"></span>
+                            </button>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12" id="ft14">
+                            <div class="col-sm-4">
+                                <label>
+                                    From Date</label></div>
+                            <div class="col-sm-4">
+                                <input type="text" id="frmd14" disabled="disabled" style="width: 97px;" />
+                            </div> <div class="col-sm-4"></div>
+                        </div>
+                        <div id="Patientwaitingintervalid1">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Patient Locations
+                            </h4>
+                            <button type="button" id="Patientlocationsbtn" 
+                                value="6">
+                                <span class="fa fa-calendar myicon"></span>
+                            </button>
+                        
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12" id="ft6">
+                            <div class="col-sm-3">
+                                <label>
+                                    From Date</label></div>
+                            <div class="col-sm-3">
+                                <input type="text" id="frmd6" disabled="disabled" style="width: 97px;" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label>
+                                    To Date</label></div>
+                            <div class="col-sm-3">
+                                <input type="text" id="tod6" disabled="disabled" style="width: 97px;" /></div>
+                        </div>
+                        <div id="Patientlocationsid1">
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="col-sm-3">              
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Gender
+                           </h4>
+                            <button type="button" id="genderbtn"  value="1">
+                                <span class="fa fa-calendar myicon"></span>
+                            </button>
+                        
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12" id="ft1">
+                            <div class="col-sm-6">
+                                <label>
+                                    From Date</label>
+                                <input type="text" id="frmd1" disabled="disabled" style="width: 97px;" /> 
+                            </div>
+                            <div class="col-sm-6">
+                                <label>
+                                    To Date</label>
+                                <input type="text" id="tod1" disabled="disabled" style="width: 97px;" />
+                            </div>
+                        </div>
+                        <div id="genderid1">
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div></div>
+        <div class="row">
+               <div class="col-sm-12"> 
+            <div class="col-sm-4">
+               
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            &nbsp Patient Types  </h4>
+                            <button type="button" id="patypebtn"  value="2">
+                                <span class="fa fa-calendar myicon"></span>
+                            </button>
+                       
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12" id="ft2">
+                            <div class="col-sm-6">
+                                <label>
+                                    From Date</label>
+                                <input type="text" id="frmd2" disabled="disabled" style="width: 97px;" />
+                            </div>
+                            <div class="col-sm-6">
+                                <label>
+                                    To Date</label>
+                                <input type="text" id="tod2" disabled="disabled" style="width: 97px;" />
+                            </div>
+                        </div>
+                        <div id="patypeid1">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-sm-4">
+               
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Patient Categories  </h4>
+                            <button type="button" id="patcatgbtn"  value="3">
+                                <span class="fa fa-calendar myicon"></span>
+                            </button>
+                       
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12" id="ft3">
+                            <div class="col-sm-6">
+                                <label>
+                                    From Date</label>
+                                <input type="text" id="frmd3" disabled="disabled" style="width: 97px;" />
+                            </div>
+                            <div class="col-sm-6">
+                                <label>
+                                    To Date</label>
+                                <input type="text" id="tod3" disabled="disabled" style="width: 97px;" />
+                            </div>
+                        </div>
+                        <div id="patcatgryid1">
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="col-sm-4">
+              
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            &nbsp Race Patients  </h4>
+                            <button type="button" id="Racepatientsbtn"
+                                value="4">
+                                <span class="fa fa-calendar myicon"></span>
+                            </button>
+                       
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12" id="ft4">
+                            <div class="col-sm-6">
+                                <label>
+                                    From Date</label>
+                                <input type="text" id="frmd4" disabled="disabled" style="width: 97px;" />
+                            </div>
+                            <div class="col-sm-6">
+                                <label>
+                                    To Date</label>
+                                <input type="text" id="tod4" disabled="disabled" style="width: 97px;" />
+                            </div>
+                        </div>
+                        <div id="Racepatientsid1">
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div></div>
+
+        <div class="row">
+            <div class="col-sm-4">
+              
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Overall New And Existing Patient</h4>
+                        <div class="col-sm-12">
+                            <div class="col-sm-6">                               
+                            </div>
+                            <div class="col-sm-6">
+                             @Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1, @DateTime.Now.Year.ToString(),
+                           new { @class = "form-control", id = "drop"})
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="Overallnewexstid1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Surgery Details-OT</h4>
+                        <div class="col-sm-12">
+                            <div class="col-sm-6"></div>
+                            <div class="col-sm-6">
+                       @Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1, @DateTime.Now.Year.ToString(),
+                           new { @class = "form-control", id = "drop1"})
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="Surgerydetailsid1">
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Age Group For Patients </h4>
+                            <button type="button" id="Agegroupforpatientsbtn"
+                                value="5">
+                                <span class="fa fa-calendar myicon"></span>
+                            </button>
+                        
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12" id="ft5">
+                            <div class="col-sm-3">
+                                <label>
+                                    From Date</label></div>
+                            <div class="col-sm-3">
+                                <input type="text" id="frmd5" disabled="disabled" style="width: 97px;" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label>
+                                    To Date</label></div>
+                            <div class="col-sm-3">
+                                <input type="text" id="tod5" disabled="disabled" style="width: 97px;" /></div>
+                        </div>
+                        <div id="Agegroupforpatientsid1">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+           
+            <div class="col-sm-3">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Referred To  </h4>
+                            <button type="button" id="Refferedtobtn" 
+                                value="11">
+                                <span class="fa fa-calendar myicon"></span>
+                            </button>
+                       
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12" id="ft11">
+                            <div class="col-sm-3">
+                                <label>
+                                    From Date</label></div>
+                            <div class="col-sm-3">
+                                <input type="text" id="frmd11" disabled="disabled" style="width: 97px;" />
+                            </div>
+                            <div class="col-sm-3">
+                                <label>
+                                    To Date</label></div>
+                            <div class="col-sm-3">
+                                <input type="text" id="tod11" disabled="disabled" style="width: 97px;" /></div>
+                        </div>
+                        <div id="Refferedtoid1">
+                        </div>
+                    </div>                    
+                </div>
+            </div>        
+            <div class="col-sm-6">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Referred By Clinic To Doctor  </h4>
+                            <button type="button" id="Referedbyclinicbtn"
+                                value="7">
+                                <span class="fa fa-calendar myicon"></span>
+                            </button>
+                       
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12" id="ft7">
+                            <div class="col-sm-6">
+                                <label>
+                                    From Date</label>
+                                <input type="text" id="frmd7" disabled="disabled" style="width: 97px;" />
+                            </div>
+                            <div class="col-sm-6">
+                                <label>
+                                    To Date</label>
+                                <input type="text" id="tod7" disabled="disabled" style="width: 97px;" />
+                            </div>
+                        </div>
+                        <div id="Referedbyclinicid1">
+                        </div>
+                    </div>                   
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            &nbsp Total No Of Reference  </h4>
+                            <button type="button" id="Referencebtn" value="8">
+                                <span class="fa fa-calendar myicon"></span>
+                            </button>
+                       
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12" id="ft8">
+                            <div class="col-sm-6">
+                                <label>
+                                    From Date</label>
+                                <input type="text" id="frmd8" disabled="disabled" style="width: 97px;" />
+                            </div>
+                            <div class="col-sm-6">
+                                <label>
+                                    To Date</label>
+                                <input type="text" id="tod8" disabled="disabled" style="width: 97px;" />
+                            </div>
+                        </div>
+                        <div id="Referenceid1">
+                        </div>
+                    </div>                  
+                </div>
+            </div>
+          
+        </div>
+        <div class="row">
+          
+            <div class="col-sm-4">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Patient Waiting Time </h4>
+                            <button type="button" id="Patientwaitingtimesbtn"
+                                value="9">
+                                <span class="fa fa-calendar myicon"></span>
+                            </button>
+                        
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12" id="ft9">
+                            <div class="col-sm-6" style="left: 41px;">
+                                <label>
+                                    From Date</label>
+                            </div>
+                            <div class="col-sm-6" style="right: 19px;">
+                                <input type="text" id="frmd9" disabled="disabled" style="width: 97px;" />
+                            </div>
+                        </div>
+                        <div id="Patientwaitingtimesid1">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Referred To Whom </h4>
+                            <button type="button" id="Referedtowhombtn" 
+                                value="10">
+                                <span class="fa fa-calendar myicon"></span>
+                            </button>
+                        
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12" id="ft10">
+                            <div class="col-sm-6">
+                                <label>
+                                    From Date</label>
+                                <input type="text" id="frmd10" disabled="disabled" style="width: 97px;" />
+                            </div>
+                            <div class="col-sm-6">
+                                <label>
+                                    To Date</label>
+                                <input type="text" id="tod10" disabled="disabled" style="width: 97px;" />
+                            </div>
+                        </div>
+                        <div id="Referedtowhomid1">
+                        </div>
+                    </div>                   
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel">
+                    <div class="panel panel-heading" >
+                        <h4 class="panel-title">
+                            Shares In Pharmacy 
+                        </h4>
+                        <div class="col-sm-12">
+                            <div class="col-sm-6">
+                               
+                            </div>
+                            <div class="col-sm-6">
+                             @Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1, @DateTime.Now.Year.ToString(),
+                           new { @class = "form-control", id = "drop2"})
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="Doctorsharepharmacyid1">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+          </div>
+        <div class="row">
+           
+            <div class="col-sm-4">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Shares In Xray
+                        </h4>
+                        <div class="col-sm-12">
+                            <div class="col-sm-6">
+                               
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1, @DateTime.Now.Year.ToString(),
+                           new { @class = "form-control", id = "drop3"})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="Sharesinxrayid1">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>      
+            <div class="col-sm-4">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Shares In Scan
+                        </h4>
+                        <div class="col-sm-12">
+                            <div class="col-sm-6">
+                               
+                            </div>
+                            <div class="col-sm-6">
+                               @Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1, @DateTime.Now.Year.ToString(),
+                           new { @class = "form-control", id = "drop4"})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="Sharesinscanid1">
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel">
+                    <div class="panel panel-heading">
+                        <h4 class="panel-title">
+                            Shares In Laboratory
+                        </h4>
+                        <div class="col-sm-12">
+                            <div class="col-sm-6">
+                               
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.DropDownList("dropdown", (IEnumerable<SelectListItem>)ViewBag.list1, @DateTime.Now.Year.ToString(),
+                           new { @class = "form-control", id = "drop5"})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="Sharesinlabid1">
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModal"
+    ria-hidden="true" style="width: 530px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #0097a7;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    Close[x]
+                </button>
+                <h4 class="modal-title" id="myModalfmdt1">
+                    Get Details
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id='myDialogContainer1'>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6" style="left: 110px; width: 233px;">
+                        <label>
+                            From Date
+                        </label>
+                        <label style="color: Red">
+                            *</label></div>
+                    <div class="col-sm-6" style="right: 46px; height: 25px; width: 165px;">
+                        <input type="text" id="frmtdate12" class="form-control" /></div>
+                </div>
+                <button type="button" id="btnsav2" class="btn btn-primary" style="margin-left: 418px;">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $("#newtab").hide();
+
+
+    $("#MenuNamepartialview").text('Doctor Dashboard');
+
+    $("#ft9").hide();
+    $("#ft14").hide();
+
+    $("#Patientwaitingtimesbtn,#Patientwaitingintervalbtn").click(function () {
+
+
+
+        $("#myModal1").modal('show');
+        $("#myModal1").modal({ backdrop: false });
+
+        $("#frmtdate12").pickadate({
+            format: "dd/mm/yyyy",
+            // min: true,
+            selectMonths: true,
+            selectYears: true,
+            editable: 'ray'
+
+        });
+
+        m = $(this).val();
+
+
+
+    });
+
+
+    var fromdate;
+
+    $("#btnsav2").click(function () {
+
+
+        fromdate = $("#frmtdate12").val();
+
+        debugger
+        if (parseInt(m) == 9) {
+
+            $("#ft9").show();
+            $("#frmd9").val(fromdate);
+
+            Patientwaitingtimesfun();
+            fromdate = $("#frmtdate12").val('');
+        }
+        else if (parseInt(m) == 14) {
+
+            $("#ft14").show();
+            $("#frmd14").val(fromdate);
+
+            Patientwaitingintervalfun();
+            fromdate = $("#frmtdate12").val('');
+        }
+        m = 0;
+
+        $("#myModal1").modal('hide');
+    });
+
+</script>
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModal"
+    ria-hidden="true" style="width: 370px; left: 292px;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #0097a7;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    Close[x]
+                </button>
+                <h4 class="modal-title" id="myModalfmdt">
+                    Get Details
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id='myDialogContainer2'>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>
+                            From Date
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="frmtdate11" class="form-control" />
+                    </div>
+                    <div class="col-sm-6">
+                        <label>
+                            To Date
+                        </label>
+                        <label style="color: Red">
+                            *</label>
+                        <input type="text" id="todate1" class="form-control" /></div>
+                </div>
+                <button type="button" id="btnsav1" class="btn btn-primary" style="margin-left: 262px;">
+                    Submit
+                </button>
+                @* <label id="vali2" style="color: Red;">
+                    * Fields are required</label>*@
+            </div>
+            @*<div class="modal-footer">
+                
+               
+            </div>*@
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<script type="text/javascript">
+
+
+
+    //    var currentYear = (new Date).getFullYear();
+    //    $("#year").text(currentYear);
+
+    //    var currentYear = (new Date).getFullYear();
+    //    $("#year1").text(currentYear);
+
+    //    var currentYear = (new Date).getFullYear();
+    //    $("#year2").text(currentYear);
+
+    //    var currentYear = (new Date).getFullYear();
+    //    $("#year3").text(currentYear);
+
+    //    var currentYear = (new Date).getFullYear();
+    //    $("#year4").text(currentYear);
+
+    //    var currentYear = (new Date).getFullYear();
+    //    $("#year5").text(currentYear);
+
+
+
+    $("#drop").change(function () {
+
+        var drop = $("#drop").val();
+        Overallnewexstfun(drop);
+
+    });
+
+    $("#drop1").change(function () {
+
+        var drop1 = $("#drop1").val();
+        Surgerydetailsfun(drop1);
+
+    });
+
+    $("#drop2").change(function () {
+
+        var drop2 = $('select#drop2 option:selected').text();
+        Doctorsharepharmacyfun(drop2);
+
+    });
+
+    $("#drop3").change(function () {
+
+        var drop3 = $('select#drop3 option:selected').text();
+        Sharesinxrayfun(drop3);
+
+    });
+
+    $("#drop4").change(function () {
+
+        var drop4 = $('select#drop4 option:selected').text();
+        Sharesinscanfun(drop4);
+
+    });
+
+    $("#drop5").change(function () {
+
+        var drop5 = $('select#drop5 option:selected').text();
+        Sharesinlabfun(drop5);
+
+    });
+
+    //    $("#drop,#drop1,#drop2,#drop3,#drop4,#drop5").click(function () {
+
+
+
+    //        $("#year").hide();
+
+    //        $("#year1").hide();
+
+    //        $("#year2").hide();
+
+    //        $("#year3").hide();
+
+    //        $("#year4").hide();
+
+    //        $("#year5").hide();
+
+    //    });
+
+
+
+
+    var m = 0;
+
+    $("#ft1").hide(); $("#ft2").hide(); $("#ft3").hide(); $("#ft4").hide(); $("#ft5").hide(); $("#ft6").hide();
+    $("#ft7").hide(); $("#ft8").hide(); $("#ft10").hide(); $("#ft11").hide(); $("#ft12").hide(); $("#ft13").hide();
+    $("#ft14").hide();
+
+    $("#genderbtn,#patypebtn,#patcatgbtn,#Racepatientsbtn,#Agegroupforpatientsbtn,#Patientlocationsbtn,#Referedbyclinicbtn,#Referencebtn,#Referedtowhombtn,#Refferedtobtn,#Sharesinxraybtn,#Sharesinscanbtn,#Sharesinlabbtn").click(function () {
+
+
+        $("#myModal2").modal('show');
+        $("#myModal2").modal({ backdrop: false });
+
+        $("#frmtdate11").pickadate({
+            format: "dd/mm/yyyy",
+            // min: true,
+            selectMonths: true,
+            selectYears: true,
+            editable: 'ray'
+
+        });
+        $("#todate1").pickadate({
+            format: "dd/mm/yyyy",
+            //  min: true,
+            selectMonths: true,
+            selectYears: true,
+            editable: 'ray'
+
+        });
+        m = $(this).val();
+
+    });
+
+
+    var fromdate;
+    var todate;
+
+    $("#btnsav1").click(function () {
+
+
+        fromdate = $("#frmtdate11").val();
+        todate = $("#todate1").val();
+        debugger
+        if (parseInt(m) == 1) {
+            $("#ft1").show();
+
+            $("#frmd1").val(fromdate);
+            $("#tod1").val(todate);
+
+            Genderfun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+
+        }
+        else if (parseInt(m) == 2) {
+            $("#ft2").show();
+            $("#frmd2").val(fromdate);
+            $("#tod2").val(todate);
+
+            PatientTypesfun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 3) {
+            $("#ft3").show();
+            $("#frmd3").val(fromdate);
+            $("#tod3").val(todate);
+
+            PatientCategoryfun()
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+
+        }
+
+        else if (parseInt(m) == 4) {
+            $("#ft4").show();
+            $("#frmd4").val(fromdate);
+            $("#tod4").val(todate);
+
+            Racepatientsfun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 5) {
+            $("#ft5").show();
+            $("#frmd5").val(fromdate);
+            $("#tod5").val(todate);
+
+            Agegroupforpatientsfun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 6) {
+            $("#ft6").show();
+            $("#frmd6").val(fromdate);
+            $("#tod6").val(todate);
+
+            Patientlocationsfun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 7) {
+            $("#ft7").show();
+            $("#frmd7").val(fromdate);
+            $("#tod7").val(todate);
+
+            Referedbyclinicfun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 8) {
+            $("#ft8").show();
+            $("#frmd8").val(fromdate);
+            $("#tod8").val(todate);
+
+            Referencefun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+
+        else if (parseInt(m) == 10) {
+            $("#ft10").show();
+            $("#frmd10").val(fromdate);
+            $("#tod10").val(todate);
+
+            Referedtowhomfun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+
+        else if (parseInt(m) == 11) {
+            $("#ft11").show();
+            $("#frmd11").val(fromdate);
+            $("#tod11").val(todate);
+
+            Refferedtofun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+
+
+        else if (parseInt(m) == 12) {
+            $("#ft12").show();
+            $("#frmd12").val(fromdate);
+            $("#tod12").val(todate);
+
+            // Sharesinxrayfun(); 
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+        else if (parseInt(m) == 13) {
+            $("#ft13").show();
+            $("#frmd13").val(fromdate);
+            $("#tod13").val(todate);
+
+            // Sharesinscanfun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+
+
+        else if (parseInt(m) == 14) {
+            $("#ft14").show();
+            $("#frmd14").val(fromdate);
+            $("#tod14").val(todate);
+
+            // Sharesinlabfun();
+            fromdate = $("#frmtdate11").val('');
+            todate = $("#todate1").val('');
+        }
+
+        m = 0;
+        $("#myModal2").modal('hide');
+    });
+
+
+    $("#cancel2").click(function () {
+        $(".modal fade").modal('hide');
+    });
+
+
+
+</script>
+<script type="text/javascript">
+
+
+    function mydate(dates) {
+        var dob = dates;
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '-' + splitdob[1] + '-' + splitdob[0];
+        return td;
+    }
+    function Genderfun() {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/Gender",
+            data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+                var res = [];
+
+                var rest = { "name": "", "y": "" };
+                for (i = 0; i < result.length; i++) {
+                    rest.name = result[i].Name;
+                    rest.y = result[i].Id;
+                    res.push(rest);
+                    var d = res;
+                    rest = { "name": "", "y": "" };
+
+
+                }
+                var h = d;
+                vibrant.setOptions({
+                    colors: ['rgb(18,152,241)', '#EE00EE', '#FF0000', '#1298F1']
+                });
+
+
+                $('#genderid1').vibrant({
+
+
+
+                    chart: {
+
+                        type: 'pie',
+                        height: 202
+                    },
+                    title: {
+                        text: ''
+                    },
+                    yAxis: {
+                        showEmpty: false
+                    },
+                    legend: {
+                        itemStyle: {
+                            fontWeight: 'bold',
+                            fontSize: '12px'
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:1f}'
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    series: [{
+                        name: "Gender",
+                        colorByPoint: true,
+                        data: res,
+                        point: {
+                            events: {
+                                click: function (event) {
+                                    var a = this.name;
+                                    var b = $("#frmd1").val();
+                                    var b1 = mydate(b);
+
+                                    var c = $("#tod1").val();
+                                    var c1 = mydate(c);
+
+
+                                    window.open("../HmsWebPages/DoctorDashboard/GenderReport.aspx?ReportName=" + "Gender1.rpt" + "&set=" + a + "&Fromdate=" + b1 + "&Todate=" + c1);
+
+
+
+                                }
+                            }
+                        }
+                    }]
+
+                });
+
+            }
+
+        });
+    }
+
+
+
+    function PatientTypesfun() {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/PatientTypes",
+            data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+                $.each(result, function (ui, item) {
+                    sad1.push(item.Name);
+                    sad.push(item.Id);
+
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+
+                $('#patypeid1').vibrant({
+                    chart: {
+                        type: 'bar',
+                        height: 202
+                    },
+
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '</a>'
+                    },
+                    xAxis: {
+                        categories: sad1,
+                        title: {
+                            text: null
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' '
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Patient',
+                        data: sad,
+
+                        point: {
+                            events: {
+                                click: function (event) {
+
+
+                                    var a = this.category;
+
+                                    Fromdate = $("#frmd2").val();
+                                    var b1 = mydate(Fromdate);
+                                    Todate = $("#tod2").val();
+                                    var c1 = mydate(Todate);
+                                    window.open("../HmsWebPages/DoctorDashboard/patienttype.aspx?ReportName=" + "PatientTypes.rpt" + "&set=" + a + "&Fromdate=" + b1 + "&Todate=" + c1);
+
+
+
+                                }
+                            }
+                        }
+
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+
+    function PatientCategoryfun() {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/PatientCategory",
+            data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+                debugger
+
+                var sad = [];
+                var sad1 = [];
+
+                $.each(result, function (ui, item) {
+                    sad1.push(item.Name);
+                    sad.push(item.Id);
+
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(82,33,188)']
+                });
+
+
+                $('#patcatgryid1').vibrant({
+
+                    chart: {
+                        type: 'column',
+                        height: 202
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: sad1,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: ''
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:0f}'
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Categories',
+                        //color: '#7BD681',
+                        data: sad,
+
+                        point: {
+                            events: {
+                                click: function (event) {
+
+
+                                    var a = this.category;
+
+                                    Fromdate = $("#frmd3").val();
+                                    var b1 = mydate(Fromdate);
+                                    Todate = $("#tod3").val();
+                                    var c1 = mydate(Todate);
+
+                                    window.open("../HmsWebPages/DoctorDashboard/patientcaty.aspx?ReportName=" + "PatientCategories.rpt" + "&set=" + a + "&Fromdate=" + b1 + "&Todate=" + c1);
+
+
+
+                                }
+                            }
+                        }
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+
+
+
+
+    function Racepatientsfun() {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/Racepatients",
+            data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var res = [];
+
+                var rest = { "name": "", "y": "" };
+                for (i = 0; i < result.length; i++) {
+                    rest.name = result[i].Name;
+                    rest.y = result[i].Id;
+                    res.push(rest);
+                    var d = res;
+                    rest = { "name": "", "y": "" };
+
+
+                }
+
+                vibrant.setOptions({
+                    colors: ['rgb(127,0,255)', '#1298F1', '#4DD827', '#FFFF00', '#FF0000', '#FF0080', '#7F00FF']
+                });
+
+
+
+                $('#Racepatientsid1').vibrant({
+
+                    chart: {
+                        type: 'pie',
+                        height: 202,
+                        options3d: {
+                            enabled: true,
+                            alpha: 60,
+                            beta: 0
+                        }
+                    },
+                    title: {
+                        text: ''
+                    },
+
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            depth: 40,
+                            showInLegend: true,
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:1f}'
+                            }
+                        }
+                    },
+
+                    legend: {
+                        itemStyle: {
+                            fontWeight: 'bold',
+                            fontSize: '12px'
+                        }
+                    },
+                    series: [{
+                        name: "Patients",
+                        colorByPoint: true,
+                        data: res,
+
+                        point: {
+                            events: {
+                                click: function (event) {
+
+
+                                    var a = this.name;
+                                    var b1 = $("#frmd4").val();
+                                    var b = mydate(b1);
+                                    var c1 = $("#tod4").val();
+                                    var c = mydate(c1);
+
+                                    window.open("../HmsWebPages/DoctorDashboard/Racepatient.aspx?ReportName=" + "RacePatients.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+
+
+
+                                }
+                            }
+                        }
+                    }]
+
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+    function Overallnewexstfun(drop) {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/Overallnewexist",
+            data: { Fromdate: drop },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+                var sad2 = [];
+
+                $.each(result, function (ui, item) {
+                    sad1.push(item.Name);
+                    sad.push(item.Id);
+                    sad2.push(item.AdvAmt);
+
+
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(0,127,255)', '#7FFF00']
+                });
+
+
+                $('#Overallnewexstid1').vibrant({
+
+                    chart: {
+                        type: 'column',
+                        height: 202
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: sad1,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: ''
+                        }
+                    },
+                    //                    tooltip: {
+                    //                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    //                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    //                '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                    //                        footerFormat: '</table>',
+                    //                        shared: true,
+                    //                        useHTML: true
+                    //                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:0f}'
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Overall New Patient',
+                        data: sad,
+
+                        point: {
+                            events: {
+                                click: function (event) {
+
+
+                                    var a = this.category;
+
+                                    var b = $("#drop option:selected").text();
+
+                                    window.open("../HmsWebPages/DoctorDashboard/frmNewPatient.aspx?ReportName=" + "NewPatientReport.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+                                }
+                            }
+                        }
+
+
+                    },
+                        {
+                            name: 'Overall Existing Patient',
+                            data: sad2,
+
+
+                            point: {
+                                events: {
+                                    click: function (event) {
+                                        var a = this.category;
+                                        var b = $("#drop option:selected").text();
+
+                                        window.open("../HmsWebPages/DoctorDashboard/frmExistPatient.aspx?ReportName=" + "ExistPatientReport.rpt" + "&set=" + a + "&Fromdate=" + b);
+                                    }
+                                }
+                            }
+
+
+                        }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+
+    function Surgerydetailsfun(drop1) {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/Surgerydetails",
+            data: { Fromdate: drop1 },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+                $.each(result, function (ui, item) {
+                    sad1.push(item.Name);
+                    sad.push(item.Id);
+
+
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(0,127,255)', '#7FFF00']
+                });
+
+
+                $('#Surgerydetailsid1').vibrant({
+
+                    chart: {
+                        type: 'column',
+                        height: 202
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: sad1,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        tickInterval: 1,
+                        minRange: 1,
+                        title: {
+                            text: ''
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:0f}'
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Surgery',
+                        data: sad,
+
+                        point: {
+                            events: {
+                                click: function (event) {
+
+
+                                    var a = this.category;
+
+                                    var b = $("#drop1 option:selected").text();
+
+                                    window.open("../HmsWebPages/DoctorDashboard/SurgeryOTReport.aspx?ReportName=" + "SurgeryDetailsOT.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+
+
+                                }
+                            }
+                        }
+
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+    function Patientlocationsfun() {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/Patientlocations",
+            data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+                $.each(result, function (ui, item) {
+                    sad1.push(item.Name);
+                    sad.push(item.Id);
+
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+
+                $('#Patientlocationsid1').vibrant({
+
+                    chart: {
+                        type: 'line',
+                        height: 202
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: sad1,
+                        crosshair: true,
+                        labels: {
+                            rotation: -45,
+                            style: {
+                                fontSize: '12px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: ''
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                             '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        line: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:0f}'
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Locations',
+                        data: sad,
+
+
+
+                        point: {
+                            events: {
+                                click: function (event) {
+
+
+                                    var a = this.category;
+                                    var b1 = $("#frmd6").val();
+                                    var b = mydate(b1);
+                                    var c1 = $("#tod6").val();
+                                    var c = mydate(c1);
+
+                                    window.open("../HmsWebPages/DoctorDashboard/PatientLocationReport.aspx?ReportName=" + "PatientLocation.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+
+                                }
+                            }
+                        }
+
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+    function Agegroupforpatientsfun() {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/Agegroupforpatients",
+            data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var sad = [];
+                var sad1 = [];
+
+                $.each(result, function (ui, item) {
+                    sad1.push(item.Name);
+                    sad.push(item.Id);
+
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                });
+
+
+                $('#Agegroupforpatientsid1').vibrant({
+
+                    chart: {
+                        type: 'column',
+                        height: 236
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: sad1,
+                        crosshair: true,
+                        labels: {
+                            rotation: -45,
+                            style: {
+                                fontSize: '08px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: ''
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:0f}'
+                            }
+                        }
+                    },
+                    series: [{
+                        category: 'Age',
+                        color: 'red',
+                        data: sad,
+
+                        point: {
+                            events: {
+                                click: function (event) {
+                                    var a = this.category;
+                                    var b1 = $("#frmd5").val();
+                                    var b = mydate(b1);
+                                    var c1 = $("#tod5").val();
+                                    var c = mydate(c1);
+
+                                    window.open("../HmsWebPages/DoctorDashboard/frmagegroup.aspx?ReportName=" + "agegroup.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+                                }
+                            }
+                        }
+
+                    }]
+
+
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+    function Referedbyclinicfun() {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/Referedbyclinic",
+            data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+
+                //                var res = [];
+
+                //                var rest = { "name": "", "y": "" };
+                //                for (i = 0; i < result.length; i++) {
+                //                    rest.name = result[i].Name;
+                //                    rest.y = result[i].Id;
+                //                    res.push(rest);
+                //                    var d = res;
+                //                    rest = { "name": "", "y": "" };
+
+
+                //                }
+
+                var sad = [];
+                var sad1 = [];
+
+                $.each(result, function (ui, item) {
+                    sad1.push(item.Name);
+                    sad.push(item.Id);
+
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(139, 188, 33)', '#66CCFF', '#A6FE67', '#FED867', '#FE6773', '#FFF263']
+                });
+
+
+                $('#Referedbyclinicid1').vibrant({
+
+                    //                    chart: {
+                    //                        type: 'pie',
+                    //                        height: 230,
+                    //                        options3d: {
+                    //                            enabled: true,
+                    //                            alpha: 60,
+                    //                            beta: 0
+                    //                        }
+                    //                    },
+                    //                    title: {
+                    //                        text: ''
+                    //                    },
+
+                    //                    plotOptions: {
+                    //                        pie: {
+                    //                            allowPointSelect: true,
+                    //                            cursor: 'pointer',
+                    //                            depth: 40,
+                    //                            showInLegend: true,
+                    //                            dataLabels: {
+                    //                                enabled: true,
+                    //                                format: ' {point.y:1f}'
+                    //                            }
+                    //                        }
+                    //                    },
+
+                    //                    legend: {
+                    //                        itemStyle: {
+                    //                            fontWeight: 'bold',
+                    //                            fontSize: '12px'
+                    //                        }
+                    //                    },
+
+
+                    chart: {
+                        type: 'line',
+                        height: 202
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: sad1,
+                        crosshair: true,
+                        labels: {
+                            rotation: -45,
+                            style: {
+                                fontSize: '12px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: ''
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                             '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        line: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:0f}'
+                            }
+                        }
+                    },
+                    series: [{
+                        name: "Referedbyclinic",
+                        colorByPoint: true,
+                        data: sad,
+
+                        point: {
+                            events: {
+                                click: function (event) {
+
+
+                                    var a = this.name;
+
+                                    var b1 = $("#frmd7").val();
+                                    var b = mydate(b1);
+                                    var c1 = $("#tod7").val();
+                                    var c = mydate(c1);
+
+                                    window.open("../HmsWebPages/DoctorDashboard/ClinicToDoctorReport.aspx?ReportName=" + "ClinicToDoctor.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+
+
+
+                                }
+                            }
+                        }
+
+
+
+
+                    }]
+
+                });
+
+            }
+
+        });
+    }
+
+    function Referencefun() {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/Reference",
+            data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var name = [];
+                var val = [];
+
+                $.each(result, function (ui, item) {
+
+                    val.push(item.Id);
+                    name.push(item.Name);
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(255,64,0)', '#ff4000']
+                });
+
+                $('#Referenceid1').vibrant({
+
+                    chart: {
+                        type: 'column',
+                        height: 202
+                    },
+                    title: {
+                        text: ''
+
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: name,
+                        crosshair: true,
+                        labels: {
+                            rotation: -45,
+                            style: {
+                                fontSize: '12px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: ''
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:0f}'
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Reference',
+                        //color: '#09F181',
+                        data: val,
+
+                        point: {
+                            events: {
+                                click: function (event) {
+
+
+                                    var a = this.category;
+                                    var b1 = $("#frmd8").val();
+                                    var b = mydate(b1);
+                                    var c1 = $("#tod8").val();
+                                    var c = mydate(c1);
+
+                                    if (a == "Referred From") {
+                                        window.open("../HmsWebPages/DoctorDashboard/TotalNoOfReferenceReport.aspx?ReportName=" + "TotalNoOfReferenceFrom.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+                                    }
+                                    if (a == "Referred To") {
+                                        window.open("../HmsWebPages/DoctorDashboard/TotalNoOfReferenceReport.aspx?ReportName=" + "TotalNoOfReferenceTo.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+                                    }
+
+
+                                }
+                            }
+                        }
+
+
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+    function Patientwaitingtimesfun() {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/Patientwaitingtimes",
+            data: { Fromdate: fromdateconv(fromdate) },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var val1 = [];
+                var val2 = [];
+
+                $.each(result, function (ui, item) {
+
+                    val1.push(item.Name);
+                    val2.push(item.AdvAmt);
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(0,127,255)', '#7FFF00']
+                });
+
+
+
+                $('#Patientwaitingtimesid1').vibrant({
+
+                    chart: {
+                        type: 'column',
+                        height: 202,
+                        margin: 75,
+                        options3d: {
+                            enabled: true,
+                            alpha: 10,
+                            beta: 25,
+                            depth: 70
+                        }
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:0f}'
+                            }
+                        }
+                    },
+                    xAxis: {
+                        categories: val1
+                    },
+                    yAxis: {
+                        title: {
+                            text: null
+                        }
+                    },
+                    series: [{
+                        name: 'Minutes',
+                        data: val2,
+                        point: {
+                            events: {
+                                click: function (event) {
+
+                                    var b1 = $("#frmd9").val();
+                                    var b = mydate(b1);
+
+                                    window.open("../HmsWebPages/DoctorDashboard/patientwaitingtime.aspx?ReportName=" + "patientwaitingtime.rpt" + "&Fromdate=" + b);
+
+
+
+                                }
+                            }
+                        }
+                    }]
+
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+
+    function Doctorsharepharmacyfun(drop2) {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/Doctorsharepharmacy",
+            data: { Fromdate: drop2 },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var val1 = [];
+                var val2 = [];
+                var name1 = [];
+
+                $.each(result, function (ui, item) {
+
+                    val1.push(parseInt((item.Id).toString().substr(0, 2)));
+                    val2.push(parseInt((item.AdvAmt).toString().substr(0, 2)));
+                    name1.push(item.Name);
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(8, 249, 235)', 'rgb( 15, 8, 249 )', '#08F9EB', '#0F08F9']
+                });
+
+
+                $('#Doctorsharepharmacyid1').vibrant({
+
+                    chart: {
+                        type: 'column',
+                        height: 202
+
+                    },
+                    xAxis: {
+                        categories: name1,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        title: {
+                            text: null
+                        },
+                        labels: {
+                            formatter: function () {
+                                return this.value + '%';
+                            }
+                        }
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:0f}'
+                            }
+                        }
+                    },
+
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                           '<td style="padding:0"><b>{point.y:.0f}% </b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    series: [{
+                        name: 'Hospital',
+                        data: val1,
+
+                        point: {
+                            events: {
+                                click: function (event) {
+
+
+                                    var a = this.category;
+                                    var b = $("#drop2 option:selected").text();
+
+
+
+                                    window.open("../HmsWebPages/DoctorDashboard/SharesPharmacyHospitalreport.aspx?ReportName=" + "SharesPharmacyHospitalreport.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+
+
+                                }
+                            }
+                        }
+
+                    }
+                                , {
+                                    name: 'Doctor',
+                                    data: val2,
+
+                                    point: {
+                                        events: {
+                                            click: function (event) {
+
+                                                debugger
+                                                var a = this.category;
+                                                var b = $("#drop2 option:selected").text();
+
+
+
+                                                window.open("../HmsWebPages/DoctorDashboard/SharesPharmacyDoctorreport.aspx?ReportName=" + "SharesPharmacyDoctorreport.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+
+
+                                            }
+                                        }
+                                    }
+
+
+
+                                }]
+                });
+
+            }
+
+        });
+    }
+
+
+    function Referedtowhomfun() {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/Referedtowhom",
+            data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var name = [];
+                var val = [];
+
+                $.each(result, function (ui, item) {
+
+                    val.push(item.Id);
+                    name.push(item.Name);
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(255,150,85)', '#FF9655', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#FF9655']
+                });
+
+
+                $('#Referedtowhomid1').vibrant({
+
+                    chart: {
+                        type: 'column',
+                        height: 202
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: name,
+                        crosshair: true,
+                        labels: {
+                            rotation: -45,
+                            style: {
+                                fontSize: '12px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: ''
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:1f}'
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Referred To Whom',
+                        color: '#2FD655  ',
+                        data: val,
+
+                        point: {
+                            events: {
+                                click: function (event) {
+
+                                    var a = this.category;
+                                    var b1 = $("#frmd10").val();
+                                    var b = mydate(b1);
+                                    var c1 = $("#tod10").val();
+                                    var c = mydate(c1);
+
+                                    window.open("../HmsWebPages/DoctorDashboard/frmreferredwhom.aspx?ReportName=" + "referredwhom.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+
+
+
+                                }
+                            }
+                        }
+
+
+
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+
+
+
+    function Refferedtofun() {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/Refferedto",
+            data: { Fromdate: fromdateconv(fromdate), Todate: todateconv(todate) },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+
+                var val = [];
+                var val1 = [];
+                $.each(result, function (ui, item) {
+
+                    val.push(item.Id);
+                    val1.push(item.Name)
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(255,150,85)', '#FF9655', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#FF9655']
+                });
+
+
+                $('#Refferedtoid1').vibrant({
+
+                    chart: {
+                        type: 'column',
+                        height: 202
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: val1,
+                        crosshair: true,
+                        labels: {
+                            // rotation: -45,
+                            style: {
+                                fontSize: '12px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: ''
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        //                         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        //                '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:1f}'
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Referred To',
+                        color: '#2FD655  ',
+                        data: val,
+                        point: {
+                            events: {
+                                click: function (event) {
+                                    var a = this.category;
+                                    var b1 = $("#frmd11").val();
+                                    var b = mydate(b1);
+                                    var c1 = $("#tod11").val();
+                                    var c = mydate(c1);
+
+                                    if (a == "Laboratory") {
+                                        window.open("../HmsWebPages/DoctorDashboard/ReferredToReport.aspx?ReportName=" + "ReferredToLab.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+                                    }
+                                    if (a == "Pharmacy") {
+                                        window.open("../HmsWebPages/DoctorDashboard/ReferredToReport.aspx?ReportName=" + "RefferedToPharmacy.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+                                    }
+                                    if (a == "Radiology") {
+                                        window.open("../HmsWebPages/DoctorDashboard/ReferredToReport.aspx?ReportName=" + "RefferedToRadiology.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+                                    }
+
+                                }
+                            }
+                        }
+                    }]
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+
+
+
+    function Patientwaitingintervalfun() {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/Patientwaitinginterval",
+            data: { Fromdate: fromdateconv(fromdate) },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var intv1 = [];
+                var intv2 = [];
+
+                $.each(result, function (ui, item) {
+
+                    intv1.push(item.Name);
+                    intv2.push(item.Id);
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(0,127,255)', '#7FFF00']
+                });
+
+
+
+                $('#Patientwaitingintervalid1').vibrant({
+
+                    chart: {
+                        type: 'column',
+                        height: 202
+
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    plotOptions: {
+                        column: {
+                            depth: 25,
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:0f}'
+                            }
+                        }
+                    },
+                    xAxis: {
+                        categories: intv1,
+                        labels: {
+                            rotation: -45,
+                            style: {
+                                fontSize: '08px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        title: {
+                            text: null
+                        }
+                    },
+                    series: [{
+                        name: 'Patient',
+                        data: intv2,
+
+
+
+                        point: {
+                            events: {
+                                click: function (event) {
+
+
+                                    var a = this.category;
+                                    var b1 = $("#frmd14").val();
+                                    var b = mydate(b1);
+
+                                    window.open("../HmsWebPages/DoctorDashboard/Patient_Visiting_Time.aspx?ReportName=" + "Patient_Visiting_Time.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+                                }
+                            }
+                        }
+
+
+
+
+
+                    }]
+
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+
+
+
+    function Sharesinxrayfun(drop3) {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/Sharesinxray",
+            data: { Fromdate: drop3 },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var xrayname = [];
+                var xrayval1 = [];
+                var xrayval2 = [];
+
+                $.each(result, function (ui, item) {
+
+
+                    xrayname.push(item.Name);
+                    xrayval1.push(item.Id);
+                    xrayval2.push(item.AdvAmt);
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(0,127,255)', '#7FFF00']
+                });
+
+
+
+                $('#Sharesinxrayid1').vibrant({
+
+                    chart: {
+                        type: 'column',
+                        height: 202
+
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:0f}'
+                            }
+                        }
+                    },
+                    xAxis: {
+                        categories: xrayname,
+                        labels: {
+                            rotation: -45,
+                            style: {
+                                fontSize: '08px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        title: {
+                            text: null
+                        }
+                    },
+                    series: [{
+                        name: 'Hospital',
+                        data: xrayval1,
+
+                        point: {
+                            events: {
+                                click: function (event) {
+
+
+                                    var a = this.category;
+                                    var b = $("#drop3 option:selected").text();
+
+                                    window.open("../HmsWebPages/DoctorDashboard/SharesXrayHospitalreport.aspx?ReportName=" + "SharesXrayHospitalreport.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+                                }
+                            }
+                        }
+                    }
+                         , {
+                             name: 'Doctor',
+                             data: xrayval2,
+
+                             point: {
+                                 events: {
+                                     click: function (event) {
+
+
+                                         var a = this.category;
+                                         var b = $("#drop3 option:selected").text();
+
+                                         window.open("../HmsWebPages/DoctorDashboard/SharesXrayDoctorreport.aspx?ReportName=" + "SharesXrayDoctorreport.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+                                     }
+                                 }
+                             }
+
+                         }]
+
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+
+    function Sharesinscanfun(drop4) {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/Sharesinscan",
+            data: { Fromdate: drop4 },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var scanname = [];
+                var scanval1 = [];
+                var scanval2 = [];
+
+                $.each(result, function (ui, item) {
+
+
+                    scanname.push(item.Name);
+                    scanval1.push(item.Id);
+                    scanval2.push(item.AdvAmt);
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(0,127,255)', '#7FFF00']
+                });
+
+
+
+                $('#Sharesinscanid1').vibrant({
+
+                    chart: {
+                        type: 'column',
+                        height: 202
+
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:0f}'
+                            }
+                        }
+                    },
+                    xAxis: {
+                        categories: scanname,
+                        labels: {
+                            rotation: -45,
+                            style: {
+                                fontSize: '08px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        title: {
+                            text: null
+                        }
+                    },
+                    series: [{
+                        name: 'Hospital',
+                        data: scanval1,
+                        point: {
+                            events: {
+                                click: function (event) {
+
+
+                                    var a = this.category;
+                                    var b = $("#drop4 option:selected").text();
+
+                                    window.open("../HmsWebPages/DoctorDashboard/Shares_hospital_Scan.aspx?ReportName=" + "SharesScanHospitalreport.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+                                }
+                            }
+                        }
+                    }
+                         , {
+                             name: 'Doctor',
+                             data: scanval2,
+
+                             point: {
+                                 events: {
+                                     click: function (event) {
+
+
+                                         var a = this.category;
+                                         var b = $("#drop4 option:selected").text();
+
+                                         window.open("../HmsWebPages/DoctorDashboard/SharesScanDoctorreport.aspx?ReportName=" + "SharesScanDoctorreport.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+                                     }
+                                 }
+                             }
+
+                         }]
+
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+
+    function Sharesinlabfun(drop5) {
+
+        $.ajax({
+            url: "../Store/DoctorDashBoard/Sharesinlab",
+            data: { Fromdate: drop5 },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+
+
+
+                var labname = [];
+                var labval1 = [];
+                var labval2 = [];
+
+                $.each(result, function (ui, item) {
+
+
+                    labname.push(item.Name);
+                    labval1.push(item.Id);
+                    labval2.push(item.AdvAmt);
+
+                });
+
+                vibrant.setOptions({
+                    colors: ['rgb(0,127,255)', '#7FFF00']
+                });
+
+
+
+                $('#Sharesinlabid1').vibrant({
+
+                    chart: {
+                        type: 'column',
+                        height: 202
+
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: ' {point.y:0f}'
+                            }
+                        }
+                    },
+                    xAxis: {
+                        categories: labname,
+                        labels: {
+                            rotation: -45,
+                            style: {
+                                fontSize: '08px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        title: {
+                            text: null
+                        }
+                    },
+                    series: [{
+                        name: 'Hospital',
+                        data: labval1,
+
+                        point: {
+                            events: {
+                                click: function (event) {
+
+
+                                    var a = this.category;
+                                    var b = $("#drop5 option:selected").text();
+
+                                    window.open("../HmsWebPages/DoctorDashboard/ShareLabHospitalReport.aspx?ReportName=" + "ShareLabHospitalReport.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+                                }
+                            }
+                        }
+                    }
+                         , {
+                             name: 'Doctor',
+                             data: labval2,
+
+                             point: {
+                                 events: {
+                                     click: function (event) {
+
+
+                                         var a = this.category;
+                                         var b = $("#drop5 option:selected").text();
+
+                                         window.open("../HmsWebPages/DoctorDashboard/ShareLabDoctorReport.aspx?ReportName=" + "ShareLabDoctorReport.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+                                     }
+                                 }
+                             }
+
+                         }]
+
+
+
+
+                });
+
+            }
+
+        });
+    }
+
+
+
+    function fromdateconv(dates) {
+
+        var dob = dates;
+        var splitdob = dob.split('/');
+        var fd = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+        return fd;
+    }
+
+    function todateconv(dates) {
+        var dob = dates;
+        var splitdob = dob.split('/');
+        var td = splitdob[2] + '/' + splitdob[1] + '/' + splitdob[0];
+        return td;
+    }
+
+
+</script>
+<script type="text/javascript">
+
+
+    // Gender
+
+
+    $.ajax({
+        url: "../Store/DoctorDashBoard/Gender",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+            debugger
+
+            var res = [];
+
+            var rest = { "name": "", "y": "" };
+            for (i = 0; i < result.length; i++) {
+                rest.name = result[i].Name;
+                rest.y = result[i].Id;
+                res.push(rest);
+                var d = res;
+                rest = { "name": "", "y": "" };
+
+
+            }
+            var h = d;
+
+            vibrant.setOptions({
+                colors: ['rgb(18,152,241)', '#EE00EE', '#FF0000', '#1298F1']
+            });
+
+
+            $('#genderid1').vibrant({
+
+
+
+                chart: {
+
+                    type: 'pie',
+                    height: 236
+
+
+                },
+                title: {
+                    text: ''
+                },
+                yAxis: {
+                    showEmpty: false
+                },
+                legend: {
+                    itemStyle: {
+                        fontWeight: 'bold',
+                        fontSize: '12px'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:1f}'
+
+                        },
+                        showInLegend: true
+                    }
+                },
+                series: [{
+                    name: "Gender",
+                    colorByPoint: true,
+                    data: res,
+
+                    point: {
+                        events: {
+                            click: function (event) {
+                                var a = this.name;
+                                var b = $("#frmd1").val();
+                                var c = $("#tod1").val();
+                                window.open("../HmsWebPages/DoctorDashboard/GenderReport.aspx?ReportName=" + "Gender1.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+
+
+
+                            }
+                        }
+                    }
+
+                }]
+
+            });
+
+        }
+
+    });
+
+
+    // Patient Types 
+
+    $.ajax({
+        url: "../Store/DoctorDashBoard/PatientTypes",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+            $.each(result, function (ui, item) {
+                sad1.push(item.Name);
+                sad.push(item.Id);
+
+
+            });
+
+            vibrant.setOptions({
+                colors: ['rgb(139, 188, 33)', ]
+            });
+
+
+            $('#patypeid1').vibrant({
+                chart: {
+                    type: 'bar',
+                    height: 236
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: '</a>'
+                },
+                xAxis: {
+                    categories: sad1,
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    valueSuffix: ' '
+                },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Patient',
+                    data: sad,
+                    point: {
+                        events: {
+                            click: function (event) {
+
+
+                                var a = this.category;
+
+                                Fromdate = $("#frmd2").val();
+                                Todate = $("#tod2").val();
+                                window.open("../HmsWebPages/DoctorDashboard/patienttype.aspx?ReportName=" + "PatientTypes.rpt" + "&set=" + a + "&Fromdate=" + Fromdate + "&Todate=" + Todate);
+
+
+
+                            }
+                        }
+                    }
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+
+    // Patient Category      
+
+    $.ajax({
+        url: "../Store/DoctorDashBoard/PatientCategory",
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+            $.each(result, function (ui, item) {
+                sad1.push(item.Name);
+                sad.push(item.Id);
+
+
+            });
+
+
+            vibrant.setOptions({
+                colors: ['rgb(82,33,188)']
+            });
+
+
+            $('#patcatgryid1').vibrant({
+
+                chart: {
+                    type: 'column',
+                    height: 236
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: sad1,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: ''
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:0f}'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Categories',
+                    data: sad,
+                    point: {
+                        events: {
+                            click: function (event) {
+
+
+                                var a = this.category;
+
+                                Fromdate = $("#frmd3").val();
+                                Todate = $("#tod3").val();
+                                window.open("../HmsWebPages/DoctorDashboard/patientcaty.aspx?ReportName=" + "PatientCategories.rpt" + "&set=" + a + "&Fromdate=" + Fromdate + "&Todate=" + Todate);
+
+
+
+                            }
+                        }
+                    }
+
+                }]
+
+            });
+
+        }
+
+    });
+
+
+    // Race Patients  
+
+    $.ajax({
+        url: "../Store/DoctorDashBoard/Racepatients",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var res = [];
+
+            var rest = { "name": "", "y": "" };
+            for (i = 0; i < result.length; i++) {
+                rest.name = result[i].Name;
+                rest.y = result[i].Id;
+                res.push(rest);
+                var d = res;
+                rest = { "name": "", "y": "" };
+
+
+            }
+
+            vibrant.setOptions({
+                colors: ['rgb(127,0,255)', '#1298F1', '#4DD827', '#FFFF00', '#FF0000', '#FF0080', '#7F00FF']
+            });
+
+
+            $('#Racepatientsid1').vibrant({
+
+                chart: {
+                    type: 'pie',
+                    height: 236,
+                    options3d: {
+                        enabled: true,
+                        alpha: 60,
+                        beta: 0
+                    }
+                },
+                title: {
+                    text: ''
+                },
+
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        depth: 40,
+                        showInLegend: true,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:1f}'
+                        }
+                    }
+                },
+
+                legend: {
+                    itemStyle: {
+                        fontWeight: 'bold',
+                        fontSize: '12px'
+                    }
+                },
+                series: [{
+                    name: "Patients",
+                    colorByPoint: true,
+                    data: res,
+
+                    point: {
+                        events: {
+                            click: function (event) {
+
+                                var a = this.name;
+                                var b = $("#frmd4").val();
+                                var c = $("#tod4").val();
+                                window.open("../HmsWebPages/DoctorDashboard/Racepatient.aspx?ReportName=" + "RacePatients.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+
+
+
+                            }
+                        }
+                    }
+                }]
+
+
+
+
+            });
+
+        }
+
+    });
+
+    // Overall New And Existing Patient
+
+    $.ajax({
+        url: "../Store/DoctorDashBoard/Overallnewexist",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+            var sad2 = [];
+
+            $.each(result, function (ui, item) {
+                sad1.push(item.Name);
+                sad.push(item.Id);
+                sad2.push(item.AdvAmt);
+
+
+            });
+
+            vibrant.setOptions({
+                colors: ['rgb(0,127,255)', '#7FFF00']
+            });
+
+
+            $('#Overallnewexstid1').vibrant({
+
+                chart: {
+                    type: 'column',
+                    height: 236
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: sad1,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: ''
+                    }
+                },
+                //                tooltip: {
+                //                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                //                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                //                '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                //                    footerFormat: '</table>',
+                //                    shared: true,
+                //                    useHTML: true
+                //                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:0f}'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Overall New Patient',
+                    data: sad,
+
+                    point: {
+                        events: {
+                            click: function (event) {
+
+
+                                var a = this.category;
+
+                                var b = $("#drop option:selected").text();
+
+
+                                window.open("../HmsWebPages/DoctorDashboard/frmNewPatient.aspx?ReportName=" + "NewPatientReport.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+                            }
+                        }
+                    }
+
+                },
+                       {
+                           name: 'Overall Existing Patient',
+                           data: sad2,
+
+                           point: {
+                               events: {
+                                   click: function (event) {
+                                       var a = this.category;
+                                       var b = $("#drop1 option:selected").text();
+
+                                       window.open("../HmsWebPages/DoctorDashboard/frmExistPatient.aspx?ReportName=" + "ExistPatientReport.rpt" + "&set=" + a + "&Fromdate=" + b);
+                                   }
+                               }
+                           }
+
+                       }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+
+    // Age Group for Patients
+
+    $.ajax({
+        url: "../Store/DoctorDashBoard/Agegroupforpatients",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+            $.each(result, function (ui, item) {
+                sad1.push(item.Name);
+                sad.push(item.Id);
+
+
+            });
+
+            vibrant.setOptions({
+                colors: ['rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+            });
+
+            $('#Agegroupforpatientsid1').vibrant({
+
+                chart: {
+                    type: 'column',
+                    height: 236
+
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: sad1,
+                    crosshair: true,
+                    labels: {
+                        rotation: -45,
+                        style: {
+                            fontSize: '08px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: ''
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                           '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:0f}'
+                        }
+
+                    }
+                },
+                series: [{
+                    category: 'Age',
+                    color: 'red',
+                    data: sad,
+
+                    point: {
+                        events: {
+                            click: function (event) {
+
+
+
+                                var a = this.category;
+                                var b = $("#frmd5").val();
+                                var c = $("#tod5").val();
+
+                                window.open("../HmsWebPages/DoctorDashboard/frmagegroup.aspx?ReportName=" + "agegroup.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+
+                            }
+                        }
+                    }
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+    // Patient Locations
+    $.ajax({
+        url: "../Store/DoctorDashBoard/Patientlocations",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+            $.each(result, function (ui, item) {
+                sad1.push(item.Name);
+                sad.push(item.Id);
+
+
+            });
+
+
+
+
+            vibrant.setOptions({
+                colors: ['rgb(139, 188, 33)', '#66CCFF', '#006B24', '#CC6600', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+            });
+
+
+            $('#Patientlocationsid1').vibrant({
+
+
+                chart: {
+                    type: 'line',
+                    height: 236
+
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: sad1,
+                    crosshair: true,
+                    labels: {
+                        rotation: -45,
+                        style: {
+                            fontSize: '12px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: ''
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                           '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    line: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:0f}'
+                        }
+
+                    }
+                },
+                series: [{
+                    name: 'Locations',
+                    data: sad,
+
+                    point: {
+                        events: {
+                            click: function (event) {
+
+
+                                var a = this.category;
+                                var b = $("#frmd6").val();
+                                var c = $("#tod6").val();
+
+                                window.open("../HmsWebPages/DoctorDashboard/PatientLocationReport.aspx?ReportName=" + "PatientLocation.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+
+                            }
+                        }
+                    }
+
+
+
+
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+    // Surgery Details
+
+
+    $.ajax({
+        url: "../Store/DoctorDashBoard/Surgerydetails",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var sad = [];
+            var sad1 = [];
+
+            $.each(result, function (ui, item) {
+                sad1.push(item.Name);
+                sad.push(item.Id);
+
+
+
+            });
+
+            vibrant.setOptions({
+                colors: ['rgb(0,127,255)', '#7FFF00']
+            });
+
+
+            $('#Surgerydetailsid1').vibrant({
+
+                chart: {
+                    type: 'column',
+                    height: 236
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: sad1,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    // tickInterval: 1,
+                    // minRange: 1,
+                    title: {
+                        text: ''
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:0f}'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Surgery',
+                    data: sad,
+                    point: {
+                        events: {
+                            click: function (event) {
+
+
+                                var a = this.category;
+                                var b = $("#drop1 option:selected").text();
+                                window.open("../HmsWebPages/DoctorDashboard/SurgeryOTReport.aspx?ReportName=" + "SurgeryDetailsOT.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+
+
+                            }
+                        }
+                    }
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+    // Referedbyclinic  
+
+
+    $.ajax({
+        url: "../Store/DoctorDashBoard/Referedbyclinic",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+
+            //            var res = [];
+
+            //            var rest = { "name": "", "y": "" };
+            //            for (i = 0; i < result.length; i++) {
+            //                rest.name = result[i].Name;
+            //                rest.y = result[i].Id;
+            //                res.push(rest);
+            //                var d = res;
+            //                rest = { "name": "", "y": "" };
+
+
+            //            }
+            var sad = [];
+            var sad1 = [];
+
+            $.each(result, function (ui, item) {
+                sad1.push(item.Name);
+                sad.push(item.Id);
+
+
+            });
+            vibrant.setOptions({
+                colors: ['rgb(139, 188, 33)', '#66CCFF', '#A6FE67', '#FED867', '#FE6773', '#FFF263']
+            });
+
+
+
+            $('#Referedbyclinicid1').vibrant({
+
+
+                chart: {
+                    type: 'line',
+                    height: 236
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: sad1,
+                    crosshair: true,
+                    labels: {
+                        rotation: -65,
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: ''
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:12px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                             '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    line: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:0f}'
+                        }
+                    }
+                },
+                series: [{
+                    name: "Refered By Clinic",
+                    color: 'Blue',
+                    data: sad,
+
+                    point: {
+                        events: {
+                            click: function (event) {
+
+
+                                var a = this.name;
+
+                                var b = $("#frmd7").val();
+                                var c = $("#tod7").val();
+
+                                window.open("../HmsWebPages/DoctorDashboard/ClinicToDoctorReport.aspx?ReportName=" + "ClinicToDoctor.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+
+
+
+                            }
+                        }
+                    }
+                }]
+
+
+
+
+
+            });
+
+        }
+
+    });
+
+    // Reference  
+
+
+
+    $.ajax({
+        url: "../Store/DoctorDashBoard/Reference",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+
+            var valu = [];
+            var refname = [];
+            $.each(result, function (ui, item) {
+
+                valu.push(item.Id);
+                refname.push(item.Name);
+
+
+            });
+
+            vibrant.setOptions({
+                colors: ['rgb(255,64,0)', '#ff4000']
+            });
+
+
+            $('#Referenceid1').vibrant({
+
+                chart: {
+                    type: 'column',
+                    height: 236
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: refname,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: ''
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:0f}'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Reference',
+
+                    data: valu,
+
+                    point: {
+                        events: {
+                            click: function (event) {
+
+
+                                var a = this.category;
+
+                                var b = $("#frmd8").val();
+                                var c = $("#tod8").val();
+
+                                if (a == "Referred From") {
+                                    window.open("../HmsWebPages/DoctorDashboard/TotalNoOfReferenceReport.aspx?ReportName=" + "TotalNoOfReferenceFrom.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+                                }
+                                if (a == "Referred To") {
+                                    window.open("../HmsWebPages/DoctorDashboard/TotalNoOfReferenceReport.aspx?ReportName=" + "TotalNoOfReferenceTo.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+                                }
+
+
+                            }
+                        }
+                    }
+
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+    // Patientwaitingtimes  
+
+
+    $.ajax({
+        url: "../Store/DoctorDashBoard/Patientwaitingtimes",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+
+            var val1 = [];
+            var val2 = [];
+
+
+            $.each(result, function (ui, item) {
+
+                val1.push(item.Name);
+                val2.push(item.AdvAmt);
+
+
+
+            });
+
+            vibrant.setOptions({
+                colors: ['rgb(0,127,255)', '#7FFF00']
+            });
+
+
+            $('#Patientwaitingtimesid1').vibrant({
+
+                chart: {
+                    type: 'column',
+                    height: 236,
+                    margin: 75,
+                    options3d: {
+                        enabled: true,
+                        alpha: 10,
+                        beta: 25,
+                        depth: 70
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:0f}'
+                        }
+                    }
+                },
+                xAxis: {
+                    categories: val1
+                },
+                yAxis: {
+                    title: {
+                        text: null
+                    }
+                },
+                series: [{
+                    name: 'Minutes',
+                    data: val2,
+                    point: {
+                        events: {
+                            click: function (event) {
+
+
+
+                                var b = $("#frmd9").val();
+
+                                window.open("../HmsWebPages/DoctorDashboard/patientwaitingtime.aspx?ReportName=" + "patientwaitingtime.rpt" + "&Fromdate=" + b);
+
+
+
+                            }
+                        }
+                    }
+
+
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+
+
+
+    // Doctorsharepharmacy  
+
+
+    $.ajax({
+        url: "../Store/DoctorDashBoard/Doctorsharepharmacy",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+
+            var val1 = [];
+            var val2 = [];
+            var name1 = [];
+
+
+            $.each(result, function (ui, item) {
+                val1.push(parseInt((item.Id).toString().substr(0, 2)));
+                val2.push(parseInt((item.AdvAmt).toString().substr(0, 2)));
+                name1.push(item.Name);
+
+            });
+
+            vibrant.setOptions({
+                colors: ['rgb(8, 249, 235)', 'rgb( 15, 8, 249 )', '#08F9EB', '#0F08F9']
+            });
+
+            $('#Doctorsharepharmacyid1').vibrant({
+
+
+                chart: {
+                    type: 'column',
+                    height: 236
+
+                },
+                xAxis: {
+                    categories: name1,
+                    crosshair: true
+                },
+                yAxis: {
+                    title: {
+                        text: null
+                    },
+                    labels: {
+                        formatter: function () {
+                            return this.value + '%';
+                        }
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:0f}'
+                        }
+                    }
+                },
+
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                           '<td style="padding:0"><b>{point.y:.0f}% </b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                series: [{
+                    name: 'Hospital',
+                    data: val1,
+                    point: {
+                        events: {
+                            click: function (event) {
+
+
+                                var a = this.category;
+                                var b = $("#drop2 option:selected").text();
+                                window.open("../HmsWebPages/DoctorDashboard/SharesPharmacyHospitalreport.aspx?ReportName=" + "SharesPharmacyHospitalreport.rpt" + "&set=" + a + "&Fromdate=" + b);
+                            }
+                        }
+                    }
+                }
+                                , {
+                                    name: 'Doctor',
+                                    data: val2,
+                                    point: {
+                                        events: {
+                                            click: function (event) {
+
+
+                                                var a = this.category;
+                                                var b = $("#drop2 option:selected").text();
+
+                                                window.open("../HmsWebPages/DoctorDashboard/SharesPharmacyDoctorreport.aspx?ReportName=" + "SharesPharmacyDoctorreport.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+
+
+                                            }
+                                        }
+                                    }
+
+                                }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+
+    // Referedtowhom 
+
+
+    $.ajax({
+        url: "../Store/DoctorDashBoard/Referedtowhom",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+
+            var val = [];
+            var name = [];
+
+
+            $.each(result, function (ui, item) {
+                val.push(item.Id);
+                name.push(item.Name);
+
+            });
+
+            vibrant.setOptions({
+                colors: ['rgb(0,127,255)', '#7FFF00']
+            });
+
+
+            $('#Referedtowhomid1').vibrant({
+
+
+                chart: {
+                    type: 'column',
+                    height: 236
+
+                },
+                xAxis: {
+                    categories: name,
+                    crosshair: true,
+                    labels: {
+                        rotation: -45,
+                        style: {
+                            fontSize: '12px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: null
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:0f}'
+                        }
+                    }
+                },
+
+                //                tooltip: {
+                //                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                //                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                //                                           '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                //                    footerFormat: '</table>',
+                //                    shared: true,
+                //                    useHTML: true
+                //                },
+                series: [{
+                    name: 'Referred To Whom',
+                    data: val,
+                    color: '#2FD655 ',
+                    point: {
+                        events: {
+                            click: function (event) {
+
+
+                                var a = this.category;
+
+                                var b = $("#frmd10").val();
+                                var c = $("#tod10").val();
+
+                                window.open("../HmsWebPages/DoctorDashboard/frmreferredwhom.aspx?ReportName=" + "referredwhom.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+
+
+
+                            }
+                        }
+                    }
+
+
+
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+
+
+    //Refferedto
+
+
+    $.ajax({
+        url: "../Store/DoctorDashBoard/Refferedto",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+            var val1 = [];
+            var val11 = [];
+
+
+            $.each(result, function (ui, item) {
+
+                val1.push(item.Id);
+                val11.push(item.Name)
+
+            });
+
+            vibrant.setOptions({
+                colors: ['rgb(0,127,255)', '#7FFF00']
+            });
+
+
+            $('#Refferedtoid1').vibrant({
+
+
+                chart: {
+                    type: 'column',
+                    height: 236
+
+                },
+                xAxis: {
+                    categories: val11,
+                    crosshair: true,
+                    labels: {
+                        //rotation: -45,
+                        style: {
+                            fontSize: '12px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: null
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:0f}'
+                        }
+                    }
+                },
+
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                series: [{
+                    name: 'Referred To ',
+                    data: val1,
+                    color: '#2FD655 ',
+
+                    point: {
+                        events: {
+                            click: function (event) {
+
+
+                                var a = this.category;
+                                var b = $("#frmd11").val();
+                                var c = $("#tod11").val();
+
+
+                                if (a == "Laboratory") {
+                                    window.open("../HmsWebPages/DoctorDashboard/ReferredToReport.aspx?ReportName=" + "ReferredToLab.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+                                }
+                                if (a == "Pharmacy") {
+                                    window.open("../HmsWebPages/DoctorDashboard/ReferredToReport.aspx?ReportName=" + "RefferedToPharmacy.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+                                }
+                                if (a == "Radiology") {
+                                    window.open("../HmsWebPages/DoctorDashboard/ReferredToReport.aspx?ReportName=" + "RefferedToRadiology.rpt" + "&set=" + a + "&Fromdate=" + b + "&Todate=" + c);
+                                }
+
+                            }
+                        }
+                    }
+
+
+
+
+
+
+
+
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+    // Patientwaitinginterval
+
+
+    $.ajax({
+        url: "../Store/DoctorDashBoard/Patientwaitinginterval",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+
+            var intv1 = [];
+            var intv2 = [];
+
+
+            $.each(result, function (ui, item) {
+
+                intv1.push(item.Name);
+                intv2.push(item.Id);
+
+
+
+            });
+
+            vibrant.setOptions({
+                colors: ['rgb(0,127,255)', '#7FFF00']
+            });
+
+
+            $('#Patientwaitingintervalid1').vibrant({
+
+                chart: {
+                    type: 'column',
+                    height: 236
+
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                plotOptions: {
+                    column: {
+                        depth: 25,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:0f}'
+                        }
+                    }
+                },
+                xAxis: {
+                    categories: intv1,
+                    labels: {
+                        rotation: -45,
+                        style: {
+                            fontSize: '08px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: null
+                    }
+                },
+                series: [{
+                    name: 'Patient',
+                    data: intv2,
+
+                    point: {
+                        events: {
+                            click: function (event) {
+
+
+                                var a = this.category;
+                                var b = $("#frmd14").val();
+
+                                window.open("../HmsWebPages/DoctorDashboard/Patient_Visiting_Time.aspx?ReportName=" + "Patient_Visiting_Time.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+                            }
+                        }
+                    }
+
+
+
+                }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+    // Sharesinxray
+
+
+    $.ajax({
+        url: "../Store/DoctorDashBoard/Sharesinxray",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+
+            var xrayname1 = [];
+            var xrayval11 = [];
+            var xrayval21 = [];
+
+
+            $.each(result, function (ui, item) {
+
+                xrayname1.push(item.Name);
+                xrayval11.push(item.Id);
+                xrayval21.push(item.AdvAmt);
+
+
+
+            });
+
+            vibrant.setOptions({
+                colors: ['rgb(0,127,255)', '#7FFF00']
+            });
+
+
+            $('#Sharesinxrayid1').vibrant({
+
+                chart: {
+                    type: 'column',
+                    height: 236
+
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:0f}'
+                        }
+                    }
+                },
+                xAxis: {
+                    categories: xrayname1,
+                    labels: {
+                        rotation: -45,
+                        style: {
+                            fontSize: '08px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: null
+                    }
+                },
+                series: [{
+                    name: 'Hospital',
+                    data: xrayval11,
+
+                    point: {
+                        events: {
+                            click: function (event) {
+
+
+                                var a = this.category;
+                                var b = $("#drop3 option:selected").text();
+
+                                window.open("../HmsWebPages/DoctorDashboard/SharesXrayHospitalreport.aspx?ReportName=" + "SharesXrayHospitalreport.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+                            }
+                        }
+                    }
+                },
+                           {
+                               name: 'Doctor',
+                               data: xrayval21,
+
+                               point: {
+                                   events: {
+                                       click: function (event) {
+
+
+                                           var a = this.category;
+                                           var b = $("#drop3 option:selected").text();
+
+                                           window.open("../HmsWebPages/DoctorDashboard/SharesXrayDoctorreport.aspx?ReportName=" + "SharesXrayDoctorreport.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+                                       }
+                                   }
+                               }
+
+
+                           }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+
+    // Sharesinscan
+
+
+    $.ajax({
+        url: "../Store/DoctorDashBoard/Sharesinscan",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+
+            var scanname1 = [];
+            var scanval11 = [];
+            var scanval21 = [];
+
+
+            $.each(result, function (ui, item) {
+
+                scanname1.push(item.Name);
+                scanval11.push(item.Id);
+                scanval21.push(item.AdvAmt);
+
+
+
+            });
+
+            vibrant.setOptions({
+                colors: ['rgb(0,127,255)', '#7FFF00']
+            });
+
+
+            $('#Sharesinscanid1').vibrant({
+
+                chart: {
+                    type: 'column',
+                    height: 236
+
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:0f}'
+                        }
+                    }
+                },
+                xAxis: {
+                    categories: scanname1,
+                    labels: {
+                        rotation: -45,
+                        style: {
+                            fontSize: '08px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: null
+                    }
+                },
+                series: [{
+                    name: 'Hospital',
+                    data: scanval11,
+
+                    point: {
+                        events: {
+                            click: function (event) {
+
+
+                                var a = this.category;
+                                var b = $("#drop4 option:selected").text();
+
+                                window.open("../HmsWebPages/DoctorDashboard/Shares_hospital_Scan.aspx?ReportName=" + "SharesScanHospitalreport.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+                            }
+                        }
+                    }
+                },
+                           {
+                               name: 'Doctor',
+                               data: scanval21,
+
+                               point: {
+                                   events: {
+                                       click: function (event) {
+
+
+                                           var a = this.category;
+                                           var b = $("#drop4 option:selected").text();
+
+                                           window.open("../HmsWebPages/DoctorDashboard/SharesScanDoctorreport.aspx?ReportName=" + "SharesScanDoctorreport.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+                                       }
+                                   }
+                               }
+
+
+                           }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+
+    // Sharesinlab
+
+
+    $.ajax({
+        url: "../Store/DoctorDashBoard/Sharesinlab",
+
+        type: 'POST',
+        dataType: 'json',
+        success: function (result) {
+
+
+
+
+            var labname1 = [];
+            var labval11 = [];
+            var labval21 = [];
+
+
+            $.each(result, function (ui, item) {
+
+                labname1.push(item.Name);
+                labval11.push(item.Id);
+                labval21.push(item.AdvAmt);
+
+
+
+            });
+
+            vibrant.setOptions({
+                colors: ['rgb(0,127,255)', '#7FFF00']
+            });
+
+
+            $('#Sharesinlabid1').vibrant({
+
+                chart: {
+                    type: 'column',
+                    height: 236
+
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: ' {point.y:0f}'
+                        }
+                    }
+                },
+                xAxis: {
+                    categories: labname1,
+                    labels: {
+                        rotation: -45,
+                        style: {
+                            fontSize: '08px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: null
+                    }
+                },
+                series: [{
+                    name: 'Hospital',
+                    data: labval11,
+                    point: {
+                        events: {
+                            click: function (event) {
+
+
+                                var a = this.category;
+                                var b = $("#drop5 option:selected").text();
+
+                                window.open("../HmsWebPages/DoctorDashboard/ShareLabHospitalReport.aspx?ReportName=" + "ShareLabHospitalReport.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+                            }
+                        }
+                    }
+                },
+                           {
+                               name: 'Doctor',
+                               data: labval21,
+
+                               point: {
+                                   events: {
+                                       click: function (event) {
+
+
+                                           var a = this.category;
+                                           var b = $("#drop5 option:selected").text();
+
+                                           window.open("../HmsWebPages/DoctorDashboard/ShareLabDoctorReport.aspx?ReportName=" + "ShareLabDoctorReport.rpt" + "&set=" + a + "&Fromdate=" + b);
+
+                                       }
+                                   }
+                               }
+                           }]
+
+
+
+            });
+
+        }
+
+    });
+
+
+
+</script>
